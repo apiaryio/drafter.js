@@ -13,3 +13,12 @@ describe "Drafter", ->
 
   it "can parse", =>
     assert.ok @result.ast
+
+
+describe "Boutique", ->
+
+  before =>
+    @boutique = require 'boutique'
+
+  it "is successfully installed", =>
+    assert.ok @boutique
