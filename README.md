@@ -1,15 +1,62 @@
 # Drafter
 
-Snow Crash parser harness
+[![Circle CI](https://circleci.com/gh/apiaryio/drafter.svg?style=svg&circle-token=f4b9c3fc34979e81d36c9d15e576e23f62e1e913)](https://circleci.com/gh/apiaryio/drafter)
+
+Snow Crash parser harness.
 
 ## Introduction
+Drafter takes an API blueprint on its input, parses, processes the AST and exposes the [Parse Result][] for further use.
 
-Drafter takes API Blueprint on its input, parses it, manipulates the API Blueprint AST and makes it available through Drafter's (ex Snow Crash) bindings.
+Want to know more? See the [Drafter Story card][].
 
-Want to know more? See [the card](https://trello.com/c/lS76AEU3/21-drafter).
+## Installation
+Node.js v0.10 is required.
 
-## Installation & CircleCI
+```shell
+$ npm install -g git+ssh://git@github.com:apiaryio/drafter.git
+```
 
-Because one of Drafter's dependencies ([Boutique](https://github.com/apiaryio/boutique/)) lives in private GitHub repository and has no public `npm` package, it's referenced by Git URL in `package.json` and you can experience some issues while installing or testing.
+Because one of Drafter's dependencies, [Boutique][], lives in a private GitHub repository and has no public _npm_ package, it's referenced by its Git URL in `package.json`. Because of this, you may experience some issues while installing or testing.
 
-You need to have access to both repositories and you need to give CircleCI some extended permissions over all your repositories to enable testing on their machines: **Project Settings > Checkout SSH keys > Add User GitHub Key**
+## Getting Started
+
+### Library
+
+```js
+var drafter = require('drafter');
+var blueprint = '# GET /message' +
+                '+ Response 200' +
+                ''+
+                '        Hello World!\n'
+
+drafter.make(blueprint, function(error, result) {
+    if (error) {
+        console.log(error);
+        return;
+    }
+
+    console.log(JSON.stringify(result, null, 2));
+});
+```
+
+### CLI Tool
+
+```shell
+$ cat << 'EOF' > blueprint.apib
+# GET /message
++ Response 200
+
+        Hello World!
+EOF
+
+$ drafter blueprint.apib
+```
+
+## Test
+In order to run CI tests you need to have access to both Drafter and Boutique repositories and you need to give CircleCI some extended permissions over all your repositories to enable testing on their machines.
+
+See _Project Settings > Checkout SSH keys > Add User GitHub Key_ in CircleCI settings.
+
+[Drafter Story card]: https://trello.com/c/lS76AEU3/21-drafter
+[Boutique]: https://github.com/apiaryio/boutique
+[Parse Result]: https://github.com/apiaryio/api-blueprint-ast/blob/master/Parse%20Result.md
