@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "author": "Apiary.io <support@apiary.io>",
   "description": "Snow Crash parser harness",
+  "main": "lib/drafter.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/apiaryio/drafter.git"
@@ -11,7 +12,8 @@
     "node": ">= 0.10.x"
   },
   "scripts": {
-    "test": "./node_modules/.bin/mocha --compilers coffee:coffee-script/register ./test"
+    "test": "scripts/test",
+    "prepublish": "scripts/build"
   },
   "dependencies": {
     "coffee-script": "~1.7.1",
@@ -21,5 +23,6 @@
   "devDependencies": {
     "chai": "~1.10.0",
     "mocha": "~2.0.1"
-  }
+  },
+  "license": "MIT"
 }
