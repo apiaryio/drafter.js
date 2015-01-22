@@ -4,6 +4,9 @@
   "author": "Apiary.io <support@apiary.io>",
   "description": "Snow Crash parser harness",
   "main": "lib/drafter.js",
+  "bin": {
+    "dredd": "bin/drafter"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/apiaryio/drafter.git"
@@ -17,6 +20,7 @@
   },
   "dependencies": {
     "coffee-script": "~1.7.1",
+    "optimist": "~0.6.0",
     "protagonist-experimental": "~0.18.1",
     "boutique": "git+ssh://git@github.com:apiaryio/boutique.git"
   },

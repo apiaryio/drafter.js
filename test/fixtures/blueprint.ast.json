@@ -1,0 +1,52 @@
+{
+  "ast": {
+    "_version": "3.0",
+    "metadata": [],
+    "name": "",
+    "description": "",
+    "resourceGroups": [
+      {
+        "name": "",
+        "description": "",
+        "resources": [
+          {
+            "name": "",
+            "description": "",
+            "uriTemplate": "/message",
+            "model": {},
+            "parameters": [],
+            "attributes": {},
+            "actions": [
+              {
+                "name": "",
+                "description": "",
+                "method": "GET",
+                "parameters": [],
+                "attributes": {},
+                "examples": [
+                  {
+                    "name": "",
+                    "description": "",
+                    "requests": [],
+                    "responses": [
+                      {
+                        "name": "200",
+                        "description": "",
+                        "headers": [],
+                        "attributes": {},
+                        "body": "Hello World!\n",
+                        "schema": ""
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "warnings": [],
+  "sourcemap": null
+}

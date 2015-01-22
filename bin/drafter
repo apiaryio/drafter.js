@@ -1,0 +1,61 @@
+#!/usr/bin/env node
+var optimist = require('optimist');
+var path = require('path');
+var fs = require('fs');
+var Drafter = require('../lib/drafter');
+
+// Retrieve version number
+var packageJsonPath = path.join(__dirname, '../package.json');
+var packageJson = JSON.parse(fs.readFileSync(packageJsonPath, "utf8"));
+var version = 'v' + packageJson.version;
+
+// Init optimist
+var argv = optimist
+            .usage('Usage:\n' +
+                    '  drafter [options] <blueprint file>')
+            .options(Drafter.options)
+            .wrap(80)
+            .argv;
+
+var argError = false;
+
+// Show Help
+if (argv.help === true) {
+  optimist.showHelp(fn = console.error);
+  process.exit(0);
+}
+
+// Show Version
+if (argv.version === true) {
+  console.log(version);
+  process.exit(0);
+}
+
+// Check inpupt file
+if (argv._[0] === undefined) {
+  console.error('Error: Missing input blueprint file.');
+  argError = true;
+}
+
+// Check arguments
+if (argError) {
+  console.error('\n');
+  optimist.showHelp(fn = console.error);
+  process.exit(1);
+}
+
+// Run the circus
+drafter = new Drafter();
+drafter.run(argv._[0], function(error){
+  if (error) {
+    if (error.message) {
+      console.error(error.message);
+    }
+    else if (error.stack) {
+      console.error(error.stack);
+    }
+    process.exit(1);
+  }
+
+  process.exit(0);
+});

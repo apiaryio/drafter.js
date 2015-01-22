@@ -7,7 +7,7 @@ Snow Crash parser harness.
 ## Introduction
 Drafter takes an API blueprint on its input, parses, processes the AST and exposes the [Parse Result][] for further use.
 
-Want to know =ore? See the [Drafter Story card][].
+Want to know more? See the [Drafter Story card][].
 
 ## Installation
 Node.js v0.10 is required.
@@ -23,9 +23,9 @@ Because one of Drafter's dependencies, [Boutique][], lives in a private GitHub r
 ### Library
 ```js
 var Drafter = require('drafter');
-var blueprint = '# GET /message' +
-                '+ Response 200' +
-                '' +
+var blueprint = '# GET /message\n' +
+                '+ Response 200\n' +
+                '\n' +
                 '        Hello World!\n'
 
 var drafter = new Drafter;

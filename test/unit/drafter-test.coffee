@@ -2,9 +2,9 @@
 
 Drafter = require '../../src/drafter'
 
-describe "Drafter Class", ->
+describe 'Drafter Class', ->
 
-  it 'parser a bluerint', (done) ->
+  it 'parses a bluerint', (done) ->
     drafter = new Drafter
 
     drafter.make '# My API', (error, result) ->
