@@ -5,7 +5,7 @@
   "description": "Snow Crash parser harness",
   "main": "lib/drafter.js",
   "bin": {
-    "dredd": "bin/drafter"
+    "drafter": "bin/drafter"
   },
   "repository": {
     "type": "git",
