@@ -52,7 +52,7 @@ var config = {
 
 // Run the circus
 drafter = new Drafter(config);
-drafter.run(argv._[0], function(error){
+drafter.makeFromPath(argv._[0], function(error, result){
   if (error) {
     if (error.message) {
       var message = 'Error: ' + error.message;
@@ -63,6 +63,8 @@ drafter.run(argv._[0], function(error){
     }
     process.exit(1);
   }
+
+  console.log(JSON.stringify(result, null, 2));
 
   process.exit(0);
 });

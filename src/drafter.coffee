@@ -12,27 +12,23 @@ class Drafter
     requireBlueprintName: false # Treat missing API name as error
     exportSourcemap: false      # Generate source map
 
-  # Ctor
+  # Constructor
   #
   # @param config [Object] configuration of the parser (see Drafter.defaultConfig)
   constructor: (@config) ->
     @config = Drafter.defaultConfig if !@config
 
-  # Run the build
-  #   processing the blueprint on input and print it to the stdout
+  # Execute the make process using a file path
+  #   this is just a convenience wrapper for @make
   #
   # @param blueprintPath [String] path to the source API Blueprint
-  # @param callback [(Error)]
-  run: (blueprintPath, callback) ->
+  # @param callback [(Error, ParseResult))]
+  makeFromPath: (blueprintPath, callback) ->
 
     fs.readFile blueprintPath, 'utf8', (error, source) =>
       return callback(error) if error
 
-      @make source, (error, result) ->
-        return callback(error) if error
-
-        console.log JSON.stringify result, null, 2
-        callback()
+      @make source, callback
 
   # Parse & process the input source file
   #
