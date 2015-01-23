@@ -9,9 +9,8 @@ stdout = ''
 exitStatus = null
 requests = []
 
-#
-# Execute a CLI command, originally taken from Dredd
-#
+# Execute a CLI command
+# Credit: This code is originally taken from Dredd
 execCommand = (cmd, callback) ->
   stderr = ''
   stdout = ''
@@ -31,18 +30,46 @@ execCommand = (cmd, callback) ->
     callback(undefined, stdout, stderr, exitStatus)
 
 describe 'Command line interface', () ->
+  describe 'parsing valid blueprint', () ->
+    before (done) ->
+      cmd = './bin/drafter ./test/fixtures/blueprint.apib'
 
-  before (done) ->
-    cmd = './bin/drafter ./test/fixtures/blueprint.apib'
+      execCommand cmd, done
 
-    execCommand cmd, done
+    it 'should exit with status 0', () ->
+      assert.equal exitStatus, 0
 
-  it 'should exit with status 0', () ->
-    assert.equal exitStatus, 0
+    it 'stdout should contain the parse result fixture', () ->
+      ast_fixture = require '../fixtures/blueprint.parseresult.json'
+      expected = JSON.stringify ast_fixture, null, 2
+      expected += '\n'
 
-  it 'stdout should contain the ast fixture', () ->
-    ast_fixture = require '../fixtures/blueprint.ast.json'
-    expected = JSON.stringify ast_fixture, null, 2
-    expected += '\n'
+      assert.equal stdout, expected
 
-    assert.equal stdout, expected
+  describe 'parsing blueprint with source map', () ->
+    before (done) ->
+      cmd = './bin/drafter -s ./test/fixtures/blueprint.apib'
+
+      execCommand cmd, done
+
+    it 'should exit with status 0', () ->
+      assert.equal exitStatus, 0
+
+    it 'stdout should contain the source map parser result fixture', () ->
+      ast_fixture = require '../fixtures/blueprint.parseresult+sourcemap.json'
+      expected = JSON.stringify ast_fixture, null, 2
+      expected += '\n'
+
+      assert.equal stdout, expected
+
+  describe 'parsing invalid blueprint', () ->
+    before (done) ->
+      cmd = './bin/drafter ./test/fixtures/invalid.apib'
+
+      execCommand cmd, done
+
+    it 'should exit with status 1', () ->
+      assert.equal exitStatus, 1
+
+    it 'stderr should contain an error message', () ->
+      assert.include stderr, 'Error:'

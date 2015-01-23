@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-var optimist = require('optimist');
+var yargs = require('yargs');
 var path = require('path');
 var fs = require('fs');
 var Drafter = require('../lib/drafter');
@@ -9,10 +9,10 @@ var packageJsonPath = path.join(__dirname, '../package.json');
 var packageJson = JSON.parse(fs.readFileSync(packageJsonPath, "utf8"));
 var version = 'v' + packageJson.version;
 
-// Init optimist
-var argv = optimist
+// Init args
+var argv = yargs
             .usage('Usage:\n' +
-                    '  drafter [options] <blueprint file>')
+                    '  $0 [options] <blueprint file>')
             .options(Drafter.options)
             .wrap(80)
             .argv;
@@ -21,7 +21,7 @@ var argError = false;
 
 // Show Help
 if (argv.help === true) {
-  optimist.showHelp(fn = console.error);
+  yargs.showHelp(fn = console.error);
   process.exit(0);
 }
 
@@ -40,16 +40,23 @@ if (argv._[0] === undefined) {
 // Check arguments
 if (argError) {
   console.error('\n');
-  optimist.showHelp(fn = console.error);
+  yargs.showHelp(fn = console.error);
   process.exit(1);
 }
 
+// Prepare configuration
+var config = {
+  requireBlueprintName: false,
+  exportSourcemap: argv.sourcemap === true
+};
+
 // Run the circus
-drafter = new Drafter();
+drafter = new Drafter(config);
 drafter.run(argv._[0], function(error){
   if (error) {
     if (error.message) {
-      console.error(error.message);
+      var message = 'Error: ' + error.message;
+      console.error(message);
     }
     else if (error.stack) {
       console.error(error.stack);
