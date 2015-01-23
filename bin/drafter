@@ -1,0 +1,70 @@
+#!/usr/bin/env node
+var yargs = require('yargs');
+var path = require('path');
+var fs = require('fs');
+var Drafter = require('../lib/drafter');
+
+// Retrieve version number
+var packageJsonPath = path.join(__dirname, '../package.json');
+var packageJson = JSON.parse(fs.readFileSync(packageJsonPath, "utf8"));
+var version = 'v' + packageJson.version;
+
+// Init args
+var argv = yargs
+            .usage('Usage:\n' +
+                    '  $0 [options] <blueprint file>')
+            .options(Drafter.options)
+            .wrap(80)
+            .argv;
+
+var argError = false;
+
+// Show Help
+if (argv.help === true) {
+  yargs.showHelp(fn = console.error);
+  process.exit(0);
+}
+
+// Show Version
+if (argv.version === true) {
+  console.log(version);
+  process.exit(0);
+}
+
+// Check inpupt file
+if (argv._[0] === undefined) {
+  console.error('Error: Missing input blueprint file.');
+  argError = true;
+}
+
+// Check arguments
+if (argError) {
+  console.error('\n');
+  yargs.showHelp(fn = console.error);
+  process.exit(1);
+}
+
+// Prepare configuration
+var config = {
+  requireBlueprintName: false,
+  exportSourcemap: argv.sourcemap === true
+};
+
+// Run the circus
+drafter = new Drafter(config);
+drafter.makeFromPath(argv._[0], function(error, result){
+  if (error) {
+    if (error.message) {
+      var message = 'Error: ' + error.message;
+      console.error(message);
+    }
+    else if (error.stack) {
+      console.error(error.stack);
+    }
+    process.exit(1);
+  }
+
+  console.log(JSON.stringify(result, null, 2));
+
+  process.exit(0);
+});
