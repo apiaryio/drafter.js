@@ -41,10 +41,9 @@ describe 'Command line interface', () ->
 
     it 'stdout should contain the parse result fixture', () ->
       ast_fixture = require '../fixtures/blueprint.parseresult.json'
-      expected = JSON.stringify ast_fixture, null, 2
-      expected += '\n'
+      parsedStdout = JSON.parse stdout
 
-      assert.equal stdout, expected
+      assert.deepEqual parsedStdout, ast_fixture
 
   describe 'parsing blueprint with source map', () ->
     before (done) ->
@@ -57,10 +56,9 @@ describe 'Command line interface', () ->
 
     it 'stdout should contain the source map parser result fixture', () ->
       ast_fixture = require '../fixtures/blueprint.parseresult+sourcemap.json'
-      expected = JSON.stringify ast_fixture, null, 2
-      expected += '\n'
+      parsedStdout = JSON.parse stdout
 
-      assert.equal stdout, expected
+      assert.deepEqual parsedStdout, ast_fixture
 
   describe 'parsing invalid blueprint', () ->
     before (done) ->
