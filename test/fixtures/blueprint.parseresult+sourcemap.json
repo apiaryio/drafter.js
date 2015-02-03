@@ -35,7 +35,15 @@
                         "headers": [],
                         "attributes": {},
                         "body": "Hello World!\n",
-                        "schema": ""
+                        "schema": "",
+                        "assets": {
+                          "body": {
+                              "source": "Hello World!\n"
+                          },
+                          "schema": {
+                              "source": ""
+                          }
+                        }
                       }
                     ]
                   }
