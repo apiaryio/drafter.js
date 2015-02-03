@@ -1,28 +1,29 @@
 {
   "ast": {
-    "_version": "3.0",
+    "_version": "2.1",
     "metadata": [],
     "name": "",
     "description": "",
+    "element": "category",
     "resourceGroups": [
       {
         "name": "",
         "description": "",
         "resources": [
           {
+            "element": "resource",
             "name": "",
             "description": "",
             "uriTemplate": "/message",
             "model": {},
             "parameters": [],
-            "attributes": {},
             "actions": [
               {
                 "name": "",
                 "description": "",
                 "method": "GET",
                 "parameters": [],
-                "attributes": {},
+                "content": [],
                 "examples": [
                   {
                     "name": "",
@@ -33,23 +34,74 @@
                         "name": "200",
                         "description": "",
                         "headers": [],
-                        "attributes": {},
                         "body": "Hello World!\n",
                         "schema": "",
-                        "assets": {
-                          "body": {
-                              "source": "Hello World!\n"
-                          },
-                          "schema": {
-                              "source": ""
+                        "content": [
+                          {
+                            "element": "asset",
+                            "attributes": {
+                              "role": "bodyExample"
+                            },
+                            "content": "Hello World!\n"
                           }
-                        }
+                        ]
                       }
                     ]
                   }
                 ]
               }
-            ]
+            ],
+            "content": []
+          }
+        ]
+      }
+    ],
+    "content": [
+      {
+        "element": "category",
+        "content": [
+          {
+            "element": "resource",
+            "name": "",
+            "description": "",
+            "uriTemplate": "/message",
+            "model": {},
+            "parameters": [],
+            "actions": [
+              {
+                "name": "",
+                "description": "",
+                "method": "GET",
+                "parameters": [],
+                "content": [],
+                "examples": [
+                  {
+                    "name": "",
+                    "description": "",
+                    "requests": [],
+                    "responses": [
+                      {
+                        "name": "200",
+                        "description": "",
+                        "headers": [],
+                        "body": "Hello World!\n",
+                        "schema": "",
+                        "content": [
+                          {
+                            "element": "asset",
+                            "attributes": {
+                              "role": "bodyExample"
+                            },
+                            "content": "Hello World!\n"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "content": []
           }
         ]
       }
