@@ -37,6 +37,73 @@
         {
           "element": "dataStructure",
           "name": {
+            "literal": "Legacy Timestamps",
+            "variable": false
+          },
+          "typeDefinition": {
+            "typeSpecification": {
+              "name": null,
+              "nestedTypes": []
+            },
+            "attributes": []
+          },
+          "sections": [
+            {
+              "class": "memberType",
+              "content": [
+                {
+                  "content": {
+                    "name": {
+                      "literal": "created_at"
+                    },
+                    "description": "",
+                    "valueDefinition": {
+                      "values": [],
+                      "typeDefinition": {
+                        "typeSpecification": {
+                          "name": {
+                            "literal": "Timestamp",
+                            "variable": false
+                          },
+                          "nestedTypes": []
+                        },
+                        "attributes": []
+                      }
+                    },
+                    "sections": []
+                  },
+                  "class": "property"
+                },
+                {
+                  "content": {
+                    "name": {
+                      "literal": "updated_at"
+                    },
+                    "description": "",
+                    "valueDefinition": {
+                      "values": [],
+                      "typeDefinition": {
+                        "typeSpecification": {
+                          "name": {
+                            "literal": "Timestamp",
+                            "variable": false
+                          },
+                          "nestedTypes": []
+                        },
+                        "attributes": []
+                      }
+                    },
+                    "sections": []
+                  },
+                  "class": "property"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "element": "dataStructure",
+          "name": {
             "literal": "Timestamps",
             "variable": false
           },
@@ -105,6 +172,19 @@
                     "sections": []
                   },
                   "class": "property"
+                },
+                {
+                  "content": {
+                    "attributes": [],
+                    "typeSpecification": {
+                      "name": {
+                        "literal": "Legacy Timestamps",
+                        "variable": false
+                      },
+                      "nestedTypes": []
+                    }
+                  },
+                  "class": "mixin"
                 }
               ]
             }
@@ -222,6 +302,19 @@
                     "sections": []
                   },
                   "class": "property"
+                },
+                {
+                  "content": {
+                    "attributes": [],
+                    "typeSpecification": {
+                      "name": {
+                        "literal": "Legacy Timestamps",
+                        "variable": false
+                      },
+                      "nestedTypes": []
+                    }
+                  },
+                  "class": "mixin"
                 }
               ]
             }
@@ -343,6 +436,19 @@
                     "sections": []
                   },
                   "class": "property"
+                },
+                {
+                  "content": {
+                    "attributes": [],
+                    "typeSpecification": {
+                      "name": {
+                        "literal": "Legacy Timestamps",
+                        "variable": false
+                      },
+                      "nestedTypes": []
+                    }
+                  },
+                  "class": "mixin"
                 }
               ]
             }

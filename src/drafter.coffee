@@ -67,7 +67,7 @@ class Drafter
 
       # Expand the gathered data structures
       for rule in rules
-        rule.init.call rule, @dataStructures if 'dataStructures' in Object.keys(rule)
+        rule.init.call rule, @dataStructures if rule.init
 
     # Apply rules to the current node
     for rule in rules

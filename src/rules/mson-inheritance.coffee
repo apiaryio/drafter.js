@@ -15,7 +15,7 @@ module.exports =
       if section['class'] is 'memberType'
 
         for member in section.content
-          memberTypeSection.content.push member if member['class'] is 'property'
+          memberTypeSection.content.push member if member['class'] in ['property', 'mixin']
 
   # Given a data structure, expand it's inheritance recursively
   #
@@ -27,16 +27,16 @@ module.exports =
     # Check for inheritance
     superType = dataStructure.typeDefinition.typeSpecification.name
 
-    if typeof superType isnt 'object' or not superType?.literal
+    if superType is null or typeof superType isnt 'object' or not superType?.literal
       return @expanded[superType] = true
 
     # Expand the super type first
     @expandInheritance superType, @dataStructures[superType.literal]
 
-    # If super type is not an object
+    # If super type is not an object or array or enum
     superTypeBaseName = @dataStructures[superType.literal].typeDefinition.typeSpecification.name
 
-    if superTypeBaseName isnt 'object'
+    if superTypeBaseName not in ['object', 'array', 'value']
       dataStructure.typeDefinition.typeSpecification.name = superTypeBaseName
       memberTypeSection =
         content: []
