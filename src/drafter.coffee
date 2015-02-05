@@ -8,7 +8,7 @@ fs = require 'fs'
 class Drafter
 
   # List of data structures
-  @dataStructures: []
+  @dataStructures: {}
 
   # Default configuration
   @defaultConfig:
@@ -41,10 +41,10 @@ class Drafter
     protagonist.parse source, @config, (error, result) =>
       callback error if error
 
-      ruleList = []
+      ruleList = ['mson-inheritance']
       rules = (require './rules/' + rule for rule in ruleList)
 
-      @dataStructures = []
+      @dataStructures = {}
 
       @expandNode result.ast, rules, 'blueprint'
       callback error, result
@@ -63,15 +63,15 @@ class Drafter
 
         if element.element is 'category'
           for subElement in element.content
-            @dataStructures.push subElement if subElement.element is 'dataStructure'
+            @dataStructures[subElement.name.literal] = subElement if subElement.element is 'dataStructure'
 
       # Expand the gathered data structures
       for rule in rules
-        rule.dataStructures.call @dataStructures if 'dataStructures' in rule
+        rule.init.call rule, @dataStructures if 'dataStructures' in Object.keys(rule)
 
     # Apply rules to the current node
     for rule in rules
-      rule[elementType].call node, @dataStructures if elementType in rule
+      rule[elementType].call rule, node if elementType in Object.keys(rule)
 
     # Recursively do the same for children nodes
     switch elementType

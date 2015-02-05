@@ -1,0 +1,374 @@
+{
+  "_version": "2.1",
+  "metadata": [
+    {
+      "name": "FORMAT",
+      "value": "1A"
+    }
+  ],
+  "name": "Stripe",
+  "description": "Inspired by stripe API\n\n",
+  "element": "category",
+  "resourceGroups": [],
+  "content": [
+    {
+      "element": "category",
+      "content": [
+        {
+          "element": "dataStructure",
+          "name": {
+            "literal": "Timestamp",
+            "variable": false
+          },
+          "typeDefinition": {
+            "typeSpecification": {
+              "name": "number",
+              "nestedTypes": []
+            },
+            "attributes": []
+          },
+          "sections": [
+            {
+              "class": "blockDescription",
+              "content": "Unix timestamp as an integer\n\n"
+            }
+          ]
+        },
+        {
+          "element": "dataStructure",
+          "name": {
+            "literal": "Timestamps",
+            "variable": false
+          },
+          "typeDefinition": {
+            "typeSpecification": {
+              "name": "object",
+              "nestedTypes": []
+            },
+            "attributes": []
+          },
+          "sections": [
+            {
+              "class": "blockDescription",
+              "content": "This object contains the following unix timestamps\n\n+ created - Denoting the time when the object is created\n\n+ modified - Denoting the time when the object has been recently updated\n\n"
+            },
+            {
+              "class": "memberType",
+              "content": [
+                {
+                  "content": {
+                    "name": {
+                      "literal": "created"
+                    },
+                    "description": "",
+                    "valueDefinition": {
+                      "values": [],
+                      "typeDefinition": {
+                        "typeSpecification": {
+                          "name": {
+                            "literal": "Timestamp",
+                            "variable": false
+                          },
+                          "nestedTypes": []
+                        },
+                        "attributes": []
+                      }
+                    },
+                    "sections": []
+                  },
+                  "class": "property"
+                }
+              ]
+            },
+            {
+              "class": "memberType",
+              "content": [
+                {
+                  "content": {
+                    "name": {
+                      "literal": "modified"
+                    },
+                    "description": "",
+                    "valueDefinition": {
+                      "values": [],
+                      "typeDefinition": {
+                        "typeSpecification": {
+                          "name": {
+                            "literal": "Timestamp",
+                            "variable": false
+                          },
+                          "nestedTypes": []
+                        },
+                        "attributes": []
+                      }
+                    },
+                    "sections": []
+                  },
+                  "class": "property"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "element": "dataStructure",
+          "name": {
+            "literal": "Coupon Base",
+            "variable": false
+          },
+          "typeDefinition": {
+            "typeSpecification": {
+              "name": "object",
+              "nestedTypes": []
+            },
+            "attributes": []
+          },
+          "sections": [
+            {
+              "class": "memberType",
+              "content": [
+                {
+                  "content": {
+                    "name": {
+                      "literal": "percent_off"
+                    },
+                    "description": "",
+                    "valueDefinition": {
+                      "values": [
+                        {
+                          "literal": "25",
+                          "variable": false
+                        }
+                      ],
+                      "typeDefinition": {
+                        "typeSpecification": {
+                          "name": "number",
+                          "nestedTypes": []
+                        },
+                        "attributes": []
+                      }
+                    },
+                    "sections": [
+                      {
+                        "class": "blockDescription",
+                        "content": "A positive integer between 1 and 100 that represents the discount the coupon will apply.\n"
+                      }
+                    ]
+                  },
+                  "class": "property"
+                },
+                {
+                  "content": {
+                    "name": {
+                      "literal": "redeem_by"
+                    },
+                    "description": "Date after which the coupon can no longer be redeemed",
+                    "valueDefinition": {
+                      "values": [],
+                      "typeDefinition": {
+                        "typeSpecification": {
+                          "name": "number",
+                          "nestedTypes": []
+                        },
+                        "attributes": []
+                      }
+                    },
+                    "sections": []
+                  },
+                  "class": "property"
+                },
+                {
+                  "content": {
+                    "name": {
+                      "literal": "created"
+                    },
+                    "description": "",
+                    "valueDefinition": {
+                      "values": [],
+                      "typeDefinition": {
+                        "typeSpecification": {
+                          "name": {
+                            "literal": "Timestamp",
+                            "variable": false
+                          },
+                          "nestedTypes": []
+                        },
+                        "attributes": []
+                      }
+                    },
+                    "sections": []
+                  },
+                  "class": "property"
+                },
+                {
+                  "content": {
+                    "name": {
+                      "literal": "modified"
+                    },
+                    "description": "",
+                    "valueDefinition": {
+                      "values": [],
+                      "typeDefinition": {
+                        "typeSpecification": {
+                          "name": {
+                            "literal": "Timestamp",
+                            "variable": false
+                          },
+                          "nestedTypes": []
+                        },
+                        "attributes": []
+                      }
+                    },
+                    "sections": []
+                  },
+                  "class": "property"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "element": "dataStructure",
+          "name": {
+            "literal": "Coupon Base Clone",
+            "variable": false
+          },
+          "typeDefinition": {
+            "typeSpecification": {
+              "name": "object",
+              "nestedTypes": []
+            },
+            "attributes": []
+          },
+          "sections": [
+            {
+              "class": "blockDescription",
+              "content": "A clone of Coupon Base to be used for testing\n\n"
+            },
+            {
+              "class": "memberType",
+              "content": [
+                {
+                  "content": {
+                    "name": {
+                      "literal": "percent_off"
+                    },
+                    "description": "",
+                    "valueDefinition": {
+                      "values": [
+                        {
+                          "literal": "25",
+                          "variable": false
+                        }
+                      ],
+                      "typeDefinition": {
+                        "typeSpecification": {
+                          "name": "number",
+                          "nestedTypes": []
+                        },
+                        "attributes": []
+                      }
+                    },
+                    "sections": [
+                      {
+                        "class": "blockDescription",
+                        "content": "A positive integer between 1 and 100 that represents the discount the coupon will apply.\n"
+                      }
+                    ]
+                  },
+                  "class": "property"
+                },
+                {
+                  "content": {
+                    "name": {
+                      "literal": "redeem_by"
+                    },
+                    "description": "Date after which the coupon can no longer be redeemed",
+                    "valueDefinition": {
+                      "values": [],
+                      "typeDefinition": {
+                        "typeSpecification": {
+                          "name": "number",
+                          "nestedTypes": []
+                        },
+                        "attributes": []
+                      }
+                    },
+                    "sections": []
+                  },
+                  "class": "property"
+                },
+                {
+                  "content": {
+                    "name": {
+                      "literal": "created"
+                    },
+                    "description": "",
+                    "valueDefinition": {
+                      "values": [],
+                      "typeDefinition": {
+                        "typeSpecification": {
+                          "name": {
+                            "literal": "Timestamp",
+                            "variable": false
+                          },
+                          "nestedTypes": []
+                        },
+                        "attributes": []
+                      }
+                    },
+                    "sections": []
+                  },
+                  "class": "property"
+                },
+                {
+                  "content": {
+                    "name": {
+                      "literal": "modified"
+                    },
+                    "description": "",
+                    "valueDefinition": {
+                      "values": [],
+                      "typeDefinition": {
+                        "typeSpecification": {
+                          "name": {
+                            "literal": "Timestamp",
+                            "variable": false
+                          },
+                          "nestedTypes": []
+                        },
+                        "attributes": []
+                      }
+                    },
+                    "sections": []
+                  },
+                  "class": "property"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "element": "dataStructure",
+          "name": {
+            "literal": "Timestamp Clone",
+            "variable": false
+          },
+          "typeDefinition": {
+            "typeSpecification": {
+              "name": "number",
+              "nestedTypes": []
+            },
+            "attributes": []
+          },
+          "sections": [
+            {
+              "class": "blockDescription",
+              "content": "A clone of timestamp to be used for testing\n"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

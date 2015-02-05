@@ -1,0 +1,34 @@
+FORMAT: 1A
+
+# Stripe
+Inspired by stripe API
+
+# Data Structures
+
+## Timestamp (number)
+Unix timestamp as an integer
+
+## Timestamps (object)
+This object contains the following unix timestamps
+
++ created - Denoting the time when the object is created
++ modified - Denoting the time when the object has been recently updated
+
+### Properties
++ created (Timestamp)
+
+### Properties
++ modified (Timestamp)
+
+## Coupon Base (Timestamps)
++ percent_off: 25 (number)
+
+    A positive integer between 1 and 100 that represents the discount the coupon will apply.
+
++ redeem_by (number) - Date after which the coupon can no longer be redeemed
+
+## Coupon Base Clone (Coupon Base)
+A clone of Coupon Base to be used for testing
+
+## Timestamp Clone (Timestamp)
+A clone of timestamp to be used for testing
