@@ -175,16 +175,49 @@
                 },
                 {
                   "content": {
-                    "attributes": [],
-                    "typeSpecification": {
-                      "name": {
-                        "literal": "Legacy Timestamps",
-                        "variable": false
-                      },
-                      "nestedTypes": []
-                    }
+                    "name": {
+                      "literal": "created_at"
+                    },
+                    "description": "",
+                    "valueDefinition": {
+                      "values": [],
+                      "typeDefinition": {
+                        "typeSpecification": {
+                          "name": {
+                            "literal": "Timestamp",
+                            "variable": false
+                          },
+                          "nestedTypes": []
+                        },
+                        "attributes": []
+                      }
+                    },
+                    "sections": []
                   },
-                  "class": "mixin"
+                  "class": "property"
+                },
+                {
+                  "content": {
+                    "name": {
+                      "literal": "updated_at"
+                    },
+                    "description": "",
+                    "valueDefinition": {
+                      "values": [],
+                      "typeDefinition": {
+                        "typeSpecification": {
+                          "name": {
+                            "literal": "Timestamp",
+                            "variable": false
+                          },
+                          "nestedTypes": []
+                        },
+                        "attributes": []
+                      }
+                    },
+                    "sections": []
+                  },
+                  "class": "property"
                 }
               ]
             }
@@ -305,16 +338,49 @@
                 },
                 {
                   "content": {
-                    "attributes": [],
-                    "typeSpecification": {
-                      "name": {
-                        "literal": "Legacy Timestamps",
-                        "variable": false
-                      },
-                      "nestedTypes": []
-                    }
+                    "name": {
+                      "literal": "created_at"
+                    },
+                    "description": "",
+                    "valueDefinition": {
+                      "values": [],
+                      "typeDefinition": {
+                        "typeSpecification": {
+                          "name": {
+                            "literal": "Timestamp",
+                            "variable": false
+                          },
+                          "nestedTypes": []
+                        },
+                        "attributes": []
+                      }
+                    },
+                    "sections": []
                   },
-                  "class": "mixin"
+                  "class": "property"
+                },
+                {
+                  "content": {
+                    "name": {
+                      "literal": "updated_at"
+                    },
+                    "description": "",
+                    "valueDefinition": {
+                      "values": [],
+                      "typeDefinition": {
+                        "typeSpecification": {
+                          "name": {
+                            "literal": "Timestamp",
+                            "variable": false
+                          },
+                          "nestedTypes": []
+                        },
+                        "attributes": []
+                      }
+                    },
+                    "sections": []
+                  },
+                  "class": "property"
                 }
               ]
             }
@@ -339,7 +405,6 @@
               "content": "A clone of Coupon Base to be used for testing\n\n"
             },
             {
-              "class": "memberType",
               "content": [
                 {
                   "content": {
@@ -439,18 +504,52 @@
                 },
                 {
                   "content": {
-                    "attributes": [],
-                    "typeSpecification": {
-                      "name": {
-                        "literal": "Legacy Timestamps",
-                        "variable": false
-                      },
-                      "nestedTypes": []
-                    }
+                    "name": {
+                      "literal": "created_at"
+                    },
+                    "description": "",
+                    "valueDefinition": {
+                      "values": [],
+                      "typeDefinition": {
+                        "typeSpecification": {
+                          "name": {
+                            "literal": "Timestamp",
+                            "variable": false
+                          },
+                          "nestedTypes": []
+                        },
+                        "attributes": []
+                      }
+                    },
+                    "sections": []
                   },
-                  "class": "mixin"
+                  "class": "property"
+                },
+                {
+                  "content": {
+                    "name": {
+                      "literal": "updated_at"
+                    },
+                    "description": "",
+                    "valueDefinition": {
+                      "values": [],
+                      "typeDefinition": {
+                        "typeSpecification": {
+                          "name": {
+                            "literal": "Timestamp",
+                            "variable": false
+                          },
+                          "nestedTypes": []
+                        },
+                        "attributes": []
+                      }
+                    },
+                    "sections": []
+                  },
+                  "class": "property"
                 }
-              ]
+              ],
+              "class": "memberType"
             }
           ]
         },

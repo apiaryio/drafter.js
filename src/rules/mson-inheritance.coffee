@@ -1,23 +1,12 @@
+rule = require './rule'
+
 module.exports =
 
   # Variables
   expanded: {}
   dataStructures: {}
 
-  # Copy all member types from one data structure to another
-  #
-  # @param supertTypeName [String] The name of the super type data structure
-  # @param memberTypeSection [Object] Member Type Section to be copied into
-  copyMembers: (superTypeName, memberTypeSection) ->
-    return if not @dataStructures[superTypeName]
-
-    for section in @dataStructures[superTypeName].sections
-      if section['class'] is 'memberType'
-
-        for member in section.content
-          memberTypeSection.content.push member if member['class'] in ['property', 'mixin']
-
-  # Given a data structure, expand it's inheritance recursively
+  # Given a data structure, expand its inheritance recursively
   #
   # @param name [String] Name of the data structure
   # @param dataStructure [Object] Data structure
@@ -31,7 +20,7 @@ module.exports =
       return @expanded[superType] = true
 
     # Expand the super type first
-    @expandInheritance superType, @dataStructures[superType.literal]
+    @expandInheritance superType.literal, @dataStructures[superType.literal]
 
     # If super type is not an object or array or enum
     superTypeBaseName = @dataStructures[superType.literal].typeDefinition.typeSpecification.name
@@ -42,7 +31,7 @@ module.exports =
         content: []
 
       memberTypeSection['class'] = 'memberType'
-      @copyMembers superType.literal, memberTypeSection
+      rule.copyMembers @dataStructures[superType.literal], memberTypeSection
 
       dataStructure.sections.push memberTypeSection if memberTypeSection.content.length
       return @expanded[name] = true
@@ -64,7 +53,7 @@ module.exports =
 
     # Copy super-type and all the member types to sub type
     dataStructure.typeDefinition.typeSpecification.name = superTypeBaseName
-    @copyMembers superType.literal, memberTypeSection
+    rule.copyMembers @dataStructures[superType.literal], memberTypeSection
 
     # Push the created type section
     dataStructure.sections.push memberTypeSection if push and memberTypeSection.content.length

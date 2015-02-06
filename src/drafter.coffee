@@ -41,7 +41,7 @@ class Drafter
     protagonist.parse source, @config, (error, result) =>
       callback error if error
 
-      ruleList = ['mson-inheritance']
+      ruleList = ['mson-inheritance', 'mson-mixin']
       rules = (require './rules/' + rule for rule in ruleList)
 
       @dataStructures = {}

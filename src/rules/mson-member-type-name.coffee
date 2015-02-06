@@ -1,3 +1,7 @@
 module.exports =
 
-  dataStructures: (dataStructures) ->
+  # Variables
+  dataStructures: {}
+
+  init: (dataStructures) ->
+    @dataStructures = dataStructures
