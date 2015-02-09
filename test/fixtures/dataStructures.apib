@@ -37,3 +37,13 @@ A clone of Coupon Base to be used for testing
 
 ## Timestamp Clone (Timestamp)
 A clone of timestamp to be used for testing
+
+## Subscription
++ id: 1000 (number)
++ plan: 'Startup' (string) - Subscription plan name
++ coupon (Coupon Base) - Coupon represting any existing discounts used by the customer during the subscription
++ One Of
+    + Include Timestamps
+    + Properties
+        + modified_at (Timestamp)
+        + Include (Legacy Timestamps)

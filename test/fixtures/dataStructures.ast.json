@@ -569,7 +569,272 @@
           "sections": [
             {
               "class": "blockDescription",
-              "content": "A clone of timestamp to be used for testing\n"
+              "content": "A clone of timestamp to be used for testing\n\n"
+            }
+          ]
+        },
+        {
+          "element": "dataStructure",
+          "name": {
+            "literal": "Subscription",
+            "variable": false
+          },
+          "typeDefinition": {
+            "typeSpecification": {
+              "name": null,
+              "nestedTypes": []
+            },
+            "attributes": []
+          },
+          "sections": [
+            {
+              "class": "memberType",
+              "content": [
+                {
+                  "content": {
+                    "name": {
+                      "literal": "id"
+                    },
+                    "description": "",
+                    "valueDefinition": {
+                      "values": [
+                        {
+                          "literal": "1000",
+                          "variable": false
+                        }
+                      ],
+                      "typeDefinition": {
+                        "typeSpecification": {
+                          "name": "number",
+                          "nestedTypes": []
+                        },
+                        "attributes": []
+                      }
+                    },
+                    "sections": []
+                  },
+                  "class": "property"
+                },
+                {
+                  "content": {
+                    "name": {
+                      "literal": "plan"
+                    },
+                    "description": "Subscription plan name",
+                    "valueDefinition": {
+                      "values": [
+                        {
+                          "literal": "'Startup'",
+                          "variable": false
+                        }
+                      ],
+                      "typeDefinition": {
+                        "typeSpecification": {
+                          "name": "string",
+                          "nestedTypes": []
+                        },
+                        "attributes": []
+                      }
+                    },
+                    "sections": []
+                  },
+                  "class": "property"
+                },
+                {
+                  "content": {
+                    "name": {
+                      "literal": "coupon"
+                    },
+                    "description": "Coupon represting any existing discounts used by the customer during the subscription",
+                    "valueDefinition": {
+                      "values": [],
+                      "typeDefinition": {
+                        "typeSpecification": {
+                          "name": {
+                            "literal": "Coupon Base",
+                            "variable": false
+                          },
+                          "nestedTypes": []
+                        },
+                        "attributes": []
+                      }
+                    },
+                    "sections": []
+                  },
+                  "class": "property"
+                },
+                {
+                  "content": [
+                    {
+                      "content": {
+                        "name": {
+                          "literal": "created"
+                        },
+                        "description": "",
+                        "valueDefinition": {
+                          "values": [],
+                          "typeDefinition": {
+                            "typeSpecification": {
+                              "name": {
+                                "literal": "Timestamp",
+                                "variable": false
+                              },
+                              "nestedTypes": []
+                            },
+                            "attributes": []
+                          }
+                        },
+                        "sections": []
+                      },
+                      "class": "property"
+                    },
+                    {
+                      "content": {
+                        "name": {
+                          "literal": "modified"
+                        },
+                        "description": "",
+                        "valueDefinition": {
+                          "values": [],
+                          "typeDefinition": {
+                            "typeSpecification": {
+                              "name": {
+                                "literal": "Timestamp",
+                                "variable": false
+                              },
+                              "nestedTypes": []
+                            },
+                            "attributes": []
+                          }
+                        },
+                        "sections": []
+                      },
+                      "class": "property"
+                    },
+                    {
+                      "content": {
+                        "name": {
+                          "literal": "created_at"
+                        },
+                        "description": "",
+                        "valueDefinition": {
+                          "values": [],
+                          "typeDefinition": {
+                            "typeSpecification": {
+                              "name": {
+                                "literal": "Timestamp",
+                                "variable": false
+                              },
+                              "nestedTypes": []
+                            },
+                            "attributes": []
+                          }
+                        },
+                        "sections": []
+                      },
+                      "class": "property"
+                    },
+                    {
+                      "content": {
+                        "name": {
+                          "literal": "updated_at"
+                        },
+                        "description": "",
+                        "valueDefinition": {
+                          "values": [],
+                          "typeDefinition": {
+                            "typeSpecification": {
+                              "name": {
+                                "literal": "Timestamp",
+                                "variable": false
+                              },
+                              "nestedTypes": []
+                            },
+                            "attributes": []
+                          }
+                        },
+                        "sections": []
+                      },
+                      "class": "property"
+                    },
+                    {
+                      "content": [
+                        {
+                          "content": {
+                            "name": {
+                              "literal": "modified_at"
+                            },
+                            "description": "",
+                            "valueDefinition": {
+                              "values": [],
+                              "typeDefinition": {
+                                "typeSpecification": {
+                                  "name": {
+                                    "literal": "Timestamp",
+                                    "variable": false
+                                  },
+                                  "nestedTypes": []
+                                },
+                                "attributes": []
+                              }
+                            },
+                            "sections": []
+                          },
+                          "class": "property"
+                        },
+                        {
+                          "content": {
+                            "name": {
+                              "literal": "created_at"
+                            },
+                            "description": "",
+                            "valueDefinition": {
+                              "values": [],
+                              "typeDefinition": {
+                                "typeSpecification": {
+                                  "name": {
+                                    "literal": "Timestamp",
+                                    "variable": false
+                                  },
+                                  "nestedTypes": []
+                                },
+                                "attributes": []
+                              }
+                            },
+                            "sections": []
+                          },
+                          "class": "property"
+                        },
+                        {
+                          "content": {
+                            "name": {
+                              "literal": "updated_at"
+                            },
+                            "description": "",
+                            "valueDefinition": {
+                              "values": [],
+                              "typeDefinition": {
+                                "typeSpecification": {
+                                  "name": {
+                                    "literal": "Timestamp",
+                                    "variable": false
+                                  },
+                                  "nestedTypes": []
+                                },
+                                "attributes": []
+                              }
+                            },
+                            "sections": []
+                          },
+                          "class": "property"
+                        }
+                      ],
+                      "class": "group"
+                    }
+                  ],
+                  "class": "oneOf"
+                }
+              ]
             }
           ]
         }

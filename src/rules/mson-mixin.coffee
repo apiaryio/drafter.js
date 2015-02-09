@@ -6,6 +6,35 @@ module.exports =
   expanded: {}
   dataStructures: {}
 
+  #
+  #
+  # @param elements [Object]
+  # @param sectionOrMember [Object]
+  diveIntoMember: (elements, sectionOrMember) ->
+    for member in elements
+      switch member['class']
+
+        when 'mixin'
+          superType = member.content.typeSpecification.name
+
+          # Expand the super type first
+          @expandMixin superType.literal, @dataStructures[superType.literal]
+          rule.copyMembers @dataStructures[superType.literal], sectionOrMember
+
+        when 'oneOf', 'group'
+          memberType =
+            content: []
+
+          # Recursively dive into the elements
+          @diveIntoMember member.content, memberType
+
+          # Replace the original member with out new member
+          member.content = memberType.content
+          sectionOrMember.content.push member
+
+        else
+          sectionOrMember.content.push member
+
   # Given a data structure, expand its mixins recusrively
   #
   # @param name [String] Name of the data structure
@@ -21,17 +50,7 @@ module.exports =
         memberTypeSection =
           content: []
 
-        for member in section.content
-          if member['class'] is 'mixin'
-
-            # Expand the super type first
-            superType = member.content.typeSpecification.name
-            @expandMixin superType.literal, @dataStructures[superType.literal]
-
-            rule.copyMembers @dataStructures[superType.literal], memberTypeSection
-
-          else
-            memberTypeSection.content.push member
+        @diveIntoMember section.content, memberTypeSection
 
         # Replace section content with the new content
         section.content = memberTypeSection.content
