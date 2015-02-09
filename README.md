@@ -1,6 +1,6 @@
 # Drafter
 
-[![Circle CI](https://circleci.com/gh/apiaryio/drafter.svg?style=svg&circle-token=f4b9c3fc34979e81d36c9d15e576e23f62e1e913)](https://circleci.com/gh/apiaryio/drafter)
+[![Circle CI](https://circleci.com/gh/apiaryio/drafter.js.svg?style=svg&circle-token=f4b9c3fc34979e81d36c9d15e576e23f62e1e913)](https://circleci.com/gh/apiaryio/drafter.js)
 
 Snow Crash parser harness.
 
@@ -13,7 +13,7 @@ Want to know more? See the [Drafter Story card][].
 Node.js v0.10 is required.
 
 ```shell
-$ npm install -g git+ssh://git@github.com:apiaryio/drafter.git
+$ npm install -g git+ssh://git@github.com:apiaryio/drafter.js.git
 ```
 
 Because one of Drafter's dependencies, [Boutique][], lives in a private GitHub repository and has no public _npm_ package, it's referenced by its Git URL in `package.json`. Because of this, you may experience some issues while installing or testing.
