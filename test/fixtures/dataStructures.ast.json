@@ -61,10 +61,7 @@
                       "values": [],
                       "typeDefinition": {
                         "typeSpecification": {
-                          "name": {
-                            "literal": "Timestamp",
-                            "variable": false
-                          },
+                          "name": "number",
                           "nestedTypes": []
                         },
                         "attributes": []
@@ -84,10 +81,7 @@
                       "values": [],
                       "typeDefinition": {
                         "typeSpecification": {
-                          "name": {
-                            "literal": "Timestamp",
-                            "variable": false
-                          },
+                          "name": "number",
                           "nestedTypes": []
                         },
                         "attributes": []
@@ -132,10 +126,7 @@
                       "values": [],
                       "typeDefinition": {
                         "typeSpecification": {
-                          "name": {
-                            "literal": "Timestamp",
-                            "variable": false
-                          },
+                          "name": "number",
                           "nestedTypes": []
                         },
                         "attributes": []
@@ -160,10 +151,7 @@
                       "values": [],
                       "typeDefinition": {
                         "typeSpecification": {
-                          "name": {
-                            "literal": "Timestamp",
-                            "variable": false
-                          },
+                          "name": "number",
                           "nestedTypes": []
                         },
                         "attributes": []
@@ -183,10 +171,7 @@
                       "values": [],
                       "typeDefinition": {
                         "typeSpecification": {
-                          "name": {
-                            "literal": "Timestamp",
-                            "variable": false
-                          },
+                          "name": "number",
                           "nestedTypes": []
                         },
                         "attributes": []
@@ -206,10 +191,7 @@
                       "values": [],
                       "typeDefinition": {
                         "typeSpecification": {
-                          "name": {
-                            "literal": "Timestamp",
-                            "variable": false
-                          },
+                          "name": "number",
                           "nestedTypes": []
                         },
                         "attributes": []
@@ -300,10 +282,7 @@
                       "values": [],
                       "typeDefinition": {
                         "typeSpecification": {
-                          "name": {
-                            "literal": "Timestamp",
-                            "variable": false
-                          },
+                          "name": "number",
                           "nestedTypes": []
                         },
                         "attributes": []
@@ -323,10 +302,7 @@
                       "values": [],
                       "typeDefinition": {
                         "typeSpecification": {
-                          "name": {
-                            "literal": "Timestamp",
-                            "variable": false
-                          },
+                          "name": "number",
                           "nestedTypes": []
                         },
                         "attributes": []
@@ -346,10 +322,7 @@
                       "values": [],
                       "typeDefinition": {
                         "typeSpecification": {
-                          "name": {
-                            "literal": "Timestamp",
-                            "variable": false
-                          },
+                          "name": "number",
                           "nestedTypes": []
                         },
                         "attributes": []
@@ -369,10 +342,7 @@
                       "values": [],
                       "typeDefinition": {
                         "typeSpecification": {
-                          "name": {
-                            "literal": "Timestamp",
-                            "variable": false
-                          },
+                          "name": "number",
                           "nestedTypes": []
                         },
                         "attributes": []
@@ -466,10 +436,7 @@
                       "values": [],
                       "typeDefinition": {
                         "typeSpecification": {
-                          "name": {
-                            "literal": "Timestamp",
-                            "variable": false
-                          },
+                          "name": "number",
                           "nestedTypes": []
                         },
                         "attributes": []
@@ -489,10 +456,7 @@
                       "values": [],
                       "typeDefinition": {
                         "typeSpecification": {
-                          "name": {
-                            "literal": "Timestamp",
-                            "variable": false
-                          },
+                          "name": "number",
                           "nestedTypes": []
                         },
                         "attributes": []
@@ -512,10 +476,7 @@
                       "values": [],
                       "typeDefinition": {
                         "typeSpecification": {
-                          "name": {
-                            "literal": "Timestamp",
-                            "variable": false
-                          },
+                          "name": "number",
                           "nestedTypes": []
                         },
                         "attributes": []
@@ -535,10 +496,7 @@
                       "values": [],
                       "typeDefinition": {
                         "typeSpecification": {
-                          "name": {
-                            "literal": "Timestamp",
-                            "variable": false
-                          },
+                          "name": "number",
                           "nestedTypes": []
                         },
                         "attributes": []
@@ -650,16 +608,149 @@
                       "values": [],
                       "typeDefinition": {
                         "typeSpecification": {
-                          "name": {
-                            "literal": "Coupon Base",
-                            "variable": false
-                          },
+                          "name": "object",
                           "nestedTypes": []
                         },
                         "attributes": []
                       }
                     },
-                    "sections": []
+                    "sections": [
+                      {
+                        "content": [
+                          {
+                            "content": {
+                              "name": {
+                                "literal": "percent_off"
+                              },
+                              "description": "",
+                              "valueDefinition": {
+                                "values": [
+                                  {
+                                    "literal": "25",
+                                    "variable": false
+                                  }
+                                ],
+                                "typeDefinition": {
+                                  "typeSpecification": {
+                                    "name": "number",
+                                    "nestedTypes": []
+                                  },
+                                  "attributes": []
+                                }
+                              },
+                              "sections": [
+                                {
+                                  "class": "blockDescription",
+                                  "content": "A positive integer between 1 and 100 that represents the discount the coupon will apply.\n"
+                                }
+                              ]
+                            },
+                            "class": "property"
+                          },
+                          {
+                            "content": {
+                              "name": {
+                                "literal": "redeem_by"
+                              },
+                              "description": "Date after which the coupon can no longer be redeemed",
+                              "valueDefinition": {
+                                "values": [],
+                                "typeDefinition": {
+                                  "typeSpecification": {
+                                    "name": "number",
+                                    "nestedTypes": []
+                                  },
+                                  "attributes": []
+                                }
+                              },
+                              "sections": []
+                            },
+                            "class": "property"
+                          },
+                          {
+                            "content": {
+                              "name": {
+                                "literal": "created"
+                              },
+                              "description": "",
+                              "valueDefinition": {
+                                "values": [],
+                                "typeDefinition": {
+                                  "typeSpecification": {
+                                    "name": "number",
+                                    "nestedTypes": []
+                                  },
+                                  "attributes": []
+                                }
+                              },
+                              "sections": []
+                            },
+                            "class": "property"
+                          },
+                          {
+                            "content": {
+                              "name": {
+                                "literal": "modified"
+                              },
+                              "description": "",
+                              "valueDefinition": {
+                                "values": [],
+                                "typeDefinition": {
+                                  "typeSpecification": {
+                                    "name": "number",
+                                    "nestedTypes": []
+                                  },
+                                  "attributes": []
+                                }
+                              },
+                              "sections": []
+                            },
+                            "class": "property"
+                          },
+                          {
+                            "content": {
+                              "name": {
+                                "literal": "created_at"
+                              },
+                              "description": "",
+                              "valueDefinition": {
+                                "values": [],
+                                "typeDefinition": {
+                                  "typeSpecification": {
+                                    "name": "number",
+                                    "nestedTypes": []
+                                  },
+                                  "attributes": []
+                                }
+                              },
+                              "sections": []
+                            },
+                            "class": "property"
+                          },
+                          {
+                            "content": {
+                              "name": {
+                                "literal": "updated_at"
+                              },
+                              "description": "",
+                              "valueDefinition": {
+                                "values": [],
+                                "typeDefinition": {
+                                  "typeSpecification": {
+                                    "name": "number",
+                                    "nestedTypes": []
+                                  },
+                                  "attributes": []
+                                }
+                              },
+                              "sections": []
+                            },
+                            "class": "property"
+                          }
+                        ],
+                        "class": "memberType"
+                      }
+                    ]
                   },
                   "class": "property"
                 },
@@ -675,10 +766,7 @@
                           "values": [],
                           "typeDefinition": {
                             "typeSpecification": {
-                              "name": {
-                                "literal": "Timestamp",
-                                "variable": false
-                              },
+                              "name": "number",
                               "nestedTypes": []
                             },
                             "attributes": []
@@ -698,10 +786,7 @@
                           "values": [],
                           "typeDefinition": {
                             "typeSpecification": {
-                              "name": {
-                                "literal": "Timestamp",
-                                "variable": false
-                              },
+                              "name": "number",
                               "nestedTypes": []
                             },
                             "attributes": []
@@ -721,10 +806,7 @@
                           "values": [],
                           "typeDefinition": {
                             "typeSpecification": {
-                              "name": {
-                                "literal": "Timestamp",
-                                "variable": false
-                              },
+                              "name": "number",
                               "nestedTypes": []
                             },
                             "attributes": []
@@ -744,10 +826,7 @@
                           "values": [],
                           "typeDefinition": {
                             "typeSpecification": {
-                              "name": {
-                                "literal": "Timestamp",
-                                "variable": false
-                              },
+                              "name": "number",
                               "nestedTypes": []
                             },
                             "attributes": []
@@ -769,10 +848,7 @@
                               "values": [],
                               "typeDefinition": {
                                 "typeSpecification": {
-                                  "name": {
-                                    "literal": "Timestamp",
-                                    "variable": false
-                                  },
+                                  "name": "number",
                                   "nestedTypes": []
                                 },
                                 "attributes": []
@@ -792,10 +868,7 @@
                               "values": [],
                               "typeDefinition": {
                                 "typeSpecification": {
-                                  "name": {
-                                    "literal": "Timestamp",
-                                    "variable": false
-                                  },
+                                  "name": "number",
                                   "nestedTypes": []
                                 },
                                 "attributes": []
@@ -815,10 +888,7 @@
                               "values": [],
                               "typeDefinition": {
                                 "typeSpecification": {
-                                  "name": {
-                                    "literal": "Timestamp",
-                                    "variable": false
-                                  },
+                                  "name": "number",
                                   "nestedTypes": []
                                 },
                                 "attributes": []

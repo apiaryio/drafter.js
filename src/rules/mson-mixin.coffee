@@ -6,11 +6,12 @@ module.exports =
   expanded: {}
   dataStructures: {}
 
+  # Given a list of elements, recursively expand mixins contained
+  # in a group of elements inside the initial group of elements
   #
-  #
-  # @param elements [Object]
-  # @param sectionOrMember [Object]
-  diveIntoMember: (elements, sectionOrMember) ->
+  # @param elements [Object] List of elements either from type section or a member type
+  # @param sectionOrMember [Object] Type section or a member type
+  diveIntoElements: (elements, sectionOrMember) ->
     for member in elements
       switch member['class']
 
@@ -26,7 +27,7 @@ module.exports =
             content: []
 
           # Recursively dive into the elements
-          @diveIntoMember member.content, memberType
+          @diveIntoElements member.content, memberType
 
           # Replace the original member with out new member
           member.content = memberType.content
@@ -50,7 +51,7 @@ module.exports =
         memberTypeSection =
           content: []
 
-        @diveIntoMember section.content, memberTypeSection
+        @diveIntoElements section.content, memberTypeSection
 
         # Replace section content with the new content
         section.content = memberTypeSection.content
