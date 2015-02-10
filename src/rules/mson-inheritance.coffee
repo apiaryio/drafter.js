@@ -64,8 +64,10 @@ module.exports =
       push = true
 
     # Copy super-type and all the member types to sub type
-    dataStructure.typeDefinition.typeSpecification.name = superTypeBaseName
     rule.copyMembers @dataStructures[superType.literal], memberTypeSection
+    dataStructure.typeDefinition.typeSpecification =
+      name: superTypeBaseName
+      nestedTypes: @dataStructures[superType.literal].typeDefinition.typeSpecification.nestedTypes
 
     # Push the created type section
     dataStructure.sections.push memberTypeSection if push and memberTypeSection.content.length

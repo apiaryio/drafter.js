@@ -751,7 +751,12 @@
                           "typeDefinition": {
                             "typeSpecification": {
                               "name": "array",
-                              "nestedTypes": []
+                              "nestedTypes": [
+                                {
+                                  "literal": "Coupon",
+                                  "variable": false
+                                }
+                              ]
                             },
                             "attributes": []
                           },
