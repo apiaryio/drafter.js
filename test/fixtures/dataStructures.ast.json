@@ -9,8 +9,706 @@
   "name": "Stripe",
   "description": "Inspired by stripe API\n\n",
   "element": "category",
-  "resourceGroups": [],
+  "resourceGroups": [
+    {
+      "name": "Coupons",
+      "description": "",
+      "resources": [
+        {
+          "element": "resource",
+          "name": "Coupon",
+          "description": "A coupon contains information about a percent-off or amount-off discount you might want to apply to a customer.\n\n",
+          "uriTemplate": "/coupons/{id}",
+          "model": {},
+          "parameters": [
+            {
+              "name": "id",
+              "description": "The ID of the desired coupon.\n",
+              "type": "string",
+              "required": true,
+              "default": "",
+              "example": "",
+              "values": []
+            }
+          ],
+          "actions": [
+            {
+              "name": "Retrieve a Coupon",
+              "description": "Retrieves the coupon with the given ID.\n\n",
+              "method": "GET",
+              "parameters": [],
+              "content": [],
+              "examples": [
+                {
+                  "name": "",
+                  "description": "",
+                  "requests": [],
+                  "responses": [
+                    {
+                      "name": "200",
+                      "description": "",
+                      "headers": [
+                        {
+                          "name": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "body": "",
+                      "schema": "",
+                      "content": [
+                        {
+                          "element": "dataStructure",
+                          "name": null,
+                          "typeDefinition": {
+                            "typeSpecification": {
+                              "name": {
+                                "literal": "Coupon",
+                                "variable": false
+                              },
+                              "nestedTypes": []
+                            },
+                            "attributes": []
+                          },
+                          "sections": []
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "content": [
+            {
+              "element": "dataStructure",
+              "name": {
+                "literal": "Coupon",
+                "variable": false
+              },
+              "typeDefinition": {
+                "typeSpecification": {
+                  "name": {
+                    "literal": "Coupon Base",
+                    "variable": false
+                  },
+                  "nestedTypes": []
+                },
+                "attributes": []
+              },
+              "sections": [
+                {
+                  "class": "memberType",
+                  "content": [
+                    {
+                      "content": {
+                        "name": {
+                          "literal": "id"
+                        },
+                        "description": "",
+                        "valueDefinition": {
+                          "values": [
+                            {
+                              "literal": "250FF",
+                              "variable": false
+                            }
+                          ],
+                          "typeDefinition": {
+                            "typeSpecification": {
+                              "name": "string",
+                              "nestedTypes": []
+                            },
+                            "attributes": []
+                          }
+                        },
+                        "sections": []
+                      },
+                      "class": "property"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "element": "resource",
+          "name": "Coupons",
+          "description": "",
+          "uriTemplate": "/coupons{?limit}",
+          "model": {},
+          "parameters": [],
+          "actions": [
+            {
+              "name": "List all Coupons",
+              "description": "Returns a list of your coupons.\n\n",
+              "method": "GET",
+              "parameters": [
+                {
+                  "name": "limit",
+                  "description": "A limit on the number of objects to be returned. Limit can range between 1 and 100 items.\n",
+                  "type": "number",
+                  "required": false,
+                  "default": "10",
+                  "example": "",
+                  "values": []
+                }
+              ],
+              "content": [],
+              "examples": [
+                {
+                  "name": "",
+                  "description": "",
+                  "requests": [],
+                  "responses": [
+                    {
+                      "name": "200",
+                      "description": "",
+                      "headers": [
+                        {
+                          "name": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "body": "",
+                      "schema": "",
+                      "content": [
+                        {
+                          "element": "dataStructure",
+                          "name": null,
+                          "typeDefinition": {
+                            "typeSpecification": {
+                              "name": {
+                                "literal": "Coupons",
+                                "variable": false
+                              },
+                              "nestedTypes": []
+                            },
+                            "attributes": []
+                          },
+                          "sections": []
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Create a Coupon",
+              "description": "Creates a new Coupon.\n\n",
+              "method": "POST",
+              "parameters": [],
+              "content": [
+                {
+                  "element": "dataStructure",
+                  "name": null,
+                  "typeDefinition": {
+                    "typeSpecification": {
+                      "name": {
+                        "literal": "Coupon Base",
+                        "variable": false
+                      },
+                      "nestedTypes": []
+                    },
+                    "attributes": []
+                  },
+                  "sections": []
+                }
+              ],
+              "examples": [
+                {
+                  "name": "",
+                  "description": "",
+                  "requests": [
+                    {
+                      "name": "",
+                      "description": "",
+                      "headers": [
+                        {
+                          "name": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "body": "",
+                      "schema": "",
+                      "content": []
+                    }
+                  ],
+                  "responses": [
+                    {
+                      "name": "200",
+                      "description": "",
+                      "headers": [
+                        {
+                          "name": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "body": "",
+                      "schema": "",
+                      "content": [
+                        {
+                          "element": "dataStructure",
+                          "name": null,
+                          "typeDefinition": {
+                            "typeSpecification": {
+                              "name": {
+                                "literal": "Coupon",
+                                "variable": false
+                              },
+                              "nestedTypes": []
+                            },
+                            "attributes": []
+                          },
+                          "sections": []
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "content": [
+            {
+              "element": "dataStructure",
+              "name": {
+                "literal": "Coupons",
+                "variable": false
+              },
+              "typeDefinition": {
+                "typeSpecification": {
+                  "name": "array",
+                  "nestedTypes": [
+                    {
+                      "literal": "Coupon",
+                      "variable": false
+                    }
+                  ]
+                },
+                "attributes": []
+              },
+              "sections": []
+            }
+          ]
+        }
+      ]
+    }
+  ],
   "content": [
+    {
+      "element": "category",
+      "attributes": {
+        "name": "Coupons"
+      },
+      "content": [
+        {
+          "element": "resource",
+          "name": "Coupon",
+          "description": "A coupon contains information about a percent-off or amount-off discount you might want to apply to a customer.\n\n",
+          "uriTemplate": "/coupons/{id}",
+          "model": {},
+          "parameters": [
+            {
+              "name": "id",
+              "description": "The ID of the desired coupon.\n",
+              "type": "string",
+              "required": true,
+              "default": "",
+              "example": "",
+              "values": []
+            }
+          ],
+          "actions": [
+            {
+              "name": "Retrieve a Coupon",
+              "description": "Retrieves the coupon with the given ID.\n\n",
+              "method": "GET",
+              "parameters": [],
+              "content": [],
+              "examples": [
+                {
+                  "name": "",
+                  "description": "",
+                  "requests": [],
+                  "responses": [
+                    {
+                      "name": "200",
+                      "description": "",
+                      "headers": [
+                        {
+                          "name": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "body": "",
+                      "schema": "",
+                      "content": [
+                        {
+                          "element": "dataStructure",
+                          "name": null,
+                          "typeDefinition": {
+                            "typeSpecification": {
+                              "name": {
+                                "literal": "Coupon",
+                                "variable": false
+                              },
+                              "nestedTypes": []
+                            },
+                            "attributes": []
+                          },
+                          "sections": []
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "content": [
+            {
+              "element": "dataStructure",
+              "name": {
+                "literal": "Coupon",
+                "variable": false
+              },
+              "typeDefinition": {
+                "typeSpecification": {
+                  "name": "object",
+                  "nestedTypes": []
+                },
+                "attributes": []
+              },
+              "sections": [
+                {
+                  "class": "memberType",
+                  "content": [
+                    {
+                      "content": {
+                        "name": {
+                          "literal": "id"
+                        },
+                        "description": "",
+                        "valueDefinition": {
+                          "values": [
+                            {
+                              "literal": "250FF",
+                              "variable": false
+                            }
+                          ],
+                          "typeDefinition": {
+                            "typeSpecification": {
+                              "name": "string",
+                              "nestedTypes": []
+                            },
+                            "attributes": []
+                          }
+                        },
+                        "sections": []
+                      },
+                      "class": "property"
+                    },
+                    {
+                      "content": {
+                        "name": {
+                          "literal": "percent_off"
+                        },
+                        "description": "",
+                        "valueDefinition": {
+                          "values": [
+                            {
+                              "literal": "25",
+                              "variable": false
+                            }
+                          ],
+                          "typeDefinition": {
+                            "typeSpecification": {
+                              "name": "number",
+                              "nestedTypes": []
+                            },
+                            "attributes": []
+                          }
+                        },
+                        "sections": [
+                          {
+                            "class": "blockDescription",
+                            "content": "A positive integer between 1 and 100 that represents the discount the coupon will apply.\n"
+                          }
+                        ]
+                      },
+                      "class": "property"
+                    },
+                    {
+                      "content": {
+                        "name": {
+                          "literal": "redeem_by"
+                        },
+                        "description": "Date after which the coupon can no longer be redeemed",
+                        "valueDefinition": {
+                          "values": [],
+                          "typeDefinition": {
+                            "typeSpecification": {
+                              "name": "number",
+                              "nestedTypes": []
+                            },
+                            "attributes": []
+                          }
+                        },
+                        "sections": []
+                      },
+                      "class": "property"
+                    },
+                    {
+                      "content": {
+                        "name": {
+                          "literal": "created"
+                        },
+                        "description": "",
+                        "valueDefinition": {
+                          "values": [],
+                          "typeDefinition": {
+                            "typeSpecification": {
+                              "name": "number",
+                              "nestedTypes": []
+                            },
+                            "attributes": []
+                          }
+                        },
+                        "sections": []
+                      },
+                      "class": "property"
+                    },
+                    {
+                      "content": {
+                        "name": {
+                          "literal": "modified"
+                        },
+                        "description": "",
+                        "valueDefinition": {
+                          "values": [],
+                          "typeDefinition": {
+                            "typeSpecification": {
+                              "name": "number",
+                              "nestedTypes": []
+                            },
+                            "attributes": []
+                          }
+                        },
+                        "sections": []
+                      },
+                      "class": "property"
+                    },
+                    {
+                      "content": {
+                        "name": {
+                          "literal": "created_at"
+                        },
+                        "description": "",
+                        "valueDefinition": {
+                          "values": [],
+                          "typeDefinition": {
+                            "typeSpecification": {
+                              "name": "number",
+                              "nestedTypes": []
+                            },
+                            "attributes": []
+                          }
+                        },
+                        "sections": []
+                      },
+                      "class": "property"
+                    },
+                    {
+                      "content": {
+                        "name": {
+                          "literal": "updated_at"
+                        },
+                        "description": "",
+                        "valueDefinition": {
+                          "values": [],
+                          "typeDefinition": {
+                            "typeSpecification": {
+                              "name": "number",
+                              "nestedTypes": []
+                            },
+                            "attributes": []
+                          }
+                        },
+                        "sections": []
+                      },
+                      "class": "property"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "element": "resource",
+          "name": "Coupons",
+          "description": "",
+          "uriTemplate": "/coupons{?limit}",
+          "model": {},
+          "parameters": [],
+          "actions": [
+            {
+              "name": "List all Coupons",
+              "description": "Returns a list of your coupons.\n\n",
+              "method": "GET",
+              "parameters": [
+                {
+                  "name": "limit",
+                  "description": "A limit on the number of objects to be returned. Limit can range between 1 and 100 items.\n",
+                  "type": "number",
+                  "required": false,
+                  "default": "10",
+                  "example": "",
+                  "values": []
+                }
+              ],
+              "content": [],
+              "examples": [
+                {
+                  "name": "",
+                  "description": "",
+                  "requests": [],
+                  "responses": [
+                    {
+                      "name": "200",
+                      "description": "",
+                      "headers": [
+                        {
+                          "name": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "body": "",
+                      "schema": "",
+                      "content": [
+                        {
+                          "element": "dataStructure",
+                          "name": null,
+                          "typeDefinition": {
+                            "typeSpecification": {
+                              "name": {
+                                "literal": "Coupons",
+                                "variable": false
+                              },
+                              "nestedTypes": []
+                            },
+                            "attributes": []
+                          },
+                          "sections": []
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Create a Coupon",
+              "description": "Creates a new Coupon.\n\n",
+              "method": "POST",
+              "parameters": [],
+              "content": [
+                {
+                  "element": "dataStructure",
+                  "name": null,
+                  "typeDefinition": {
+                    "typeSpecification": {
+                      "name": {
+                        "literal": "Coupon Base",
+                        "variable": false
+                      },
+                      "nestedTypes": []
+                    },
+                    "attributes": []
+                  },
+                  "sections": []
+                }
+              ],
+              "examples": [
+                {
+                  "name": "",
+                  "description": "",
+                  "requests": [
+                    {
+                      "name": "",
+                      "description": "",
+                      "headers": [
+                        {
+                          "name": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "body": "",
+                      "schema": "",
+                      "content": []
+                    }
+                  ],
+                  "responses": [
+                    {
+                      "name": "200",
+                      "description": "",
+                      "headers": [
+                        {
+                          "name": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "body": "",
+                      "schema": "",
+                      "content": [
+                        {
+                          "element": "dataStructure",
+                          "name": null,
+                          "typeDefinition": {
+                            "typeSpecification": {
+                              "name": {
+                                "literal": "Coupon",
+                                "variable": false
+                              },
+                              "nestedTypes": []
+                            },
+                            "attributes": []
+                          },
+                          "sections": []
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "content": [
+            {
+              "element": "dataStructure",
+              "name": {
+                "literal": "Coupons",
+                "variable": false
+              },
+              "typeDefinition": {
+                "typeSpecification": {
+                  "name": "array",
+                  "nestedTypes": [
+                    {
+                      "literal": "Coupon",
+                      "variable": false
+                    }
+                  ]
+                },
+                "attributes": []
+              },
+              "sections": []
+            }
+          ]
+        }
+      ]
+    },
     {
       "element": "category",
       "content": [
@@ -534,6 +1232,186 @@
         {
           "element": "dataStructure",
           "name": {
+            "literal": "Coupon Clone",
+            "variable": false
+          },
+          "typeDefinition": {
+            "typeSpecification": {
+              "name": "object",
+              "nestedTypes": []
+            },
+            "attributes": []
+          },
+          "sections": [
+            {
+              "class": "blockDescription",
+              "content": "A clone of Coupon to be used for testing\n\n"
+            },
+            {
+              "content": [
+                {
+                  "content": {
+                    "name": {
+                      "literal": "id"
+                    },
+                    "description": "",
+                    "valueDefinition": {
+                      "values": [
+                        {
+                          "literal": "250FF",
+                          "variable": false
+                        }
+                      ],
+                      "typeDefinition": {
+                        "typeSpecification": {
+                          "name": "string",
+                          "nestedTypes": []
+                        },
+                        "attributes": []
+                      }
+                    },
+                    "sections": []
+                  },
+                  "class": "property"
+                },
+                {
+                  "content": {
+                    "name": {
+                      "literal": "percent_off"
+                    },
+                    "description": "",
+                    "valueDefinition": {
+                      "values": [
+                        {
+                          "literal": "25",
+                          "variable": false
+                        }
+                      ],
+                      "typeDefinition": {
+                        "typeSpecification": {
+                          "name": "number",
+                          "nestedTypes": []
+                        },
+                        "attributes": []
+                      }
+                    },
+                    "sections": [
+                      {
+                        "class": "blockDescription",
+                        "content": "A positive integer between 1 and 100 that represents the discount the coupon will apply.\n"
+                      }
+                    ]
+                  },
+                  "class": "property"
+                },
+                {
+                  "content": {
+                    "name": {
+                      "literal": "redeem_by"
+                    },
+                    "description": "Date after which the coupon can no longer be redeemed",
+                    "valueDefinition": {
+                      "values": [],
+                      "typeDefinition": {
+                        "typeSpecification": {
+                          "name": "number",
+                          "nestedTypes": []
+                        },
+                        "attributes": []
+                      }
+                    },
+                    "sections": []
+                  },
+                  "class": "property"
+                },
+                {
+                  "content": {
+                    "name": {
+                      "literal": "created"
+                    },
+                    "description": "",
+                    "valueDefinition": {
+                      "values": [],
+                      "typeDefinition": {
+                        "typeSpecification": {
+                          "name": "number",
+                          "nestedTypes": []
+                        },
+                        "attributes": []
+                      }
+                    },
+                    "sections": []
+                  },
+                  "class": "property"
+                },
+                {
+                  "content": {
+                    "name": {
+                      "literal": "modified"
+                    },
+                    "description": "",
+                    "valueDefinition": {
+                      "values": [],
+                      "typeDefinition": {
+                        "typeSpecification": {
+                          "name": "number",
+                          "nestedTypes": []
+                        },
+                        "attributes": []
+                      }
+                    },
+                    "sections": []
+                  },
+                  "class": "property"
+                },
+                {
+                  "content": {
+                    "name": {
+                      "literal": "created_at"
+                    },
+                    "description": "",
+                    "valueDefinition": {
+                      "values": [],
+                      "typeDefinition": {
+                        "typeSpecification": {
+                          "name": "number",
+                          "nestedTypes": []
+                        },
+                        "attributes": []
+                      }
+                    },
+                    "sections": []
+                  },
+                  "class": "property"
+                },
+                {
+                  "content": {
+                    "name": {
+                      "literal": "updated_at"
+                    },
+                    "description": "",
+                    "valueDefinition": {
+                      "values": [],
+                      "typeDefinition": {
+                        "typeSpecification": {
+                          "name": "number",
+                          "nestedTypes": []
+                        },
+                        "attributes": []
+                      }
+                    },
+                    "sections": []
+                  },
+                  "class": "property"
+                }
+              ],
+              "class": "memberType"
+            }
+          ]
+        },
+        {
+          "element": "dataStructure",
+          "name": {
             "literal": "Subscription",
             "variable": false
           },
@@ -582,7 +1460,7 @@
                     "valueDefinition": {
                       "values": [
                         {
-                          "literal": "'Startup'",
+                          "literal": "Startup",
                           "variable": false
                         }
                       ],

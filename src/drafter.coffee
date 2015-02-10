@@ -63,7 +63,14 @@ class Drafter
 
         if element.element is 'category'
           for subElement in element.content
-            @dataStructures[subElement.name.literal] = subElement if subElement.element is 'dataStructure'
+
+            switch subElement.element
+              when 'dataStructure'
+                @dataStructures[subElement.name.literal] = subElement
+              when 'resource'
+
+                for resourceElement in subElement.content
+                  @dataStructures[resourceElement.name.literal] = resourceElement if resourceElement.element is 'dataStructure'
 
       # Expand the gathered data structures
       for rule in rules

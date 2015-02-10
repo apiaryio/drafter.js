@@ -3,6 +3,50 @@ FORMAT: 1A
 # Stripe
 Inspired by stripe API
 
+# Group Coupons
+
+## Coupon [/coupons/{id}]
+A coupon contains information about a percent-off or amount-off discount you might want to apply to a customer.
+
++ Parameters
+    + id (string)
+
+        The ID of the desired coupon.
+
++ Attributes (Coupon Base)
+    + id: 250FF (string)
+
+### Retrieve a Coupon [GET]
+Retrieves the coupon with the given ID.
+
++ Response 200 (application/json)
+    + Attributes (Coupon)
+
+## Coupons [/coupons{?limit}]
+
++ Attributes (array[Coupon])
+
+### List all Coupons [GET]
+Returns a list of your coupons.
+
++ Parameters
+    + limit = `10` (optional, number)
+
+        A limit on the number of objects to be returned. Limit can range between 1 and 100 items.
+
++ Response 200 (application/json)
+    + Attributes (Coupons)
+
+### Create a Coupon [POST]
+Creates a new Coupon.
+
++ Attributes (Coupon Base)
+
++ Request (application/json)
+
++ Response 200 (application/json)
+    + Attributes (Coupon)
+
 # Data Structures
 
 ## Timestamp (number)
@@ -38,9 +82,12 @@ A clone of Coupon Base to be used for testing
 ## Timestamp Clone (Timestamp)
 A clone of timestamp to be used for testing
 
+## Coupon Clone (Coupon)
+A clone of Coupon to be used for testing
+
 ## Subscription
 + id: 1000 (number)
-+ plan: 'Startup' (string) - Subscription plan name
++ plan: `Startup` (string) - Subscription plan name
 + coupon (Coupon Base) - Coupon represting any existing discounts used by the customer during the subscription
 + One Of
     + Include Timestamps
