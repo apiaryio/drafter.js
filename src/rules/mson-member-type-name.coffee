@@ -6,6 +6,18 @@ module.exports =
   expanded: {}
   dataStructures: {}
 
+  # Expand dataStructure element
+  dataStructure: (element) ->
+    superType = element.typeDefinition.name
+    typeName = element.name
+
+    if not typeName
+      typeName =
+        literal: ''
+
+    @expandMember typeName.literal, element
+    delete @expanded['']
+
   # Given a list of elements, recursively expand member type name contained
   # in a group of elements inside the initial group of elements
   #

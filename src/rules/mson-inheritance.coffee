@@ -6,6 +6,18 @@ module.exports =
   expanded: {}
   dataStructures: {}
 
+  # Expand dataStructure element
+  dataStructure: (element) ->
+    superType = element.typeDefinition.name
+    typeName = element.name
+
+    if not typeName
+      typeName =
+        literal: ''
+
+    @expandInheritance typeName.literal, element
+    delete @expanded['']
+
   # Given a data structure, expand its inheritance recursively
   #
   # @param name [String] Name of the data structure
