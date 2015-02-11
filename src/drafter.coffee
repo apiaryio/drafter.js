@@ -45,8 +45,11 @@ class Drafter
       rules = (require './rules/' + rule for rule in ruleList)
 
       @dataStructures = {}
+      delete result.ast.resourceGroups
 
       @expandNode result.ast, rules, 'blueprint'
+      @reconstructResourceGroups result.ast
+
       callback error, result
 
   # Expand a certain node with the given rules
@@ -94,6 +97,27 @@ class Drafter
 
     if node.content and Array.isArray node.content
       @expandNode element, rules for element in node.content
+
+  # Reconstruct deprecated resource groups key from elements
+  #
+  # @param ast [Object] Blueprint ast
+  reconstructResourceGroups: (ast) ->
+    ast.resourceGroups = []
+
+    for element in ast.content
+      if element.element is 'category'
+        resources = []
+
+        for subElement in element.content
+          resources.push subElement if subElement.element is 'resource'
+
+        if resources.length
+          description = element.content[0].content if element.content[0].element is 'copy'
+
+          ast.resourceGroups.push
+            name: element.attributes?.name || ''
+            description: description || ''
+            resources: resources
 
 module.exports = Drafter
 module.exports.options = options
