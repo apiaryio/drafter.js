@@ -35,7 +35,7 @@ gatherPayloads = (result) ->
 # @param contentType [Object] Payload content type
 generateBody = (payload, attributes, contentType, callback) ->
   if not attributes? or not contentType? or payload.body
-    return callback null
+    return callback null, payload, attributes, contentType
 
   boutique.represent
     ast: attributes,
@@ -60,7 +60,7 @@ generateBody = (payload, attributes, contentType, callback) ->
 # @param contentType [Object] Payload content type
 generateSchema = (payload, attributes, contentType, callback) ->
   if not attributes? or payload.schema or contentType.indexOf('json') is -1
-    return callback null
+    return callback null, payload, attributes, contentType
 
   boutique.represent
     ast: attributes,
@@ -73,7 +73,7 @@ generateSchema = (payload, attributes, contentType, callback) ->
           role: 'bodySchema'
         content: body
 
-      payload.content.push resolved      
+      payload.content.push resolved
 
     # For waterfall
     callback null, payload, attributes, contentType
@@ -115,7 +115,7 @@ class Drafter
   # @param callback [(Error, ParseResult)]
   make: (source, callback) ->
     protagonist.parse source, @config, (error, result) =>
-      callback error if error
+      return callback error if error
 
       ruleList = ['mson-inheritance', 'mson-mixin', 'mson-member-type-name']
       rules = (require './rules/' + rule for rule in ruleList)
@@ -128,7 +128,7 @@ class Drafter
 
       async.each payloads, @resolvePayload, (error) =>
         @reconstructResourceGroups result.ast
-        callback error, result
+        callback error or null, result
 
   # Resolve assets of a payload
   resolvePayload: ({payload, actionAttributes}, callback) ->
@@ -144,12 +144,12 @@ class Drafter
     attributes ?= actionAttributes
 
     async.waterfall [
-      (callback) ->
-        callback null, payload, attributes, contentType
+      (cb) ->
+        cb null, payload, attributes, contentType
       , generateBody
       , generateSchema
-    ], (err) ->
-      callback null
+    ], (error) ->
+      callback error or null
 
   # Expand a certain node with the given rules
   #
