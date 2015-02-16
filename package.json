@@ -18,7 +18,7 @@
   "dependencies": {
     "coffee-script": "~1.7.1",
     "yargs": "~1.3.3",
-    "protagonist-experimental": "0.18.4",
+    "protagonist-experimental": "0.18.6",
     "boutique": "git+ssh://git@github.com:apiaryio/boutique.git"
   },
   "devDependencies": {
