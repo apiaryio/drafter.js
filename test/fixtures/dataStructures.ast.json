@@ -234,6 +234,20 @@
                               "class": "memberType"
                             }
                           ]
+                        },
+                        {
+                          "element": "resolvedAsset",
+                          "attributes": {
+                            "role": "bodyExample"
+                          },
+                          "content": "{\"id\":\"250FF\",\"percent_off\":25,\"redeem_by\":null,\"created\":null,\"modified\":null,\"created_at\":null,\"updated_at\":null}"
+                        },
+                        {
+                          "element": "resolvedAsset",
+                          "attributes": {
+                            "role": "bodySchema"
+                          },
+                          "content": "{\"type\":\"object\",\"properties\":{\"id\":{\"type\":\"string\"},\"percent_off\":{\"type\":\"number\"},\"redeem_by\":{\"type\":\"number\",\"description\":\"Date after which the coupon can no longer be redeemed\"},\"created\":{\"type\":\"number\"},\"modified\":{\"type\":\"number\"},\"created_at\":{\"type\":\"number\"},\"updated_at\":{\"type\":\"number\"}},\"$schema\":\"http://json-schema.org/draft-04/schema#\"}"
                         }
                       ]
                     }
@@ -657,7 +671,22 @@
                       ],
                       "body": "",
                       "schema": "",
-                      "content": []
+                      "content": [
+                        {
+                          "element": "resolvedAsset",
+                          "attributes": {
+                            "role": "bodyExample"
+                          },
+                          "content": "{\"percent_off\":25,\"redeem_by\":null,\"created\":null,\"modified\":null,\"created_at\":null,\"updated_at\":null}"
+                        },
+                        {
+                          "element": "resolvedAsset",
+                          "attributes": {
+                            "role": "bodySchema"
+                          },
+                          "content": "{\"type\":\"object\",\"properties\":{\"percent_off\":{\"type\":\"number\"},\"redeem_by\":{\"type\":\"number\",\"description\":\"Date after which the coupon can no longer be redeemed\"},\"created\":{\"type\":\"number\"},\"modified\":{\"type\":\"number\"},\"created_at\":{\"type\":\"number\"},\"updated_at\":{\"type\":\"number\"}},\"$schema\":\"http://json-schema.org/draft-04/schema#\"}"
+                        }
+                      ]
                     }
                   ],
                   "responses": [
@@ -845,6 +874,20 @@
                               "class": "memberType"
                             }
                           ]
+                        },
+                        {
+                          "element": "resolvedAsset",
+                          "attributes": {
+                            "role": "bodyExample"
+                          },
+                          "content": "{\"id\":\"250FF\",\"percent_off\":25,\"redeem_by\":null,\"created\":null,\"modified\":null,\"created_at\":null,\"updated_at\":null}"
+                        },
+                        {
+                          "element": "resolvedAsset",
+                          "attributes": {
+                            "role": "bodySchema"
+                          },
+                          "content": "{\"type\":\"object\",\"properties\":{\"id\":{\"type\":\"string\"},\"percent_off\":{\"type\":\"number\"},\"redeem_by\":{\"type\":\"number\",\"description\":\"Date after which the coupon can no longer be redeemed\"},\"created\":{\"type\":\"number\"},\"modified\":{\"type\":\"number\"},\"created_at\":{\"type\":\"number\"},\"updated_at\":{\"type\":\"number\"}},\"$schema\":\"http://json-schema.org/draft-04/schema#\"}"
                         }
                       ]
                     }
@@ -2177,6 +2220,20 @@
                               "class": "memberType"
                             }
                           ]
+                        },
+                        {
+                          "element": "resolvedAsset",
+                          "attributes": {
+                            "role": "bodyExample"
+                          },
+                          "content": "{\"id\":\"250FF\",\"percent_off\":25,\"redeem_by\":null,\"created\":null,\"modified\":null,\"created_at\":null,\"updated_at\":null}"
+                        },
+                        {
+                          "element": "resolvedAsset",
+                          "attributes": {
+                            "role": "bodySchema"
+                          },
+                          "content": "{\"type\":\"object\",\"properties\":{\"id\":{\"type\":\"string\"},\"percent_off\":{\"type\":\"number\"},\"redeem_by\":{\"type\":\"number\",\"description\":\"Date after which the coupon can no longer be redeemed\"},\"created\":{\"type\":\"number\"},\"modified\":{\"type\":\"number\"},\"created_at\":{\"type\":\"number\"},\"updated_at\":{\"type\":\"number\"}},\"$schema\":\"http://json-schema.org/draft-04/schema#\"}"
                         }
                       ]
                     }
@@ -2600,7 +2657,22 @@
                       ],
                       "body": "",
                       "schema": "",
-                      "content": []
+                      "content": [
+                        {
+                          "element": "resolvedAsset",
+                          "attributes": {
+                            "role": "bodyExample"
+                          },
+                          "content": "{\"percent_off\":25,\"redeem_by\":null,\"created\":null,\"modified\":null,\"created_at\":null,\"updated_at\":null}"
+                        },
+                        {
+                          "element": "resolvedAsset",
+                          "attributes": {
+                            "role": "bodySchema"
+                          },
+                          "content": "{\"type\":\"object\",\"properties\":{\"percent_off\":{\"type\":\"number\"},\"redeem_by\":{\"type\":\"number\",\"description\":\"Date after which the coupon can no longer be redeemed\"},\"created\":{\"type\":\"number\"},\"modified\":{\"type\":\"number\"},\"created_at\":{\"type\":\"number\"},\"updated_at\":{\"type\":\"number\"}},\"$schema\":\"http://json-schema.org/draft-04/schema#\"}"
+                        }
+                      ]
                     }
                   ],
                   "responses": [
@@ -2788,6 +2860,20 @@
                               "class": "memberType"
                             }
                           ]
+                        },
+                        {
+                          "element": "resolvedAsset",
+                          "attributes": {
+                            "role": "bodyExample"
+                          },
+                          "content": "{\"id\":\"250FF\",\"percent_off\":25,\"redeem_by\":null,\"created\":null,\"modified\":null,\"created_at\":null,\"updated_at\":null}"
+                        },
+                        {
+                          "element": "resolvedAsset",
+                          "attributes": {
+                            "role": "bodySchema"
+                          },
+                          "content": "{\"type\":\"object\",\"properties\":{\"id\":{\"type\":\"string\"},\"percent_off\":{\"type\":\"number\"},\"redeem_by\":{\"type\":\"number\",\"description\":\"Date after which the coupon can no longer be redeemed\"},\"created\":{\"type\":\"number\"},\"modified\":{\"type\":\"number\"},\"created_at\":{\"type\":\"number\"},\"updated_at\":{\"type\":\"number\"}},\"$schema\":\"http://json-schema.org/draft-04/schema#\"}"
                         }
                       ]
                     }

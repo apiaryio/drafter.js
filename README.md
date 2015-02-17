@@ -52,6 +52,40 @@ EOF
 $ drafter blueprint.apib
 ```
 
+## Resolved Named Types
+
+Named Types (and anonymous named types) are expanded in-place in the AST. The three rules for when MSON AST is expanded are:
+
+* If a named type is a sub-type of another named type
+* If a named types includes a mixin
+* If a value member or property member is referencing a named type
+
+## Resolved Assets
+
+The resolved assets for a *payload body example* and *payload body schema* are added to the array in the `content` key of the **Payload Object** with their element name set to `resolvedAsset` and `role` in `attributes` set as `bodyExample` and `bodySchema` respectively.
+
+```json
+{
+  // This is the payload object
+  "content": [
+    {
+      "element": "resolvedAsset",
+      "attributes": {
+        "role": "bodyExample"
+      },
+      "content": "{\"id\":\"250FF\",\"percent_off\":25,\"redeem_by\":null}"
+    },
+    {
+      "element": "resolvedAsset",
+      "attributes": {
+        "role": "bodySchema"
+      },
+      "content": "{\"type\":\"object\",\"properties\":{\"id\":{\"type\":\"string\"},\"percent_off\":{\"type\":\"number\"},\"redeem_by\":{\"type\":\"number\",\"description\":\"Date after which the coupon can no longer be redeemed\"}},\"$schema\":\"http://json-schema.org/draft-04/schema#\"}"
+    }
+  ]
+}
+```
+
 ## Test
 In order to run CI tests you need to have access to both Drafter and Boutique repositories and you need to give CircleCI some extended permissions over all your repositories to enable testing on their machines.
 
