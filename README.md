@@ -54,19 +54,22 @@ $ drafter blueprint.apib
 
 ## Resolved Named Types
 
-Named Types (and anonymous named types) are expanded in-place in the AST. The three rules for when MSON AST is expanded are:
+The three rules for when MSON AST is expanded are:
 
 * If a named type is a sub-type of another named type
 * If a named types includes a mixin
 * If a value member or property member is referencing a named type
 
+The expanded data structures are added to the array which has the original data structures with their element name set to `resolvedDataStructure`.
+
 ## Resolved Assets
 
 The resolved assets for a *payload body example* and *payload body schema* are added to the array in the `content` key of the **Payload Object** with their element name set to `resolvedAsset` and `role` in `attributes` set as `bodyExample` and `bodySchema` respectively.
 
+A sample part of payload object is given below
+
 ```json
 {
-  // This is the payload object
   "content": [
     {
       "element": "resolvedAsset",

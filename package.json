@@ -16,11 +16,13 @@
     "prepublish": "scripts/build"
   },
   "dependencies": {
-    "coffee-script": "~1.7.1",
-    "yargs": "~1.3.3",
-    "protagonist-experimental": "0.18.6",
     "async": "~0.9.0",
-    "boutique": "git+ssh://git@github.com:apiaryio/boutique.git"
+    "boutique": "git+ssh://git@github.com:apiaryio/boutique.git",
+    "coffee-script": "~1.7.1",
+    "deep-equal": "1.0.x",
+    "deepcopy": "0.4.x",
+    "protagonist-experimental": "0.18.6",
+    "yargs": "~1.3.3"
   },
   "devDependencies": {
     "chai": "~1.10.0",

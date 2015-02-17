@@ -265,6 +265,55 @@
               },
               "typeDefinition": {
                 "typeSpecification": {
+                  "name": {
+                    "literal": "Coupon Base",
+                    "variable": false
+                  },
+                  "nestedTypes": []
+                },
+                "attributes": []
+              },
+              "sections": [
+                {
+                  "class": "memberType",
+                  "content": [
+                    {
+                      "content": {
+                        "name": {
+                          "literal": "id"
+                        },
+                        "description": "",
+                        "valueDefinition": {
+                          "values": [
+                            {
+                              "literal": "250FF",
+                              "variable": false
+                            }
+                          ],
+                          "typeDefinition": {
+                            "typeSpecification": {
+                              "name": "string",
+                              "nestedTypes": []
+                            },
+                            "attributes": []
+                          }
+                        },
+                        "sections": []
+                      },
+                      "class": "property"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "element": "resolvedDataStructure",
+              "name": {
+                "literal": "Coupon",
+                "variable": false
+              },
+              "typeDefinition": {
+                "typeSpecification": {
                   "name": "object",
                   "nestedTypes": []
                 },
@@ -971,6 +1020,458 @@
                       "values": [],
                       "typeDefinition": {
                         "typeSpecification": {
+                          "name": {
+                            "literal": "Timestamp",
+                            "variable": false
+                          },
+                          "nestedTypes": []
+                        },
+                        "attributes": []
+                      }
+                    },
+                    "sections": []
+                  },
+                  "class": "property"
+                },
+                {
+                  "content": {
+                    "name": {
+                      "literal": "updated_at"
+                    },
+                    "description": "",
+                    "valueDefinition": {
+                      "values": [],
+                      "typeDefinition": {
+                        "typeSpecification": {
+                          "name": {
+                            "literal": "Timestamp",
+                            "variable": false
+                          },
+                          "nestedTypes": []
+                        },
+                        "attributes": []
+                      }
+                    },
+                    "sections": []
+                  },
+                  "class": "property"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "element": "dataStructure",
+          "name": {
+            "literal": "Timestamps",
+            "variable": false
+          },
+          "typeDefinition": {
+            "typeSpecification": {
+              "name": "object",
+              "nestedTypes": []
+            },
+            "attributes": []
+          },
+          "sections": [
+            {
+              "class": "blockDescription",
+              "content": "This object contains the following unix timestamps\n\n+ created - Denoting the time when the object is created\n\n+ modified - Denoting the time when the object has been recently updated\n\n"
+            },
+            {
+              "class": "memberType",
+              "content": [
+                {
+                  "content": {
+                    "name": {
+                      "literal": "created"
+                    },
+                    "description": "",
+                    "valueDefinition": {
+                      "values": [],
+                      "typeDefinition": {
+                        "typeSpecification": {
+                          "name": {
+                            "literal": "Timestamp",
+                            "variable": false
+                          },
+                          "nestedTypes": []
+                        },
+                        "attributes": []
+                      }
+                    },
+                    "sections": []
+                  },
+                  "class": "property"
+                }
+              ]
+            },
+            {
+              "class": "memberType",
+              "content": [
+                {
+                  "content": {
+                    "name": {
+                      "literal": "modified"
+                    },
+                    "description": "",
+                    "valueDefinition": {
+                      "values": [],
+                      "typeDefinition": {
+                        "typeSpecification": {
+                          "name": {
+                            "literal": "Timestamp",
+                            "variable": false
+                          },
+                          "nestedTypes": []
+                        },
+                        "attributes": []
+                      }
+                    },
+                    "sections": []
+                  },
+                  "class": "property"
+                },
+                {
+                  "content": {
+                    "typeSpecification": {
+                      "name": {
+                        "literal": "Legacy Timestamps",
+                        "variable": false
+                      },
+                      "nestedTypes": []
+                    },
+                    "attributes": []
+                  },
+                  "class": "mixin"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "element": "dataStructure",
+          "name": {
+            "literal": "Coupon Base",
+            "variable": false
+          },
+          "typeDefinition": {
+            "typeSpecification": {
+              "name": {
+                "literal": "Timestamps",
+                "variable": false
+              },
+              "nestedTypes": []
+            },
+            "attributes": []
+          },
+          "sections": [
+            {
+              "class": "memberType",
+              "content": [
+                {
+                  "content": {
+                    "name": {
+                      "literal": "percent_off"
+                    },
+                    "description": "",
+                    "valueDefinition": {
+                      "values": [
+                        {
+                          "literal": "25",
+                          "variable": false
+                        }
+                      ],
+                      "typeDefinition": {
+                        "typeSpecification": {
+                          "name": "number",
+                          "nestedTypes": []
+                        },
+                        "attributes": []
+                      }
+                    },
+                    "sections": [
+                      {
+                        "class": "blockDescription",
+                        "content": "A positive integer between 1 and 100 that represents the discount the coupon will apply.\n"
+                      }
+                    ]
+                  },
+                  "class": "property"
+                },
+                {
+                  "content": {
+                    "name": {
+                      "literal": "redeem_by"
+                    },
+                    "description": "Date after which the coupon can no longer be redeemed",
+                    "valueDefinition": {
+                      "values": [],
+                      "typeDefinition": {
+                        "typeSpecification": {
+                          "name": "number",
+                          "nestedTypes": []
+                        },
+                        "attributes": []
+                      }
+                    },
+                    "sections": []
+                  },
+                  "class": "property"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "element": "dataStructure",
+          "name": {
+            "literal": "Coupon Base Clone",
+            "variable": false
+          },
+          "typeDefinition": {
+            "typeSpecification": {
+              "name": {
+                "literal": "Coupon Base",
+                "variable": false
+              },
+              "nestedTypes": []
+            },
+            "attributes": []
+          },
+          "sections": [
+            {
+              "class": "blockDescription",
+              "content": "A clone of Coupon Base to be used for testing\n\n"
+            }
+          ]
+        },
+        {
+          "element": "dataStructure",
+          "name": {
+            "literal": "Timestamp Clone",
+            "variable": false
+          },
+          "typeDefinition": {
+            "typeSpecification": {
+              "name": {
+                "literal": "Timestamp",
+                "variable": false
+              },
+              "nestedTypes": []
+            },
+            "attributes": []
+          },
+          "sections": [
+            {
+              "class": "blockDescription",
+              "content": "A clone of timestamp to be used for testing\n\n"
+            }
+          ]
+        },
+        {
+          "element": "dataStructure",
+          "name": {
+            "literal": "Coupon Clone",
+            "variable": false
+          },
+          "typeDefinition": {
+            "typeSpecification": {
+              "name": {
+                "literal": "Coupon",
+                "variable": false
+              },
+              "nestedTypes": []
+            },
+            "attributes": []
+          },
+          "sections": [
+            {
+              "class": "blockDescription",
+              "content": "A clone of Coupon to be used for testing\n\n"
+            }
+          ]
+        },
+        {
+          "element": "dataStructure",
+          "name": {
+            "literal": "Subscription",
+            "variable": false
+          },
+          "typeDefinition": {
+            "typeSpecification": {
+              "name": null,
+              "nestedTypes": []
+            },
+            "attributes": []
+          },
+          "sections": [
+            {
+              "class": "memberType",
+              "content": [
+                {
+                  "content": {
+                    "name": {
+                      "literal": "id"
+                    },
+                    "description": "",
+                    "valueDefinition": {
+                      "values": [
+                        {
+                          "literal": "1000",
+                          "variable": false
+                        }
+                      ],
+                      "typeDefinition": {
+                        "typeSpecification": {
+                          "name": "number",
+                          "nestedTypes": []
+                        },
+                        "attributes": []
+                      }
+                    },
+                    "sections": []
+                  },
+                  "class": "property"
+                },
+                {
+                  "content": {
+                    "name": {
+                      "literal": "plan"
+                    },
+                    "description": "Subscription plan name",
+                    "valueDefinition": {
+                      "values": [
+                        {
+                          "literal": "Startup",
+                          "variable": false
+                        }
+                      ],
+                      "typeDefinition": {
+                        "typeSpecification": {
+                          "name": "string",
+                          "nestedTypes": []
+                        },
+                        "attributes": []
+                      }
+                    },
+                    "sections": []
+                  },
+                  "class": "property"
+                },
+                {
+                  "content": {
+                    "name": {
+                      "literal": "coupon"
+                    },
+                    "description": "Coupon representing any existing discounts used by the customer during the subscription",
+                    "valueDefinition": {
+                      "values": [],
+                      "typeDefinition": {
+                        "typeSpecification": {
+                          "name": {
+                            "literal": "Coupon Base",
+                            "variable": false
+                          },
+                          "nestedTypes": []
+                        },
+                        "attributes": []
+                      }
+                    },
+                    "sections": []
+                  },
+                  "class": "property"
+                },
+                {
+                  "content": [
+                    {
+                      "content": {
+                        "typeSpecification": {
+                          "name": {
+                            "literal": "Timestamps",
+                            "variable": false
+                          },
+                          "nestedTypes": []
+                        },
+                        "attributes": []
+                      },
+                      "class": "mixin"
+                    },
+                    {
+                      "content": [
+                        {
+                          "content": {
+                            "name": {
+                              "literal": "modified_at"
+                            },
+                            "description": "",
+                            "valueDefinition": {
+                              "values": [],
+                              "typeDefinition": {
+                                "typeSpecification": {
+                                  "name": {
+                                    "literal": "Timestamp",
+                                    "variable": false
+                                  },
+                                  "nestedTypes": []
+                                },
+                                "attributes": []
+                              }
+                            },
+                            "sections": []
+                          },
+                          "class": "property"
+                        },
+                        {
+                          "content": {
+                            "typeSpecification": {
+                              "name": {
+                                "literal": "Legacy Timestamps",
+                                "variable": false
+                              },
+                              "nestedTypes": []
+                            },
+                            "attributes": []
+                          },
+                          "class": "mixin"
+                        }
+                      ],
+                      "class": "group"
+                    }
+                  ],
+                  "class": "oneOf"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "element": "resolvedDataStructure",
+          "name": {
+            "literal": "Legacy Timestamps",
+            "variable": false
+          },
+          "typeDefinition": {
+            "typeSpecification": {
+              "name": null,
+              "nestedTypes": []
+            },
+            "attributes": []
+          },
+          "sections": [
+            {
+              "class": "memberType",
+              "content": [
+                {
+                  "content": {
+                    "name": {
+                      "literal": "created_at"
+                    },
+                    "description": "",
+                    "valueDefinition": {
+                      "values": [],
+                      "typeDefinition": {
+                        "typeSpecification": {
                           "name": "number",
                           "nestedTypes": []
                         },
@@ -1006,7 +1507,7 @@
           ]
         },
         {
-          "element": "dataStructure",
+          "element": "resolvedDataStructure",
           "name": {
             "literal": "Timestamps",
             "variable": false
@@ -1116,7 +1617,7 @@
           ]
         },
         {
-          "element": "dataStructure",
+          "element": "resolvedDataStructure",
           "name": {
             "literal": "Coupon Base",
             "variable": false
@@ -1267,7 +1768,7 @@
           ]
         },
         {
-          "element": "dataStructure",
+          "element": "resolvedDataStructure",
           "name": {
             "literal": "Coupon Base Clone",
             "variable": false
@@ -1422,7 +1923,7 @@
           ]
         },
         {
-          "element": "dataStructure",
+          "element": "resolvedDataStructure",
           "name": {
             "literal": "Timestamp Clone",
             "variable": false
@@ -1442,7 +1943,7 @@
           ]
         },
         {
-          "element": "dataStructure",
+          "element": "resolvedDataStructure",
           "name": {
             "literal": "Coupon Clone",
             "variable": false
@@ -1622,7 +2123,7 @@
           ]
         },
         {
-          "element": "dataStructure",
+          "element": "resolvedDataStructure",
           "name": {
             "literal": "Subscription",
             "variable": false
@@ -1693,7 +2194,7 @@
                     "name": {
                       "literal": "coupon"
                     },
-                    "description": "Coupon represting any existing discounts used by the customer during the subscription",
+                    "description": "Coupon representing any existing discounts used by the customer during the subscription",
                     "valueDefinition": {
                       "values": [],
                       "typeDefinition": {
@@ -2245,6 +2746,55 @@
           "content": [
             {
               "element": "dataStructure",
+              "name": {
+                "literal": "Coupon",
+                "variable": false
+              },
+              "typeDefinition": {
+                "typeSpecification": {
+                  "name": {
+                    "literal": "Coupon Base",
+                    "variable": false
+                  },
+                  "nestedTypes": []
+                },
+                "attributes": []
+              },
+              "sections": [
+                {
+                  "class": "memberType",
+                  "content": [
+                    {
+                      "content": {
+                        "name": {
+                          "literal": "id"
+                        },
+                        "description": "",
+                        "valueDefinition": {
+                          "values": [
+                            {
+                              "literal": "250FF",
+                              "variable": false
+                            }
+                          ],
+                          "typeDefinition": {
+                            "typeSpecification": {
+                              "name": "string",
+                              "nestedTypes": []
+                            },
+                            "attributes": []
+                          }
+                        },
+                        "sections": []
+                      },
+                      "class": "property"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "element": "resolvedDataStructure",
               "name": {
                 "literal": "Coupon",
                 "variable": false

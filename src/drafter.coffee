@@ -3,6 +3,8 @@ boutique = require 'boutique'
 options = require './options'
 fs = require 'fs'
 async = require 'async'
+deepcopy = require 'deepcopy'
+deepEqual = require 'deep-equal'
 
 # Gather all payloads from the given parse result
 #
@@ -85,6 +87,10 @@ class Drafter
 
   # List of data structures
   @dataStructures: {}
+  @origDataStructures: {}
+
+  # References denoting where to append the resolved data structures
+  @appendResolved: {}
 
   # Default configuration
   @defaultConfig:
@@ -121,6 +127,9 @@ class Drafter
       rules = (require './rules/' + rule for rule in ruleList)
 
       @dataStructures = {}
+      @origDataStructures = {}
+      @appendResolved = {}
+
       delete result.ast.resourceGroups
 
       @expandNode result.ast, rules, 'blueprint'
@@ -168,14 +177,26 @@ class Drafter
 
             switch subElement.element
               when 'dataStructure'
-                @dataStructures[subElement.name.literal] = subElement
+                @dataStructures[subElement.name.literal] = deepcopy subElement
+                @origDataStructures[subElement.name.literal] = subElement
+                @appendResolved[subElement.name.literal] = element.content
               when 'resource'
                 for resourceSubElement in subElement.content
-                  @dataStructures[resourceSubElement.name.literal] = resourceSubElement if resourceSubElement.element is 'dataStructure'
+                  if resourceSubElement.element is 'dataStructure'
+
+                    @dataStructures[resourceSubElement.name.literal] = deepcopy resourceSubElement
+                    @origDataStructures[resourceSubElement.name.literal] = resourceSubElement
+                    @appendResolved[resourceSubElement.name.literal] = subElement.content
 
       # Expand the gathered data structures
       for rule in rules
         rule.init.call rule, @dataStructures if rule.init
+
+      # Append resolved data structures
+      for name, dataStructure of @dataStructures
+        if not deepEqual dataStructure, @origDataStructures[name]
+          dataStructure.element = 'resolvedDataStructure'
+          @appendResolved[name].push dataStructure
 
     # Apply rules to the current node
     for rule in rules
