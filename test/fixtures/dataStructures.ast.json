@@ -67,6 +67,21 @@
                           "name": null,
                           "typeDefinition": {
                             "typeSpecification": {
+                              "name": {
+                                "literal": "Coupon",
+                                "variable": false
+                              },
+                              "nestedTypes": []
+                            },
+                            "attributes": []
+                          },
+                          "sections": []
+                        },
+                        {
+                          "element": "resolvedDataStructure",
+                          "name": null,
+                          "typeDefinition": {
+                            "typeSpecification": {
                               "name": "object",
                               "nestedTypes": []
                             },
@@ -531,6 +546,21 @@
                           "name": null,
                           "typeDefinition": {
                             "typeSpecification": {
+                              "name": {
+                                "literal": "Coupons",
+                                "variable": false
+                              },
+                              "nestedTypes": []
+                            },
+                            "attributes": []
+                          },
+                          "sections": []
+                        },
+                        {
+                          "element": "resolvedDataStructure",
+                          "name": null,
+                          "typeDefinition": {
+                            "typeSpecification": {
                               "name": "array",
                               "nestedTypes": [
                                 {
@@ -557,6 +587,21 @@
               "content": [
                 {
                   "element": "dataStructure",
+                  "name": null,
+                  "typeDefinition": {
+                    "typeSpecification": {
+                      "name": {
+                        "literal": "Coupon Base",
+                        "variable": false
+                      },
+                      "nestedTypes": []
+                    },
+                    "attributes": []
+                  },
+                  "sections": []
+                },
+                {
+                  "element": "resolvedDataStructure",
                   "name": null,
                   "typeDefinition": {
                     "typeSpecification": {
@@ -753,6 +798,21 @@
                       "content": [
                         {
                           "element": "dataStructure",
+                          "name": null,
+                          "typeDefinition": {
+                            "typeSpecification": {
+                              "name": {
+                                "literal": "Coupon",
+                                "variable": false
+                              },
+                              "nestedTypes": []
+                            },
+                            "attributes": []
+                          },
+                          "sections": []
+                        },
+                        {
+                          "element": "resolvedDataStructure",
                           "name": null,
                           "typeDefinition": {
                             "typeSpecification": {
@@ -2554,6 +2614,21 @@
                           "name": null,
                           "typeDefinition": {
                             "typeSpecification": {
+                              "name": {
+                                "literal": "Coupon",
+                                "variable": false
+                              },
+                              "nestedTypes": []
+                            },
+                            "attributes": []
+                          },
+                          "sections": []
+                        },
+                        {
+                          "element": "resolvedDataStructure",
+                          "name": null,
+                          "typeDefinition": {
+                            "typeSpecification": {
                               "name": "object",
                               "nestedTypes": []
                             },
@@ -3018,6 +3093,21 @@
                           "name": null,
                           "typeDefinition": {
                             "typeSpecification": {
+                              "name": {
+                                "literal": "Coupons",
+                                "variable": false
+                              },
+                              "nestedTypes": []
+                            },
+                            "attributes": []
+                          },
+                          "sections": []
+                        },
+                        {
+                          "element": "resolvedDataStructure",
+                          "name": null,
+                          "typeDefinition": {
+                            "typeSpecification": {
                               "name": "array",
                               "nestedTypes": [
                                 {
@@ -3044,6 +3134,21 @@
               "content": [
                 {
                   "element": "dataStructure",
+                  "name": null,
+                  "typeDefinition": {
+                    "typeSpecification": {
+                      "name": {
+                        "literal": "Coupon Base",
+                        "variable": false
+                      },
+                      "nestedTypes": []
+                    },
+                    "attributes": []
+                  },
+                  "sections": []
+                },
+                {
+                  "element": "resolvedDataStructure",
                   "name": null,
                   "typeDefinition": {
                     "typeSpecification": {
@@ -3240,6 +3345,21 @@
                       "content": [
                         {
                           "element": "dataStructure",
+                          "name": null,
+                          "typeDefinition": {
+                            "typeSpecification": {
+                              "name": {
+                                "literal": "Coupon",
+                                "variable": false
+                              },
+                              "nestedTypes": []
+                            },
+                            "attributes": []
+                          },
+                          "sections": []
+                        },
+                        {
+                          "element": "resolvedDataStructure",
                           "name": null,
                           "typeDefinition": {
                             "typeSpecification": {
