@@ -3,6 +3,8 @@ boutique = require 'boutique'
 options = require './options'
 fs = require 'fs'
 async = require 'async'
+deepcopy = require 'deepcopy'
+deepEqual = require 'deep-equal'
 
 # Gather all payloads from the given parse result
 #
@@ -18,13 +20,17 @@ gatherPayloads = (result) ->
 
           for action in subElement.actions
             attributes = null
+            resolvedAttributes = null
 
             for actionElement in action.content
               attributes = actionElement if actionElement.element is 'dataStructure'
+              resolvedAttributes = actionElement if actionElement.element is 'resolvedDataStructure'
+
+            resolvedAttributes ?= attributes
 
             for example in action.examples
-              payloads.push {payload: request, actionAttributes: attributes} for request in example.requests
-              payloads.push {payload: response, actionAttributes: attributes} for response in example.responses
+              payloads.push {payload: request, actionAttributes: resolvedAttributes} for request in example.requests
+              payloads.push {payload: response, actionAttributes: resolvedAttributes} for response in example.responses
 
   return payloads
 
@@ -85,6 +91,10 @@ class Drafter
 
   # List of data structures
   @dataStructures: {}
+  @origDataStructures: {}
+
+  # References denoting where to append the resolved data structures
+  @appendResolved: {}
 
   # Default configuration
   @defaultConfig:
@@ -121,6 +131,9 @@ class Drafter
       rules = (require './rules/' + rule for rule in ruleList)
 
       @dataStructures = {}
+      @origDataStructures = {}
+      @appendResolved = {}
+
       delete result.ast.resourceGroups
 
       @expandNode result.ast, rules, 'blueprint'
@@ -133,6 +146,7 @@ class Drafter
   # Resolve assets of a payload
   resolvePayload: ({payload, actionAttributes}, callback) ->
     attributes = null
+    resolvedAttributes = null
     contentType = ''
 
     for header in payload.headers
@@ -140,12 +154,14 @@ class Drafter
 
     for element in payload.content
       attributes = element if element.element is 'dataStructure'
+      resolvedAttributes = element if element.element is 'resolvedDataStructure'
 
-    attributes ?= actionAttributes
+    resolvedAttributes ?= attributes
+    resolvedAttributes ?= actionAttributes
 
     async.waterfall [
       (cb) ->
-        cb null, payload, attributes, contentType
+        cb null, payload, resolvedAttributes, contentType
       , generateBody
       , generateSchema
     ], (error) ->
@@ -156,7 +172,8 @@ class Drafter
   # @param node [Object] A node of API Blueprint
   # @param rules [Array] List of rules to apply
   # @param elementTye [String] The element type of the node
-  expandNode: (node, rules, elementType) ->
+  # @param parent [Object] Parent node's content of which the current node is a part of
+  expandNode: (node, rules, elementType, parentContent) ->
     elementType ?= node.element
 
     # On root node, Gather data structures first before applying rules to any of the children nodes
@@ -168,18 +185,41 @@ class Drafter
 
             switch subElement.element
               when 'dataStructure'
-                @dataStructures[subElement.name.literal] = subElement
+                @dataStructures[subElement.name.literal] = deepcopy subElement
+                @origDataStructures[subElement.name.literal] = subElement
+                @appendResolved[subElement.name.literal] = element.content
               when 'resource'
                 for resourceSubElement in subElement.content
-                  @dataStructures[resourceSubElement.name.literal] = resourceSubElement if resourceSubElement.element is 'dataStructure'
+                  if resourceSubElement.element is 'dataStructure'
+
+                    @dataStructures[resourceSubElement.name.literal] = deepcopy resourceSubElement
+                    @origDataStructures[resourceSubElement.name.literal] = resourceSubElement
+                    @appendResolved[resourceSubElement.name.literal] = subElement.content
 
       # Expand the gathered data structures
       for rule in rules
         rule.init.call rule, @dataStructures if rule.init
 
+      # Append resolved data structures
+      for name, dataStructure of @dataStructures
+        if not deepEqual dataStructure, @origDataStructures[name]
+          dataStructure.element = 'resolvedDataStructure'
+          @appendResolved[name].push dataStructure
+
+    # Don't expand data structures in place
+    if elementType is 'dataStructure'
+      newNode = deepcopy node
+    else
+      newNode = node
+
     # Apply rules to the current node
     for rule in rules
-      rule[elementType].call rule, node if elementType in Object.keys(rule)
+      rule[elementType].call rule, newNode if elementType in Object.keys(rule)
+
+    # Append resolved data structures
+    if elementType is 'dataStructure' and not deepEqual node, newNode
+      newNode.element = 'resolvedDataStructure'
+      parentContent.push newNode
 
     # Recursively do the same for children nodes
     switch elementType
@@ -194,7 +234,7 @@ class Drafter
         @expandNode response, rules, 'payload' for response in node.responses
 
     if node.content and Array.isArray node.content
-      @expandNode element, rules for element in node.content
+      @expandNode element, rules, null, node.content for element in node.content
 
   # Reconstruct deprecated resource groups key from elements
   #
