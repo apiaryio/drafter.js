@@ -17,7 +17,7 @@
   },
   "dependencies": {
     "async": "~0.9.0",
-    "boutique": "git+ssh://git@github.com:apiaryio/boutique.git",
+    "boutique": "~0.1.0",
     "coffee-script": "~1.7.1",
     "deep-equal": "1.0.x",
     "deepcopy": "0.4.x",
