@@ -21,7 +21,7 @@
     "coffee-script": "~1.7.1",
     "deep-equal": "1.0.x",
     "deepcopy": "0.4.x",
-    "protagonist-experimental": "0.18.6",
+    "protagonist-experimental": "~0.18.7",
     "yargs": "~1.3.3"
   },
   "devDependencies": {
