@@ -85,5 +85,14 @@ A sample part of payload object is given below
 }
 ```
 
+## Testing
+
+Inside the drafter repository you can execute the following to run the test suite:
+
+```bash
+$ npm install
+$ npm test
+```
+
 [Boutique]: https://github.com/apiaryio/boutique.js
 [Parse Result]: https://github.com/apiaryio/api-blueprint-ast/blob/master/Parse%20Result.md
