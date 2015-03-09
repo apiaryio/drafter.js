@@ -5,18 +5,14 @@
 Snow Crash parser harness.
 
 ## Introduction
-Drafter takes an API blueprint on its input, parses, processes the AST and exposes the [Parse Result][] for further use.
-
-Want to know more? See the [Drafter Story card][].
+Drafter takes an API blueprint on its input, parses, and then processes the AST to exposes the [Parse Result][] for further use. Drafter expands MSON data structures from the AST and generates JSON representations and JSON Schema representation of MSON structures where they are not found in the original AST.
 
 ## Installation
 Node.js v0.10 is required.
 
 ```shell
-$ npm install -g git+ssh://git@github.com:apiaryio/drafter.js.git
+$ npm install -g drafter
 ```
-
-Because one of Drafter's dependencies, [Boutique][], lives in a private GitHub repository and has no public _npm_ package, it's referenced by its Git URL in `package.json`. Because of this, you may experience some issues while installing or testing.
 
 ## Getting Started
 
@@ -89,11 +85,5 @@ A sample part of payload object is given below
 }
 ```
 
-## Test
-In order to run CI tests you need to have access to both Drafter and Boutique repositories and you need to give CircleCI some extended permissions over all your repositories to enable testing on their machines.
-
-See _Project Settings > Checkout SSH keys > Add User GitHub Key_ in CircleCI settings.
-
-[Drafter Story card]: https://trello.com/c/lS76AEU3/21-drafter
-[Boutique]: https://github.com/apiaryio/boutique
+[Boutique]: https://github.com/apiaryio/boutique.js
 [Parse Result]: https://github.com/apiaryio/api-blueprint-ast/blob/master/Parse%20Result.md
