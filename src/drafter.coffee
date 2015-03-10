@@ -55,6 +55,7 @@ generateBody = (payload, attributes, contentType, callback) ->
         content: body
 
       payload.content.push resolved
+      payload.body = body
 
     # For waterfall
     callback null, payload, attributes, contentType
@@ -80,6 +81,7 @@ generateSchema = (payload, attributes, contentType, callback) ->
         content: body
 
       payload.content.push resolved
+      payload.schema = body
 
     # For waterfall
     callback null, payload, attributes, contentType
