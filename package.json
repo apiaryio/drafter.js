@@ -3,6 +3,7 @@
   "version": "0.1.1",
   "author": "Apiary.io <support@apiary.io>",
   "description": "Snow Crash parser harness",
+  "license": "MIT",
   "main": "lib/drafter.js",
   "bin": {
     "drafter": "bin/drafter"
