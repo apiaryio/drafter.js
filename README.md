@@ -94,5 +94,11 @@ $ npm install
 $ npm test
 ```
 
+### Contribute
+Fork & Pull Request.
+
+## License
+MIT License. See the [LICENSE](https://github.com/apiaryio/drafter.js/blob/master/LICENSE) file.
+
 [Boutique]: https://github.com/apiaryio/boutique.js
 [Parse Result]: https://github.com/apiaryio/api-blueprint-ast/blob/master/Parse%20Result.md
