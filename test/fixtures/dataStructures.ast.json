@@ -1,5 +1,5 @@
 {
-  "_version": "2.1",
+  "_version": "3.0",
   "metadata": [
     {
       "name": "FORMAT",
@@ -43,6 +43,10 @@
               "description": "Retrieves the coupon with the given ID.\n\n",
               "method": "GET",
               "parameters": [],
+              "attributes": {
+                "relation": "",
+                "uriTemplate": ""
+              },
               "content": [],
               "examples": [
                 {
@@ -522,6 +526,10 @@
                   "values": []
                 }
               ],
+              "attributes": {
+                "relation": "",
+                "uriTemplate": ""
+              },
               "content": [],
               "examples": [
                 {
@@ -584,6 +592,10 @@
               "description": "Creates a new Coupon.\n\n",
               "method": "POST",
               "parameters": [],
+              "attributes": {
+                "relation": "",
+                "uriTemplate": ""
+              },
               "content": [
                 {
                   "element": "dataStructure",
@@ -2590,6 +2602,10 @@
               "description": "Retrieves the coupon with the given ID.\n\n",
               "method": "GET",
               "parameters": [],
+              "attributes": {
+                "relation": "",
+                "uriTemplate": ""
+              },
               "content": [],
               "examples": [
                 {
@@ -3069,6 +3085,10 @@
                   "values": []
                 }
               ],
+              "attributes": {
+                "relation": "",
+                "uriTemplate": ""
+              },
               "content": [],
               "examples": [
                 {
@@ -3131,6 +3151,10 @@
               "description": "Creates a new Coupon.\n\n",
               "method": "POST",
               "parameters": [],
+              "attributes": {
+                "relation": "",
+                "uriTemplate": ""
+              },
               "content": [
                 {
                   "element": "dataStructure",

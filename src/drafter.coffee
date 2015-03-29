@@ -1,4 +1,4 @@
-protagonist = require 'protagonist-experimental'
+protagonist = require 'protagonist'
 boutique = require 'boutique'
 options = require './options'
 fs = require 'fs'

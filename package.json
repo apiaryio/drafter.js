@@ -21,7 +21,7 @@
     "boutique": "~0.1.3",
     "deep-equal": "1.0.x",
     "deepcopy": "0.4.x",
-    "protagonist-experimental": "~0.18.7",
+    "protagonist": "0.19.x",
     "yargs": "~1.3.3"
   },
   "devDependencies": {
