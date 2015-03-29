@@ -28,6 +28,41 @@ module.exports =
     # Check for inheritance
     superType = dataStructure.typeDefinition.typeSpecification.name
 
+    # If super type is array and if it has nested type, append them as value members only if there are no value members
+    if superType is 'array'
+      nestedTypes = dataStructure.typeDefinition.typeSpecification.nestedTypes
+      valueMembersExist = false
+
+      for section in dataStructure.sections
+        if section['class'] is 'memberType'
+          valueMembersExist = true
+
+      if not valueMembersExist and nestedTypes.length
+        memberTypeSection =
+          content: []
+
+        memberTypeSection['class'] = 'memberType'
+
+        for nestedType in nestedTypes
+          valueMember =
+            content:
+              description: ''
+              valueDefinition:
+                values: []
+                typeDefinition:
+                  typeSpecification:
+                    name: nestedType,
+                    nestedTypes: []
+                  attributes: []
+              sections: []
+
+          valueMember['class'] = 'value'
+          memberTypeSection.content.push valueMember
+
+        # Push the value members
+        dataStructure.sections.push memberTypeSection
+        dataStructure.typeDefinition.typeSpecification.nestedTypes = []
+
     if superType is null or typeof superType isnt 'object' or not superType?.literal
       return @expanded[superType] = true
 
