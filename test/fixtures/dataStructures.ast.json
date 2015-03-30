@@ -1,5 +1,5 @@
 {
-  "_version": "2.1",
+  "_version": "3.0",
   "metadata": [
     {
       "name": "FORMAT",
@@ -43,6 +43,10 @@
               "description": "Retrieves the coupon with the given ID.\n\n",
               "method": "GET",
               "parameters": [],
+              "attributes": {
+                "relation": "",
+                "uriTemplate": ""
+              },
               "content": [],
               "examples": [
                 {
@@ -522,6 +526,10 @@
                   "values": []
                 }
               ],
+              "attributes": {
+                "relation": "",
+                "uriTemplate": ""
+              },
               "content": [],
               "examples": [
                 {
@@ -538,8 +546,8 @@
                           "value": "application/json"
                         }
                       ],
-                      "body": "",
-                      "schema": "",
+                      "body": "[{\"id\":\"250FF\",\"percent_off\":25,\"redeem_by\":null,\"created\":null,\"modified\":null,\"created_at\":null,\"updated_at\":null}]",
+                      "schema": "{\"type\":\"array\",\"$schema\":\"http://json-schema.org/draft-04/schema#\"}",
                       "content": [
                         {
                           "element": "dataStructure",
@@ -562,16 +570,209 @@
                           "typeDefinition": {
                             "typeSpecification": {
                               "name": "array",
-                              "nestedTypes": [
-                                {
-                                  "literal": "Coupon",
-                                  "variable": false
-                                }
-                              ]
+                              "nestedTypes": []
                             },
                             "attributes": []
                           },
-                          "sections": []
+                          "sections": [
+                            {
+                              "content": [
+                                {
+                                  "content": {
+                                    "description": "",
+                                    "valueDefinition": {
+                                      "values": [],
+                                      "typeDefinition": {
+                                        "typeSpecification": {
+                                          "name": "object",
+                                          "nestedTypes": []
+                                        },
+                                        "attributes": []
+                                      }
+                                    },
+                                    "sections": [
+                                      {
+                                        "content": [
+                                          {
+                                            "content": {
+                                              "name": {
+                                                "literal": "id"
+                                              },
+                                              "description": "",
+                                              "valueDefinition": {
+                                                "values": [
+                                                  {
+                                                    "literal": "250FF",
+                                                    "variable": false
+                                                  }
+                                                ],
+                                                "typeDefinition": {
+                                                  "typeSpecification": {
+                                                    "name": "string",
+                                                    "nestedTypes": []
+                                                  },
+                                                  "attributes": []
+                                                }
+                                              },
+                                              "sections": []
+                                            },
+                                            "class": "property"
+                                          },
+                                          {
+                                            "content": {
+                                              "name": {
+                                                "literal": "percent_off"
+                                              },
+                                              "description": "",
+                                              "valueDefinition": {
+                                                "values": [
+                                                  {
+                                                    "literal": "25",
+                                                    "variable": false
+                                                  }
+                                                ],
+                                                "typeDefinition": {
+                                                  "typeSpecification": {
+                                                    "name": "number",
+                                                    "nestedTypes": []
+                                                  },
+                                                  "attributes": []
+                                                }
+                                              },
+                                              "sections": [
+                                                {
+                                                  "class": "blockDescription",
+                                                  "content": "A positive integer between 1 and 100 that represents the discount the coupon will apply.\n"
+                                                }
+                                              ]
+                                            },
+                                            "class": "property"
+                                          },
+                                          {
+                                            "content": {
+                                              "name": {
+                                                "literal": "redeem_by"
+                                              },
+                                              "description": "Date after which the coupon can no longer be redeemed",
+                                              "valueDefinition": {
+                                                "values": [],
+                                                "typeDefinition": {
+                                                  "typeSpecification": {
+                                                    "name": "number",
+                                                    "nestedTypes": []
+                                                  },
+                                                  "attributes": []
+                                                }
+                                              },
+                                              "sections": []
+                                            },
+                                            "class": "property"
+                                          },
+                                          {
+                                            "content": {
+                                              "name": {
+                                                "literal": "created"
+                                              },
+                                              "description": "",
+                                              "valueDefinition": {
+                                                "values": [],
+                                                "typeDefinition": {
+                                                  "typeSpecification": {
+                                                    "name": "number",
+                                                    "nestedTypes": []
+                                                  },
+                                                  "attributes": []
+                                                }
+                                              },
+                                              "sections": []
+                                            },
+                                            "class": "property"
+                                          },
+                                          {
+                                            "content": {
+                                              "name": {
+                                                "literal": "modified"
+                                              },
+                                              "description": "",
+                                              "valueDefinition": {
+                                                "values": [],
+                                                "typeDefinition": {
+                                                  "typeSpecification": {
+                                                    "name": "number",
+                                                    "nestedTypes": []
+                                                  },
+                                                  "attributes": []
+                                                }
+                                              },
+                                              "sections": []
+                                            },
+                                            "class": "property"
+                                          },
+                                          {
+                                            "content": {
+                                              "name": {
+                                                "literal": "created_at"
+                                              },
+                                              "description": "",
+                                              "valueDefinition": {
+                                                "values": [],
+                                                "typeDefinition": {
+                                                  "typeSpecification": {
+                                                    "name": "number",
+                                                    "nestedTypes": []
+                                                  },
+                                                  "attributes": []
+                                                }
+                                              },
+                                              "sections": []
+                                            },
+                                            "class": "property"
+                                          },
+                                          {
+                                            "content": {
+                                              "name": {
+                                                "literal": "updated_at"
+                                              },
+                                              "description": "",
+                                              "valueDefinition": {
+                                                "values": [],
+                                                "typeDefinition": {
+                                                  "typeSpecification": {
+                                                    "name": "number",
+                                                    "nestedTypes": []
+                                                  },
+                                                  "attributes": []
+                                                }
+                                              },
+                                              "sections": []
+                                            },
+                                            "class": "property"
+                                          }
+                                        ],
+                                        "class": "memberType"
+                                      }
+                                    ]
+                                  },
+                                  "class": "value"
+                                }
+                              ],
+                              "class": "memberType"
+                            }
+                          ]
+                        },
+                        {
+                          "element": "resolvedAsset",
+                          "attributes": {
+                            "role": "bodyExample"
+                          },
+                          "content": "[{\"id\":\"250FF\",\"percent_off\":25,\"redeem_by\":null,\"created\":null,\"modified\":null,\"created_at\":null,\"updated_at\":null}]"
+                        },
+                        {
+                          "element": "resolvedAsset",
+                          "attributes": {
+                            "role": "bodySchema"
+                          },
+                          "content": "{\"type\":\"array\",\"$schema\":\"http://json-schema.org/draft-04/schema#\"}"
                         }
                       ]
                     }
@@ -584,6 +785,10 @@
               "description": "Creates a new Coupon.\n\n",
               "method": "POST",
               "parameters": [],
+              "attributes": {
+                "relation": "",
+                "uriTemplate": ""
+              },
               "content": [
                 {
                   "element": "dataStructure",
@@ -1025,6 +1230,205 @@
                 "attributes": []
               },
               "sections": []
+            },
+            {
+              "element": "resolvedDataStructure",
+              "name": {
+                "literal": "Coupons",
+                "variable": false
+              },
+              "typeDefinition": {
+                "typeSpecification": {
+                  "name": "array",
+                  "nestedTypes": []
+                },
+                "attributes": []
+              },
+              "sections": [
+                {
+                  "content": [
+                    {
+                      "content": {
+                        "description": "",
+                        "valueDefinition": {
+                          "values": [],
+                          "typeDefinition": {
+                            "typeSpecification": {
+                              "name": "object",
+                              "nestedTypes": []
+                            },
+                            "attributes": []
+                          }
+                        },
+                        "sections": [
+                          {
+                            "content": [
+                              {
+                                "content": {
+                                  "name": {
+                                    "literal": "id"
+                                  },
+                                  "description": "",
+                                  "valueDefinition": {
+                                    "values": [
+                                      {
+                                        "literal": "250FF",
+                                        "variable": false
+                                      }
+                                    ],
+                                    "typeDefinition": {
+                                      "typeSpecification": {
+                                        "name": "string",
+                                        "nestedTypes": []
+                                      },
+                                      "attributes": []
+                                    }
+                                  },
+                                  "sections": []
+                                },
+                                "class": "property"
+                              },
+                              {
+                                "content": {
+                                  "name": {
+                                    "literal": "percent_off"
+                                  },
+                                  "description": "",
+                                  "valueDefinition": {
+                                    "values": [
+                                      {
+                                        "literal": "25",
+                                        "variable": false
+                                      }
+                                    ],
+                                    "typeDefinition": {
+                                      "typeSpecification": {
+                                        "name": "number",
+                                        "nestedTypes": []
+                                      },
+                                      "attributes": []
+                                    }
+                                  },
+                                  "sections": [
+                                    {
+                                      "class": "blockDescription",
+                                      "content": "A positive integer between 1 and 100 that represents the discount the coupon will apply.\n"
+                                    }
+                                  ]
+                                },
+                                "class": "property"
+                              },
+                              {
+                                "content": {
+                                  "name": {
+                                    "literal": "redeem_by"
+                                  },
+                                  "description": "Date after which the coupon can no longer be redeemed",
+                                  "valueDefinition": {
+                                    "values": [],
+                                    "typeDefinition": {
+                                      "typeSpecification": {
+                                        "name": "number",
+                                        "nestedTypes": []
+                                      },
+                                      "attributes": []
+                                    }
+                                  },
+                                  "sections": []
+                                },
+                                "class": "property"
+                              },
+                              {
+                                "content": {
+                                  "name": {
+                                    "literal": "created"
+                                  },
+                                  "description": "",
+                                  "valueDefinition": {
+                                    "values": [],
+                                    "typeDefinition": {
+                                      "typeSpecification": {
+                                        "name": "number",
+                                        "nestedTypes": []
+                                      },
+                                      "attributes": []
+                                    }
+                                  },
+                                  "sections": []
+                                },
+                                "class": "property"
+                              },
+                              {
+                                "content": {
+                                  "name": {
+                                    "literal": "modified"
+                                  },
+                                  "description": "",
+                                  "valueDefinition": {
+                                    "values": [],
+                                    "typeDefinition": {
+                                      "typeSpecification": {
+                                        "name": "number",
+                                        "nestedTypes": []
+                                      },
+                                      "attributes": []
+                                    }
+                                  },
+                                  "sections": []
+                                },
+                                "class": "property"
+                              },
+                              {
+                                "content": {
+                                  "name": {
+                                    "literal": "created_at"
+                                  },
+                                  "description": "",
+                                  "valueDefinition": {
+                                    "values": [],
+                                    "typeDefinition": {
+                                      "typeSpecification": {
+                                        "name": "number",
+                                        "nestedTypes": []
+                                      },
+                                      "attributes": []
+                                    }
+                                  },
+                                  "sections": []
+                                },
+                                "class": "property"
+                              },
+                              {
+                                "content": {
+                                  "name": {
+                                    "literal": "updated_at"
+                                  },
+                                  "description": "",
+                                  "valueDefinition": {
+                                    "values": [],
+                                    "typeDefinition": {
+                                      "typeSpecification": {
+                                        "name": "number",
+                                        "nestedTypes": []
+                                      },
+                                      "attributes": []
+                                    }
+                                  },
+                                  "sections": []
+                                },
+                                "class": "property"
+                              }
+                            ],
+                            "class": "memberType"
+                          }
+                        ]
+                      },
+                      "class": "value"
+                    }
+                  ],
+                  "class": "memberType"
+                }
+              ]
             }
           ]
         }
@@ -2590,6 +2994,10 @@
               "description": "Retrieves the coupon with the given ID.\n\n",
               "method": "GET",
               "parameters": [],
+              "attributes": {
+                "relation": "",
+                "uriTemplate": ""
+              },
               "content": [],
               "examples": [
                 {
@@ -3069,6 +3477,10 @@
                   "values": []
                 }
               ],
+              "attributes": {
+                "relation": "",
+                "uriTemplate": ""
+              },
               "content": [],
               "examples": [
                 {
@@ -3085,8 +3497,8 @@
                           "value": "application/json"
                         }
                       ],
-                      "body": "",
-                      "schema": "",
+                      "body": "[{\"id\":\"250FF\",\"percent_off\":25,\"redeem_by\":null,\"created\":null,\"modified\":null,\"created_at\":null,\"updated_at\":null}]",
+                      "schema": "{\"type\":\"array\",\"$schema\":\"http://json-schema.org/draft-04/schema#\"}",
                       "content": [
                         {
                           "element": "dataStructure",
@@ -3109,16 +3521,209 @@
                           "typeDefinition": {
                             "typeSpecification": {
                               "name": "array",
-                              "nestedTypes": [
-                                {
-                                  "literal": "Coupon",
-                                  "variable": false
-                                }
-                              ]
+                              "nestedTypes": []
                             },
                             "attributes": []
                           },
-                          "sections": []
+                          "sections": [
+                            {
+                              "content": [
+                                {
+                                  "content": {
+                                    "description": "",
+                                    "valueDefinition": {
+                                      "values": [],
+                                      "typeDefinition": {
+                                        "typeSpecification": {
+                                          "name": "object",
+                                          "nestedTypes": []
+                                        },
+                                        "attributes": []
+                                      }
+                                    },
+                                    "sections": [
+                                      {
+                                        "content": [
+                                          {
+                                            "content": {
+                                              "name": {
+                                                "literal": "id"
+                                              },
+                                              "description": "",
+                                              "valueDefinition": {
+                                                "values": [
+                                                  {
+                                                    "literal": "250FF",
+                                                    "variable": false
+                                                  }
+                                                ],
+                                                "typeDefinition": {
+                                                  "typeSpecification": {
+                                                    "name": "string",
+                                                    "nestedTypes": []
+                                                  },
+                                                  "attributes": []
+                                                }
+                                              },
+                                              "sections": []
+                                            },
+                                            "class": "property"
+                                          },
+                                          {
+                                            "content": {
+                                              "name": {
+                                                "literal": "percent_off"
+                                              },
+                                              "description": "",
+                                              "valueDefinition": {
+                                                "values": [
+                                                  {
+                                                    "literal": "25",
+                                                    "variable": false
+                                                  }
+                                                ],
+                                                "typeDefinition": {
+                                                  "typeSpecification": {
+                                                    "name": "number",
+                                                    "nestedTypes": []
+                                                  },
+                                                  "attributes": []
+                                                }
+                                              },
+                                              "sections": [
+                                                {
+                                                  "class": "blockDescription",
+                                                  "content": "A positive integer between 1 and 100 that represents the discount the coupon will apply.\n"
+                                                }
+                                              ]
+                                            },
+                                            "class": "property"
+                                          },
+                                          {
+                                            "content": {
+                                              "name": {
+                                                "literal": "redeem_by"
+                                              },
+                                              "description": "Date after which the coupon can no longer be redeemed",
+                                              "valueDefinition": {
+                                                "values": [],
+                                                "typeDefinition": {
+                                                  "typeSpecification": {
+                                                    "name": "number",
+                                                    "nestedTypes": []
+                                                  },
+                                                  "attributes": []
+                                                }
+                                              },
+                                              "sections": []
+                                            },
+                                            "class": "property"
+                                          },
+                                          {
+                                            "content": {
+                                              "name": {
+                                                "literal": "created"
+                                              },
+                                              "description": "",
+                                              "valueDefinition": {
+                                                "values": [],
+                                                "typeDefinition": {
+                                                  "typeSpecification": {
+                                                    "name": "number",
+                                                    "nestedTypes": []
+                                                  },
+                                                  "attributes": []
+                                                }
+                                              },
+                                              "sections": []
+                                            },
+                                            "class": "property"
+                                          },
+                                          {
+                                            "content": {
+                                              "name": {
+                                                "literal": "modified"
+                                              },
+                                              "description": "",
+                                              "valueDefinition": {
+                                                "values": [],
+                                                "typeDefinition": {
+                                                  "typeSpecification": {
+                                                    "name": "number",
+                                                    "nestedTypes": []
+                                                  },
+                                                  "attributes": []
+                                                }
+                                              },
+                                              "sections": []
+                                            },
+                                            "class": "property"
+                                          },
+                                          {
+                                            "content": {
+                                              "name": {
+                                                "literal": "created_at"
+                                              },
+                                              "description": "",
+                                              "valueDefinition": {
+                                                "values": [],
+                                                "typeDefinition": {
+                                                  "typeSpecification": {
+                                                    "name": "number",
+                                                    "nestedTypes": []
+                                                  },
+                                                  "attributes": []
+                                                }
+                                              },
+                                              "sections": []
+                                            },
+                                            "class": "property"
+                                          },
+                                          {
+                                            "content": {
+                                              "name": {
+                                                "literal": "updated_at"
+                                              },
+                                              "description": "",
+                                              "valueDefinition": {
+                                                "values": [],
+                                                "typeDefinition": {
+                                                  "typeSpecification": {
+                                                    "name": "number",
+                                                    "nestedTypes": []
+                                                  },
+                                                  "attributes": []
+                                                }
+                                              },
+                                              "sections": []
+                                            },
+                                            "class": "property"
+                                          }
+                                        ],
+                                        "class": "memberType"
+                                      }
+                                    ]
+                                  },
+                                  "class": "value"
+                                }
+                              ],
+                              "class": "memberType"
+                            }
+                          ]
+                        },
+                        {
+                          "element": "resolvedAsset",
+                          "attributes": {
+                            "role": "bodyExample"
+                          },
+                          "content": "[{\"id\":\"250FF\",\"percent_off\":25,\"redeem_by\":null,\"created\":null,\"modified\":null,\"created_at\":null,\"updated_at\":null}]"
+                        },
+                        {
+                          "element": "resolvedAsset",
+                          "attributes": {
+                            "role": "bodySchema"
+                          },
+                          "content": "{\"type\":\"array\",\"$schema\":\"http://json-schema.org/draft-04/schema#\"}"
                         }
                       ]
                     }
@@ -3131,6 +3736,10 @@
               "description": "Creates a new Coupon.\n\n",
               "method": "POST",
               "parameters": [],
+              "attributes": {
+                "relation": "",
+                "uriTemplate": ""
+              },
               "content": [
                 {
                   "element": "dataStructure",
@@ -3572,6 +4181,205 @@
                 "attributes": []
               },
               "sections": []
+            },
+            {
+              "element": "resolvedDataStructure",
+              "name": {
+                "literal": "Coupons",
+                "variable": false
+              },
+              "typeDefinition": {
+                "typeSpecification": {
+                  "name": "array",
+                  "nestedTypes": []
+                },
+                "attributes": []
+              },
+              "sections": [
+                {
+                  "content": [
+                    {
+                      "content": {
+                        "description": "",
+                        "valueDefinition": {
+                          "values": [],
+                          "typeDefinition": {
+                            "typeSpecification": {
+                              "name": "object",
+                              "nestedTypes": []
+                            },
+                            "attributes": []
+                          }
+                        },
+                        "sections": [
+                          {
+                            "content": [
+                              {
+                                "content": {
+                                  "name": {
+                                    "literal": "id"
+                                  },
+                                  "description": "",
+                                  "valueDefinition": {
+                                    "values": [
+                                      {
+                                        "literal": "250FF",
+                                        "variable": false
+                                      }
+                                    ],
+                                    "typeDefinition": {
+                                      "typeSpecification": {
+                                        "name": "string",
+                                        "nestedTypes": []
+                                      },
+                                      "attributes": []
+                                    }
+                                  },
+                                  "sections": []
+                                },
+                                "class": "property"
+                              },
+                              {
+                                "content": {
+                                  "name": {
+                                    "literal": "percent_off"
+                                  },
+                                  "description": "",
+                                  "valueDefinition": {
+                                    "values": [
+                                      {
+                                        "literal": "25",
+                                        "variable": false
+                                      }
+                                    ],
+                                    "typeDefinition": {
+                                      "typeSpecification": {
+                                        "name": "number",
+                                        "nestedTypes": []
+                                      },
+                                      "attributes": []
+                                    }
+                                  },
+                                  "sections": [
+                                    {
+                                      "class": "blockDescription",
+                                      "content": "A positive integer between 1 and 100 that represents the discount the coupon will apply.\n"
+                                    }
+                                  ]
+                                },
+                                "class": "property"
+                              },
+                              {
+                                "content": {
+                                  "name": {
+                                    "literal": "redeem_by"
+                                  },
+                                  "description": "Date after which the coupon can no longer be redeemed",
+                                  "valueDefinition": {
+                                    "values": [],
+                                    "typeDefinition": {
+                                      "typeSpecification": {
+                                        "name": "number",
+                                        "nestedTypes": []
+                                      },
+                                      "attributes": []
+                                    }
+                                  },
+                                  "sections": []
+                                },
+                                "class": "property"
+                              },
+                              {
+                                "content": {
+                                  "name": {
+                                    "literal": "created"
+                                  },
+                                  "description": "",
+                                  "valueDefinition": {
+                                    "values": [],
+                                    "typeDefinition": {
+                                      "typeSpecification": {
+                                        "name": "number",
+                                        "nestedTypes": []
+                                      },
+                                      "attributes": []
+                                    }
+                                  },
+                                  "sections": []
+                                },
+                                "class": "property"
+                              },
+                              {
+                                "content": {
+                                  "name": {
+                                    "literal": "modified"
+                                  },
+                                  "description": "",
+                                  "valueDefinition": {
+                                    "values": [],
+                                    "typeDefinition": {
+                                      "typeSpecification": {
+                                        "name": "number",
+                                        "nestedTypes": []
+                                      },
+                                      "attributes": []
+                                    }
+                                  },
+                                  "sections": []
+                                },
+                                "class": "property"
+                              },
+                              {
+                                "content": {
+                                  "name": {
+                                    "literal": "created_at"
+                                  },
+                                  "description": "",
+                                  "valueDefinition": {
+                                    "values": [],
+                                    "typeDefinition": {
+                                      "typeSpecification": {
+                                        "name": "number",
+                                        "nestedTypes": []
+                                      },
+                                      "attributes": []
+                                    }
+                                  },
+                                  "sections": []
+                                },
+                                "class": "property"
+                              },
+                              {
+                                "content": {
+                                  "name": {
+                                    "literal": "updated_at"
+                                  },
+                                  "description": "",
+                                  "valueDefinition": {
+                                    "values": [],
+                                    "typeDefinition": {
+                                      "typeSpecification": {
+                                        "name": "number",
+                                        "nestedTypes": []
+                                      },
+                                      "attributes": []
+                                    }
+                                  },
+                                  "sections": []
+                                },
+                                "class": "property"
+                              }
+                            ],
+                            "class": "memberType"
+                          }
+                        ]
+                      },
+                      "class": "value"
+                    }
+                  ],
+                  "class": "memberType"
+                }
+              ]
             }
           ]
         }

@@ -1,4 +1,4 @@
-protagonist = require 'protagonist-experimental'
+protagonist = require 'protagonist'
 boutique = require 'boutique'
 options = require './options'
 fs = require 'fs'
@@ -174,8 +174,9 @@ class Drafter
   # @param node [Object] A node of API Blueprint
   # @param rules [Array] List of rules to apply
   # @param elementTye [String] The element type of the node
-  # @param parent [Object] Parent node's content of which the current node is a part of
-  expandNode: (node, rules, elementType, parentContent) ->
+  # @param parentContent [Object] Parent node's content of which the current node is a part of
+  # @param parentElementType [String] The element type of the parent node
+  expandNode: (node, rules, elementType, parentContent, parentElementType) ->
     elementType ?= node.element
 
     # On root node, Gather data structures first before applying rules to any of the children nodes
@@ -219,7 +220,7 @@ class Drafter
       rule[elementType].call rule, newNode if elementType in Object.keys(rule)
 
     # Append resolved data structures
-    if elementType is 'dataStructure' and not deepEqual node, newNode
+    if parentElementType not in ['resource', 'blueprint'] and elementType is 'dataStructure' and not deepEqual node, newNode
       newNode.element = 'resolvedDataStructure'
       parentContent.push newNode
 
@@ -236,7 +237,7 @@ class Drafter
         @expandNode response, rules, 'payload' for response in node.responses
 
     if node.content and Array.isArray node.content
-      @expandNode element, rules, null, node.content for element in node.content
+      @expandNode element, rules, null, node.content, elementType for element in node.content
 
   # Reconstruct deprecated resource groups key from elements
   #
