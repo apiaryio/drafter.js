@@ -69,3 +69,18 @@ describe 'Drafter Class', ->
       assert.isNull error
       assert.ok result.ast
       done()
+
+  it 'parses correctly when named type in a mixin is a primitive type', (done) ->
+    drafter = new Drafter
+
+    blueprint = '''
+    # Polls [/]
+
+    + Attributes
+        + Include string
+    '''
+
+    drafter.make blueprint, (error, result) ->
+      assert.isNull error
+      assert.ok result.ast
+      done()

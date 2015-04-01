@@ -30,9 +30,12 @@ module.exports =
         when 'mixin'
           superType = member.content.typeSpecification.name
 
-          # Expand the super type first
-          @expandMixin superType.literal, @dataStructures[superType.literal]
-          rule.copyMembers @dataStructures[superType.literal], sectionOrMember
+          # Make sure the super type exists
+          if typeof superType is 'object' and superType?.literal and @dataStructures[superType.literal]
+
+            # Expand the super type first
+            @expandMixin superType.literal, @dataStructures[superType.literal]
+            rule.copyMembers @dataStructures[superType.literal], sectionOrMember
 
         when 'oneOf', 'group'
           memberType =
