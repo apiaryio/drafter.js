@@ -5,7 +5,7 @@ module.exports =
   # @param dataStructure [Object] The super type data structure
   # @param memberTypeSection [Object] Member Type Section to be copied into
   copyMembers: (dataStructure, memberTypeSection) ->
-    return if not dataStructure
+    return if not dataStructure or not memberTypeSection
 
     for section in dataStructure.sections
       if section['class'] is 'memberType'

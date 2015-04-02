@@ -63,8 +63,9 @@ module.exports =
         dataStructure.sections.push memberTypeSection
         dataStructure.typeDefinition.typeSpecification.nestedTypes = []
 
-    if superType is null or typeof superType isnt 'object' or not superType?.literal
-      return @expanded[superType] = true
+    # Make sure super type is valid
+    if superType is null or typeof superType isnt 'object' or not superType?.literal or not @dataStructures[superType.literal]
+      return @expanded[name] = true
 
     # Expand the super type first
     @expandInheritance superType.literal, @dataStructures[superType.literal]

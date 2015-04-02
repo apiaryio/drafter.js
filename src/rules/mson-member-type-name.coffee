@@ -30,7 +30,7 @@ module.exports =
           superType = member.content.valueDefinition.typeDefinition.typeSpecification.name
 
           # If super type is a valid symbol
-          if typeof superType is 'object' and superType?.literal
+          if typeof superType is 'object' and superType?.literal and @dataStructures[superType.literal]
             @expandMember superType.literal, @dataStructures[superType.literal]
 
             superTypeBaseName = @dataStructures[superType.literal].typeDefinition.typeSpecification.name
