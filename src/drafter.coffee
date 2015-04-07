@@ -6,6 +6,10 @@ async = require 'async'
 deepcopy = require 'deepcopy'
 deepEqual = require 'deep-equal'
 
+GENERATE_BODY = false
+GENERATE_SCHEMA = false
+EXPAND_TYPES = true
+
 # Gather all payloads from the given parse result
 #
 # @param result [Object] Parse Result
@@ -40,7 +44,7 @@ gatherPayloads = (result) ->
 # @param attributes [Object] Payload attributes object
 # @param contentType [Object] Payload content type
 generateBody = (payload, attributes, contentType, callback) ->
-  if not attributes? or not contentType? or payload.body
+  if !GENERATE_BODY or (not attributes? or not contentType? or payload.body)
     return callback null, payload, attributes, contentType
 
   boutique.represent
@@ -66,7 +70,7 @@ generateBody = (payload, attributes, contentType, callback) ->
 # @param attributes [Object] Payload attributes object
 # @param contentType [Object] Payload content type
 generateSchema = (payload, attributes, contentType, callback) ->
-  if not attributes? or payload.schema or contentType.indexOf('json') is -1
+  if !GENERATE_SCHEMA or (not attributes? or payload.schema or contentType.indexOf('json') is -1)
     return callback null, payload, attributes, contentType
 
   boutique.represent
@@ -128,6 +132,9 @@ class Drafter
   make: (source, callback) ->
     protagonist.parse source, @config, (error, result) =>
       return callback error if error
+
+      if !EXPAND_TYPES
+        return callback null, result
 
       ruleList = ['mson-inheritance', 'mson-mixin', 'mson-member-type-name']
       rules = (require './rules/' + rule for rule in ruleList)
