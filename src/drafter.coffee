@@ -6,8 +6,8 @@ async = require 'async'
 deepcopy = require 'deepcopy'
 deepEqual = require 'deep-equal'
 
-GENERATE_BODY = false
-GENERATE_SCHEMA = false
+GENERATE_BODY = true
+GENERATE_SCHEMA = true
 EXPAND_TYPES = true
 
 # Gather all payloads from the given parse result
@@ -44,8 +44,11 @@ gatherPayloads = (result) ->
 # @param attributes [Object] Payload attributes object
 # @param contentType [Object] Payload content type
 generateBody = (payload, attributes, contentType, callback) ->
-  if !GENERATE_BODY or (not attributes? or not contentType? or payload.body)
-    return callback null, payload, attributes, contentType
+  unless GENERATE_BODY is true
+    return callback null
+
+  if not attributes? or not contentType? or payload.body
+    return callback null
 
   boutique.represent
     ast: attributes,
@@ -61,8 +64,7 @@ generateBody = (payload, attributes, contentType, callback) ->
       payload.content.push resolved
       payload.body = body
 
-    # For waterfall
-    callback null, payload, attributes, contentType
+    callback null
 
 # Generate payload schema if MSON is provided and no schema and ContentType is json
 #
@@ -70,8 +72,11 @@ generateBody = (payload, attributes, contentType, callback) ->
 # @param attributes [Object] Payload attributes object
 # @param contentType [Object] Payload content type
 generateSchema = (payload, attributes, contentType, callback) ->
-  if !GENERATE_SCHEMA or (not attributes? or payload.schema or contentType.indexOf('json') is -1)
-    return callback null, payload, attributes, contentType
+  unless GENERATE_SCHEMA is true
+    return callback null
+
+  if not attributes? or payload.schema or contentType.indexOf('json') is -1
+    return callback null
 
   boutique.represent
     ast: attributes,
@@ -87,8 +92,7 @@ generateSchema = (payload, attributes, contentType, callback) ->
       payload.content.push resolved
       payload.schema = body
 
-    # For waterfall
-    callback null, payload, attributes, contentType
+    callback null
 
 #
 # Drafter
@@ -133,7 +137,7 @@ class Drafter
     protagonist.parse source, @config, (error, result) =>
       return callback error if error
 
-      if !EXPAND_TYPES
+      unless EXPAND_TYPES is true
         return callback null, result
 
       ruleList = ['mson-inheritance', 'mson-mixin', 'mson-member-type-name']
@@ -168,13 +172,11 @@ class Drafter
     resolvedAttributes ?= attributes
     resolvedAttributes ?= actionAttributes
 
-    async.waterfall [
-      (cb) ->
-        cb null, payload, resolvedAttributes, contentType
-      , generateBody
-      , generateSchema
-    ], (error) ->
-      callback error or null
+    generateBody payload, resolvedAttributes, contentType, (error) ->
+      return callback error if error
+
+      generateSchema payload, resolvedAttributes, contentType, (error) ->
+        callback error or null
 
   # Expand a certain node with the given rules
   #
