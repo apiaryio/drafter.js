@@ -197,12 +197,15 @@ class Drafter
 
             switch subElement.element
               when 'dataStructure'
-                @dataStructures[subElement.name.literal] = deepcopy subElement
-                @origDataStructures[subElement.name.literal] = subElement
-                @appendResolved[subElement.name.literal] = element.content
+                if typeof subElement.name is 'object' and subElement.name?.literal
+
+                  @dataStructures[subElement.name.literal] = deepcopy subElement
+                  @origDataStructures[subElement.name.literal] = subElement
+                  @appendResolved[subElement.name.literal] = element.content
+
               when 'resource'
                 for resourceSubElement in subElement.content
-                  if resourceSubElement.element is 'dataStructure'
+                  if resourceSubElement.element is 'dataStructure' and typeof resourceSubElement.name is 'object' and resourceSubElement.name?.literal
 
                     @dataStructures[resourceSubElement.name.literal] = deepcopy resourceSubElement
                     @origDataStructures[resourceSubElement.name.literal] = resourceSubElement

@@ -84,3 +84,18 @@ describe 'Drafter Class', ->
       assert.isNull error
       assert.ok result.ast
       done()
+
+  it 'parses correctly when resource has no name but has attributes', (done) ->
+    drafter = new Drafter
+
+    blueprint = '''
+    # /
+
+    + Attributes
+      + id
+    '''
+
+    drafter.make blueprint, (error, result) ->
+      assert.isNull error
+      assert.ok result.ast
+      done()
