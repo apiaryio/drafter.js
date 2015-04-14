@@ -18,10 +18,10 @@
   },
   "dependencies": {
     "async": "~0.9.0",
-    "boutique": "~0.1.4",
+    "boutique": "~0.1.5",
     "deep-equal": "1.0.x",
     "deepcopy": "0.4.x",
-    "protagonist": "~0.19.1",
+    "protagonist": "~0.19.3",
     "yargs": "~1.3.3"
   },
   "devDependencies": {
