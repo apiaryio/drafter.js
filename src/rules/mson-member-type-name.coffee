@@ -8,7 +8,6 @@ module.exports =
 
   # Expand dataStructure element
   dataStructure: (element) ->
-    superType = element.typeDefinition.name
     typeName = element.name
 
     if not typeName
@@ -57,7 +56,7 @@ module.exports =
 
     # Check for member type name
     for section in dataStructure.sections
-      if section['class'] is 'memberType'
+      if section['class'] is 'memberType' and section.content?
 
         @diveIntoElements section.content
 

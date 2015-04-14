@@ -4,7 +4,7 @@ fs = require 'fs'
 
 Drafter = require '../../src/drafter'
 
-KNOWN_PROBLEMATIC_LENGTHS = [631, 632, 633, 1464]
+KNOWN_PROBLEMATIC_LENGTHS = []
 
 describe 'Typing test', ->
   blueprint = fs.readFileSync './test/fixtures/dataStructures.apib', 'utf8'

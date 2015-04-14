@@ -1532,7 +1532,7 @@
           },
           "typeDefinition": {
             "typeSpecification": {
-              "name": "object",
+              "name": null,
               "nestedTypes": []
             },
             "attributes": []
@@ -1917,7 +1917,7 @@
           },
           "typeDefinition": {
             "typeSpecification": {
-              "name": null,
+              "name": "object",
               "nestedTypes": []
             },
             "attributes": []
@@ -2594,7 +2594,7 @@
           },
           "typeDefinition": {
             "typeSpecification": {
-              "name": null,
+              "name": "object",
               "nestedTypes": []
             },
             "attributes": []
