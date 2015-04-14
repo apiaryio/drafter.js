@@ -8,7 +8,6 @@ module.exports =
 
   # Expand dataStructure element
   dataStructure: (element) ->
-    superType = element.typeDefinition.name
     typeName = element.name
 
     if not typeName

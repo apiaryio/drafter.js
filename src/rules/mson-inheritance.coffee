@@ -8,7 +8,6 @@ module.exports =
 
   # Expand dataStructure element
   dataStructure: (element) ->
-    superType = element.typeDefinition.name
     typeName = element.name
 
     if not typeName
@@ -63,8 +62,12 @@ module.exports =
         dataStructure.sections.push memberTypeSection
         dataStructure.typeDefinition.typeSpecification.nestedTypes = []
 
+    # If super type is null, it is an implicit object
+    if superType is null
+      dataStructure.typeDefinition.typeSpecification.name = 'object'
+
     # Make sure super type is valid
-    if superType is null or typeof superType isnt 'object' or not superType?.literal or not @dataStructures[superType.literal]
+    if typeof superType isnt 'object' or not superType?.literal or not @dataStructures[superType.literal]
       return @expanded[name] = true
 
     # Expand the super type first
