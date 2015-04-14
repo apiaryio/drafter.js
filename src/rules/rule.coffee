@@ -8,7 +8,7 @@ module.exports =
     return if not dataStructure or not memberTypeSection
 
     for section in dataStructure.sections
-      if section['class'] is 'memberType'
+      if section['class'] is 'memberType' and section.content?
 
         for member in section.content
           memberTypeSection.content.push member

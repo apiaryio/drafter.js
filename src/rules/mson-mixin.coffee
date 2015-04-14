@@ -60,7 +60,7 @@ module.exports =
 
     # Check for mixin
     for section in dataStructure.sections
-      if section['class'] is 'memberType'
+      if section['class'] is 'memberType' and section.content?
 
         # New content for the section
         memberTypeSection =
