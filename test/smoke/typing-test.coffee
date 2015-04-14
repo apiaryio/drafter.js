@@ -10,14 +10,23 @@ describe 'Typing test', ->
 
   describe 'When I type the blueprint', ->
     currentLength = 0
-    error = undefined
-    exception = undefined
-    result = undefined
 
-    while currentLength < blueprint.length
-      currentLength++
+    # Because drafter.make uses protagonist.parse (asynchronous call),
+    # we cannot call desribe directly within for loop. We need a closure or
+    # otherwise currentLength won't be of value the one used when describe
+    # was created, but with the final number (blueprint.length) instead.
+    for currentLength in [1..(blueprint.length-1)] then do (currentLength) ->
 
       describe "and write first #{currentLength} characters and parse them", ->
+        error = undefined
+        exception = undefined
+        result = undefined
+
+        after ->
+          error     = undefined
+          exception = undefined
+          result    = undefined
+
         before (done) ->
           try
             drafter.make blueprint.slice(0, currentLength), (err, res) ->
@@ -49,10 +58,3 @@ describe 'Typing test', ->
             assert.ok      result.ast._version
             assert.ok      result.ast.content
             assert.isArray result.ast.resourceGroups
-
-
-
-      after ->
-        error     = undefined
-        exception = undefined
-        result    = undefined
