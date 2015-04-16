@@ -264,11 +264,15 @@ class Drafter
         for subElement in element.content
           resources.push subElement if subElement.element is 'resource'
 
-        if resources.length
-          description = element.content[0].content if element.content[0].element is 'copy'
+        description = null
+        name = element.attributes?.name
 
+        if element.content[0]?.element is 'copy'
+          description = element.content[0].content if element.content[0]?.element is 'copy'
+
+        if resources.length or description or name
           ast.resourceGroups.push
-            name: element.attributes?.name || ''
+            name: name || ''
             description: description || ''
             resources: resources
 
