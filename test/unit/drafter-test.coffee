@@ -136,3 +136,19 @@ describe 'Drafter Class', ->
       assert.equal dataStructure.typeDefinition.typeSpecification.name, 'object'
 
       done()
+
+  it 'correctly reconstructs resource groups', (done) ->
+    drafter = new Drafter
+
+    blueprint = '''
+    ## Group A
+    This is a testing group without any data
+    '''
+
+    drafter.make blueprint, (error, result) ->
+      assert.isNull error
+      assert.ok result.ast
+
+      assert.equal result.ast.resourceGroups.length, 1
+
+      done()
