@@ -21,8 +21,8 @@ module.exports =
   # in a group of elements inside the initial group of elements
   #
   # @param elements [Object] List of elements either from type section or a member type
-  # @param sectionOrMember [Object] Type section or a member type
-  diveIntoElements: (elements, sectionOrMember) ->
+  # @param content [Object] Content of the type section or a member type
+  diveIntoElements: (elements, content) ->
     for member in elements
       switch member['class']
 
@@ -34,21 +34,26 @@ module.exports =
 
             # Expand the super type first
             @expandMixin superType.literal, @dataStructures[superType.literal]
-            rule.copyMembers @dataStructures[superType.literal], sectionOrMember
+            rule.copyMembers @dataStructures[superType.literal], content
 
-        when 'oneOf', 'group'
-          memberType =
-            content: []
+        when 'property', 'value'
+          sections = []
+          @diveIntoElements member.content.sections, sections
 
-          # Recursively dive into the elements
-          @diveIntoElements member.content, memberType
+          # Replace the original sections with new onces
+          member.content.sections = sections
+          content.push member
+
+        when 'oneOf', 'group', 'memberType'
+          memberContent = []
+          @diveIntoElements member.content, memberContent
 
           # Replace the original member with out new member
-          member.content = memberType.content
-          sectionOrMember.content.push member
+          member.content = memberContent
+          content.push member
 
         else
-          sectionOrMember.content.push member
+          content.push member
 
   # Given a data structure, expand its mixins recusrively
   #
@@ -62,13 +67,11 @@ module.exports =
       if section['class'] is 'memberType' and section.content?
 
         # New content for the section
-        memberTypeSection =
-          content: []
-
-        @diveIntoElements section.content, memberTypeSection
+        sectionContent = []
+        @diveIntoElements section.content, sectionContent
 
         # Replace section content with the new content
-        section.content = memberTypeSection.content
+        section.content = sectionContent
 
     # Denote this type as expanded
     @expanded[name] = true

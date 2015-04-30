@@ -197,7 +197,8 @@ describe 'Drafter Class', ->
     + Response 200 (application/json)
         + Attributes
             + b
-                + Include X
+                + c
+                    + Include X
 
     # Data Structures
     ## X

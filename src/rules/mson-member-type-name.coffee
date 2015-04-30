@@ -76,7 +76,7 @@ module.exports =
                 content: []
 
               memberTypeSection['class'] = 'memberType'
-              rule.copyMembers @dataStructures[superType.literal], memberTypeSection
+              rule.copyMembers @dataStructures[superType.literal], memberTypeSection.content
               member.content.sections.push memberTypeSection if memberTypeSection.content.length
 
           @diveIntoElements member.content.sections
