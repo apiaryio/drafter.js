@@ -82,7 +82,7 @@ module.exports =
         content: []
 
       memberTypeSection['class'] = 'memberType'
-      rule.copyMembers @dataStructures[superType.literal], memberTypeSection
+      rule.copyMembers @dataStructures[superType.literal], memberTypeSection.content
 
       dataStructure.sections.push memberTypeSection if memberTypeSection.content.length
       return @expanded[name] = true
@@ -103,7 +103,7 @@ module.exports =
       push = true
 
     # Copy super-type and all the member types to sub type
-    rule.copyMembers @dataStructures[superType.literal], memberTypeSection
+    rule.copyMembers @dataStructures[superType.literal], memberTypeSection.content
     dataStructure.typeDefinition.typeSpecification =
       name: superTypeBaseName
       nestedTypes: @dataStructures[superType.literal].typeDefinition.typeSpecification.nestedTypes

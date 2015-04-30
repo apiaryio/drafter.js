@@ -221,6 +221,9 @@ class Drafter
           dataStructure.element = 'resolvedDataStructure'
           @appendResolved[name].push dataStructure
 
+    # Don't do anything if already resolved
+    return if elementType is 'resolvedDataStructure'
+
     # Don't expand data structures in place
     if elementType is 'dataStructure'
       newNode = deepcopy node

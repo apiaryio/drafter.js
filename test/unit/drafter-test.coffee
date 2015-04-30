@@ -3,6 +3,12 @@ fs = require 'fs'
 
 Drafter = require '../../src/drafter'
 
+singleMember = (obj, type) ->
+  assert.equal obj.sections.length, 1
+  assert.equal obj.sections[0].class, 'memberType'
+  assert.equal obj.sections[0].content.length, 1
+  assert.equal obj.sections[0].content[0].class, type
+
 describe 'Drafter Class', ->
 
   it 'parses a bluerint', (done) ->
@@ -150,5 +156,96 @@ describe 'Drafter Class', ->
       assert.ok result.ast
 
       assert.equal result.ast.resourceGroups.length, 1
+
+      done()
+
+  it 'correctly expands the references in nested members of nested members', (done) ->
+    drafter = new Drafter
+
+    blueprint = '''
+    # GET /
+    + Response 200 (application/json)
+        + Attributes
+            + b
+                + c (X)
+
+    # Data Structures
+    ## X
+    + id: pavan
+    '''
+
+    drafter.make blueprint, (error, result) ->
+      assert.isNull error
+      assert.ok result.ast
+
+      assert.equal result.ast.resourceGroups.length, 1
+      assert.equal result.ast.resourceGroups[0].resources.length, 1
+      assert.equal result.ast.resourceGroups[0].resources[0].actions.length, 1
+      assert.equal result.ast.resourceGroups[0].resources[0].actions[0].examples.length, 1
+      assert.equal result.ast.resourceGroups[0].resources[0].actions[0].examples[0].responses.length, 1
+
+      response = result.ast.resourceGroups[0].resources[0].actions[0].examples[0].responses[0]
+      assert.equal response.body, '{"b":{"c":{"id":"pavan"}}}'
+
+      done()
+
+  it 'correctly expands the mixins in nested members of nested members', (done) ->
+    drafter = new Drafter
+
+    blueprint = '''
+    # GET /
+    + Response 200 (application/json)
+        + Attributes
+            + b
+                + c
+                    + Include X
+
+    # Data Structures
+    ## X
+    + id: pavan
+    '''
+
+    drafter.make blueprint, (error, result) ->
+      assert.isNull error
+      assert.ok result.ast
+
+      assert.equal result.ast.resourceGroups.length, 1
+      assert.equal result.ast.resourceGroups[0].resources.length, 1
+      assert.equal result.ast.resourceGroups[0].resources[0].actions.length, 1
+      assert.equal result.ast.resourceGroups[0].resources[0].actions[0].examples.length, 1
+      assert.equal result.ast.resourceGroups[0].resources[0].actions[0].examples[0].responses.length, 1
+
+      response = result.ast.resourceGroups[0].resources[0].actions[0].examples[0].responses[0]
+      assert.equal response.body, '{"b":{"c":{"id":"pavan"}}}'
+
+      done()
+
+  it 'correctly expands named type when it is nested type for a member type', (done) ->
+    drafter = new Drafter
+
+    blueprint = '''
+    # GET /
+
+    + Response 200 (application/json)
+        + Attributes
+            + a (array[X])
+
+    # Data Structures
+    ## X
+    + id: pavan
+    '''
+
+    drafter.make blueprint, (error, result) ->
+      assert.isNull error
+      assert.ok result.ast
+
+      assert.equal result.ast.resourceGroups.length, 1
+      assert.equal result.ast.resourceGroups[0].resources.length, 1
+      assert.equal result.ast.resourceGroups[0].resources[0].actions.length, 1
+      assert.equal result.ast.resourceGroups[0].resources[0].actions[0].examples.length, 1
+      assert.equal result.ast.resourceGroups[0].resources[0].actions[0].examples[0].responses.length, 1
+
+      response = result.ast.resourceGroups[0].resources[0].actions[0].examples[0].responses[0]
+      assert.equal response.body, '{"a":[{"id":"pavan"}]}'
 
       done()
