@@ -28,6 +28,5 @@
     "coffee-script": "~1.7.1",
     "chai": "~1.10.0",
     "mocha": "~2.0.1"
-  },
-  "license": "MIT"
+  }
 }
