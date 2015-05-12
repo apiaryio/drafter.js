@@ -38,7 +38,7 @@ module.exports =
 
         when 'property', 'value'
           sections = []
-          @diveIntoElements member.content.sections, sections
+          @diveIntoElements member.content.sections || [], sections
 
           # Replace the original sections with new onces
           member.content.sections = sections
@@ -46,7 +46,7 @@ module.exports =
 
         when 'oneOf', 'group', 'memberType'
           memberContent = []
-          @diveIntoElements member.content, memberContent
+          @diveIntoElements member.content || [], memberContent
 
           # Replace the original member with out new member
           member.content = memberContent

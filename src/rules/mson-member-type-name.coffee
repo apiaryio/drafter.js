@@ -79,10 +79,10 @@ module.exports =
               rule.copyMembers @dataStructures[superType.literal], memberTypeSection.content
               member.content.sections.push memberTypeSection if memberTypeSection.content.length
 
-          @diveIntoElements member.content.sections
+          @diveIntoElements member.content.sections || []
 
         when 'oneOf', 'group', 'memberType'
-          @diveIntoElements member.content
+          @diveIntoElements member.content || []
 
   # Given a data structure, expand its member type recusrively
   #
