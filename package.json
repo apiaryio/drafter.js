@@ -1,6 +1,6 @@
 {
   "name": "drafter",
-  "version": "0.2.7",
+  "version": "0.2.8",
   "author": "Apiary.io <support@apiary.io>",
   "description": "Snow Crash parser harness",
   "license": "MIT",
@@ -21,7 +21,7 @@
     "boutique": "~0.1.7",
     "deep-equal": "1.0.x",
     "deepcopy": "0.4.x",
-    "protagonist": "~0.19.5",
+    "protagonist": "~0.20.1",
     "yargs": "~1.3.3"
   },
   "devDependencies": {
