@@ -4,6 +4,9 @@
 
 Snow Crash parser harness.
 
+## Deprecation Notice
+Drafter.js will be soon (end of August 2015) deprecated. Its functionality will be replaced by [Drafter](https://github.com/apiaryio/drafter) and, for Node.js, by Drafter's binding – [Protagonist](https://github.com/apiaryio/protagonist).
+
 ## Introduction
 Drafter takes an API blueprint on its input, parses, and then processes the AST to exposes the [Parse Result][] for further use. Drafter expands MSON data structures from the AST and generates JSON representations and JSON Schema representation of MSON structures where they are not found in the original AST.
 
