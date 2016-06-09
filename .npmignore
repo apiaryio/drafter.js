@@ -1,7 +1,9 @@
-src/
-.travis.yml
+.gitmodules
+.npmrc
+src/pre.js
+src/post.js
+ext/
+scripts/
 circle.yml
-.git*
-cov.html
-.vagrant
-.npmignore
+*github-release*
+drafter.js-*.tgz
