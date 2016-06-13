@@ -7,7 +7,7 @@ machine:
   services:
     - docker
   node:
-    version: "0.10"
+    version: "0.12"
 
 checkout:
   post:
@@ -15,18 +15,18 @@ checkout:
 
 dependencies:
   cache_directories:
-    - "~/docker"
+    - "~/emcc-1.36"
   pre:
-    - if [[ ! -f ~/docker/emscripten.tar ]]; then mkdir -p ~/docker &&
-      docker pull "apiaryio/base-emscripten-dev" &&
-      docker save "apiaryio/base-emscripten-dev" > ~/docker/emscripten.tar;
-      else docker load -i ~/docker/emscripten.tar; fi
+    - if [[ ! -f ~/emcc-1.36/emscripten.tar ]]; then mkdir -p ~/emcc-1.36 &&
+      docker pull "apiaryio/emcc:1.36" &&
+      docker save "apiaryio/emcc:1.36" > ~/emcc-1.36/emscripten.tar;
+      else docker load -i ~/emcc-1.36/emscripten.tar; fi
   post:
     - cd ext/drafter && ./configure && make drafter
 
 test:
   pre:
-    - docker run -v $(pwd):/src -t apiaryio/base-emscripten-dev scripts/emcbuild.sh
+    - npm run build
 
 deployment:
   release:

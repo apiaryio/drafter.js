@@ -2,12 +2,18 @@
   "name": "drafter.js",
   "version": "2.3.1",
   "description": "Pure JS Drafter built with Emscripten",
-  "main": "emcc/drafter.nomem.js",
+  "main": "lib/drafter.nomem.js",
   "scripts": {
-    "test": "node scripts/test.js"
+    "test": "node scripts/test.js",
+    "build": "docker run --rm -v $(pwd):/src -t apiaryio/emcc:1.36 scripts/emcbuild.sh",
+    "clean": "docker run --rm -v $(pwd):/src -t apiaryio/emcc:1.36 scripts/emcclean.sh",
+    "release": "scripts/release.sh"
   },
   "browser": {
     "ws": false
+  },
+  "engines": {
+    "node": ">= 0.12"
   },
   "repository": {
     "type": "git",
