@@ -14,7 +14,7 @@ binding.
 ## Installation
 
 drafter.js can be installed from NPM, or it can be downloaded from the [releases
-page](https://github.com/apiaryio/drafter/releases.js).
+page](https://github.com/apiaryio/drafter/releases).
 
 ```shell
 $ npm install drafter.js
@@ -28,8 +28,13 @@ If you've installed drafter.js via NPM and using drafter.js in Node, you can
 require it via:
 
 ```javascript
-
+var drafter = require('drafter.js')
 ```
+
+*Node versions supported*: >=0.12
+
+It works on 0.10 too but without any guarantees and expect it to be
+significantly slower.
 
 ### Web Browser
 

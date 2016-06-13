@@ -12,6 +12,9 @@
   "browser": {
     "ws": false
   },
+  "engines": {
+    "node": ">= 0.12"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/apiaryio/drafter.js"
