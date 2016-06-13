@@ -24,6 +24,7 @@ var testRun = {
   pass: 0,
   fail: 0,
   jsTime: 0,
+  prtgTime: 0,
   cppTime: 0
 };
 
@@ -153,6 +154,7 @@ function testSerialization(filename, type, done) {
     }
 
     testRun.cppTime += results.cpp.duration;
+    testRun.prtgTime += results.protagonist.duration;
     testRun.jsTime += results.js.duration;
 
     done();
@@ -179,7 +181,7 @@ async.eachLimit(glob.sync('ext/drafter/test/**/*.apib'), 1, testFile, function (
   console.log('Total:  ' + testRun.total);
   console.log('Passed: ' + testRun.pass);
   console.log('Failed: ' + testRun.fail);
-  console.log('Average JS speed: ' + (testRun.jsTime / testRun.cppTime).toFixed(1) + ' times slower than C++');
+  console.log('Average JS speed: ' + (testRun.jsTime / testRun.cppTime).toFixed(1) + ' times slower than C++ and ' + (testRun.jsTime / testRun.prtgTime).toFixed(1) + ' times slower than Protagonist');
 
   process.exit(testRun.fail > 0 ? -1 : 0);
 });

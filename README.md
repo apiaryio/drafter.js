@@ -99,8 +99,12 @@ moment.*
 2. Build
 
     ```shell
-    $ docker pull "apiaryio/base-emscripten-dev"
-    $ docker run -v $(pwd):/src -t apiaryio/base-emscripten-dev emcc/emcbuild.sh
+    $ docker pull "apiaryio/emcc:1.36"
+    $ docker run -v $(pwd):/src -t apiaryio/emcc:1.36 emcc/emcbuild.sh
+    ```
+    or with `npm`
+    ```shell
+    $ npm run build
     ```
 
 3. Check out the `./scripts/test.js` and `./scripts/test.html` files for
@@ -110,7 +114,8 @@ moment.*
 The resulting stand-alone library `drafter.js` is in the `./lib` directory.
 Don't forget to serve the `drafter.js.mem` file as it is required by
 `drafter.js`. There is also a single-file version in `drafter.nomem.js` that
-can be used, but it may take longer to load in a web browser environment.
+can be used, but it may take longer to load in a web browser
+environment. It is the default for node.js enviroment.
 
 To get a debug version or version enabled to be used with `emrun` run
 the `emcbuild.sh` script it with `-d` or `-e` respectively.
@@ -119,10 +124,10 @@ the `emcbuild.sh` script it with `-d` or `-e` respectively.
 
 If you want to squeeze the size to a minimum install
 [uglify-js](https://github.com/mishoo/UglifyJS2) and try running
-`emcbuild.sh -u`, this will use `uglify-js` with compression, beware
-that this might cause some errors, if you encounter them try
-`drafter.js` without it to verify that it is caused by `uglify-js`
-and report it please.
+`uglifyjs lib/drafter.js -o drafter.js -c;`, this will use
+`uglify-js` with compression, beware that this might cause some
+errors, if you encounter them try `drafter.js` without it to verify
+that it is caused by `uglify-js` and report it please.
 
 ## License
 MIT License. See the [LICENSE](https://github.com/apiaryio/drafter.js/blob/master/LICENSE) file.

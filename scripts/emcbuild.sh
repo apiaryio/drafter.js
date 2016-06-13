@@ -1,20 +1,30 @@
 #!/usr/bin/env bash
 
+
+function usage
+{
+    echo >&2 "usage: $0 [-e] [-d] [-u] [-x] [-j <num>]"
+    echo >&2 "-e: build for use with emrun"
+    echo >&2 "-d: debug build -O0 -g"
+    echo >&2 "-x: extreme debug build -O0 -g4"
+    echo >&2 "-j: same as make -j<x>"
+}
+
 set -e
 
 RUNEMRUN=off
 DEBUG=off
-UGLIFY=off
-while [ $# -gt 0 ]
+JX="-j"
+while [ "$1" != "" ];
 do
     case "$1" in
-        -e)  RUNEMRUN=on;;
-        -d)  DEBUG=on;;
-        -u)  UGLIFY=on;;
-        -*)
-            echo >&2 "usage: $0 [-e] [-d] [-u]"
-            exit 1;;
-        *)  break;;
+        -e )  RUNEMRUN=on;;
+        -d )  DEBUG=on;;
+        -j )  shift
+              JX="-j$1"
+              ;;
+        -* )  usage
+              exit 1
     esac
     shift
 done
@@ -28,6 +38,8 @@ else
 fi
 
 FLAGS=""
+BUILD_TYPE="Release"
+ASSERT=0
 
 if test "x$RUNEMRUN" = "xon"; then
     FLAGS="$FLAGS --emrun";
@@ -35,38 +47,62 @@ fi
 
 if test "x$DEBUG" = "xon"; then
     FLAGS="$FLAGS -O0 -g";
-    BUILDFLAGS=""
-    UGLIFY=off
+    BUILDFLAGS="-O2 -g"
+    ASSERT=1
+elif test "x$XDEBUG" = "xon"; then
+    FLAGS="$FLAGS -O0 -g4 --llvm-lto 1"
+    BUILDFLAGS="-O0 -g4"
+    BUILD_TYPE="Debug"
+    ASSERT=1
 else
     FLAGS="$FLAGS -Oz --llvm-lto 1";
     BUILDFLAGS="-Oz"
 fi
+
+BUILDFLAGS="$BUILDFLAGS -fno-rtti"
 
 DRAFTER_PATH="ext/drafter"
 
 (
   cd "$DRAFTER_PATH"
   emconfigure $PY ./configure --shared
-  emmake make libdrafter CXXFLAGS=$BUILDFLAGS
+  CFLAGS=${BUILDFLAGS} CXXFLAGS=${BUILDFLAGS} emmake make $JX libdrafter  BUILDTYPE=$BUILD_TYPE
 )
 
 mkdir -p lib
 
-em++ $FLAGS "$DRAFTER_PATH/build/out/Release/lib.target/libdrafter.so" \
+em++ $FLAGS "$DRAFTER_PATH/build/out/$BUILD_TYPE/lib.target/libdrafter.so" \
   -s EXPORTED_FUNCTIONS="['_drafter_c_parse']" \
   -s DISABLE_EXCEPTION_CATCHING=0 \
+  -s EXPORTED_RUNTIME_METHODS="['writeStringToMemory', 'getValue', 'Pointer_stringify', 'lengthBytesUTF8']" \
+  -s ASSERTIONS=${ASSERT} \
+  -s DOUBLE_MODE=0 \
+  -s ALLOW_MEMORY_GROWTH=1 \
+  -s NO_EXIT_RUNTIME=1 \
+  -s INVOKE_RUN=0 \
+  -s PRECISE_I64_MATH=0 \
+  -s INLINING_LIMIT=1 \
+  -s NO_FILESYSTEM=1 \
+  -s ELIMINATE_DUPLICATE_FUNCTIONS=1 \
+  -s AGGRESSIVE_VARIABLE_ELIMINATION=1 \
   -o lib/drafter.js  \
   --pre-js src/pre.js \
   --post-js src/post.js
 
-em++ $FLAGS --memory-init-file 0 "$DRAFTER_PATH/build/out/Release/lib.target/libdrafter.so" \
+em++ $FLAGS --memory-init-file 0 "$DRAFTER_PATH/build/out/$BUILD_TYPE/lib.target/libdrafter.so" \
   -s EXPORTED_FUNCTIONS="['_drafter_c_parse']" \
   -s DISABLE_EXCEPTION_CATCHING=0 \
+  -s EXPORTED_RUNTIME_METHODS="['writeStringToMemory', 'getValue', 'Pointer_stringify', 'lengthBytesUTF8']" \
+  -s ASSERTIONS=${ASSERT} \
+  -s ALLOW_MEMORY_GROWTH=1 \
+  -s NO_EXIT_RUNTIME=1 \
+  -s INVOKE_RUN=0 \
+  -s PRECISE_I64_MATH=0 \
+  -s DOUBLE_MODE=0 \
+  -s INLINING_LIMIT=50 \
+  -s NO_FILESYSTEM=1 \
+  -s ELIMINATE_DUPLICATE_FUNCTIONS=1 \
   -o lib/drafter.nomem.js \
   --pre-js src/pre.js \
   --post-js src/post.js
 
-if test "x$UGLIFY" = "xon"; then
-    uglifyjs lib/drafter.js -o drafter.js -c;
-    mv drafter.js lib/drafter.js;
-fi
