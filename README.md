@@ -14,7 +14,7 @@ binding.
 ## Installation
 
 drafter.js can be installed from NPM, or it can be downloaded from the [releases
-page](https://github.com/apiaryio/drafter/releases).
+page](https://github.com/apiaryio/drafter.js/releases).
 
 ```shell
 $ npm install drafter.js
