@@ -80,5 +80,3 @@ Module['parse'] = function(blueprint, options, callback) {
 Module['parseSync'] = function(blueprint, options) {
   return Module.parse(blueprint, options);
 };
-
-var drafter = Module;

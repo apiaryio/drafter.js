@@ -104,6 +104,7 @@ moment.*
 2. Build
 
     ```shell
+    $ ./scripts/wrap.js
     $ docker pull "apiaryio/emcc:1.36"
     $ docker run -v $(pwd):/src -t apiaryio/emcc:1.36 emcc/emcbuild.sh
     ```
