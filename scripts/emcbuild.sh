@@ -86,8 +86,8 @@ em++ $FLAGS "$DRAFTER_PATH/build/out/$BUILD_TYPE/lib.target/libdrafter.so" \
   -s ELIMINATE_DUPLICATE_FUNCTIONS=1 \
   -s AGGRESSIVE_VARIABLE_ELIMINATION=1 \
   -o lib/drafter.js  \
-  --pre-js src/pre.js \
-  --post-js src/post.js
+  --pre-js generated/pre.js \
+  --post-js generated/post.js
 
 em++ $FLAGS --memory-init-file 0 "$DRAFTER_PATH/build/out/$BUILD_TYPE/lib.target/libdrafter.so" \
   -s EXPORTED_FUNCTIONS="['_drafter_c_parse']" \
@@ -103,6 +103,6 @@ em++ $FLAGS --memory-init-file 0 "$DRAFTER_PATH/build/out/$BUILD_TYPE/lib.target
   -s NO_FILESYSTEM=1 \
   -s ELIMINATE_DUPLICATE_FUNCTIONS=1 \
   -o lib/drafter.nomem.js \
-  --pre-js src/pre.js \
-  --post-js src/post.js
+  --pre-js generated/pre.js \
+  --post-js generated/post.js
 
