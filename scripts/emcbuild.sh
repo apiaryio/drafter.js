@@ -65,44 +65,61 @@ DRAFTER_PATH="ext/drafter"
 
 (
   cd "$DRAFTER_PATH"
-  emconfigure $PY ./configure --shared
-  CFLAGS=${BUILDFLAGS} CXXFLAGS=${BUILDFLAGS} emmake make $JX libdrafter  BUILDTYPE=$BUILD_TYPE
+  emconfigure $PY ./configure
+  CFLAGS=${BUILDFLAGS} CXXFLAGS=${BUILDFLAGS} emmake make $JX test-libdrafter BUILDTYPE=$BUILD_TYPE
+)
+
+(
+    emconfigure $PY ./configure && \
+    cd build && \
+    CFLAGS=${BUILDFLAGS} CXXFLAGS=${BUILDFLAGS} emmake make $JX libdrafterjs  BUILDTYPE=$BUILD_TYPE
 )
 
 mkdir -p lib
 
-em++ $FLAGS "$DRAFTER_PATH/build/out/$BUILD_TYPE/lib.target/libdrafter.so" \
-  -s EXPORTED_FUNCTIONS="['_drafter_c_parse']" \
-  -s DISABLE_EXCEPTION_CATCHING=0 \
-  -s EXPORTED_RUNTIME_METHODS="['writeStringToMemory', 'getValue', 'Pointer_stringify', 'lengthBytesUTF8']" \
-  -s ASSERTIONS=${ASSERT} \
-  -s DOUBLE_MODE=0 \
-  -s ALLOW_MEMORY_GROWTH=1 \
-  -s NO_EXIT_RUNTIME=1 \
-  -s INVOKE_RUN=0 \
-  -s PRECISE_I64_MATH=0 \
-  -s INLINING_LIMIT=1 \
-  -s NO_FILESYSTEM=1 \
-  -s ELIMINATE_DUPLICATE_FUNCTIONS=1 \
-  -s AGGRESSIVE_VARIABLE_ELIMINATION=1 \
-  -o lib/drafter.js  \
-  --pre-js generated/pre.js \
-  --post-js generated/post.js
+em++ $FLAGS "build/out/$BUILD_TYPE/libdrafterjs.a" \
+     "$DRAFTER_PATH/build/out/$BUILD_TYPE/libdrafter.a" \
+     "$DRAFTER_PATH/build/out/$BUILD_TYPE/libsos.a" \
+     "$DRAFTER_PATH/build/out/$BUILD_TYPE/libsnowcrash.a" \
+     "$DRAFTER_PATH/build/out/$BUILD_TYPE/libsundown.a" \
+     "$DRAFTER_PATH/build/out/$BUILD_TYPE/libmarkdownparser.a" \
+     -s EXPORTED_FUNCTIONS="['_c_parse']" \
+     -s DISABLE_EXCEPTION_CATCHING=0 \
+     -s EXPORTED_RUNTIME_METHODS="['writeStringToMemory', 'getValue', 'Pointer_stringify', 'lengthBytesUTF8']" \
+     -s ASSERTIONS=${ASSERT} \
+     -s DOUBLE_MODE=0 \
+     -s ALLOW_MEMORY_GROWTH=1 \
+     -s NO_EXIT_RUNTIME=1 \
+     -s INVOKE_RUN=0 \
+     -s PRECISE_I64_MATH=0 \
+     -s INLINING_LIMIT=1 \
+     -s NO_FILESYSTEM=1 \
+     -s ELIMINATE_DUPLICATE_FUNCTIONS=1 \
+     -s AGGRESSIVE_VARIABLE_ELIMINATION=1 \
+     -o lib/drafter.js  \
+     --pre-js generated/pre.js \
+     --post-js generated/post.js
 
-em++ $FLAGS --memory-init-file 0 "$DRAFTER_PATH/build/out/$BUILD_TYPE/lib.target/libdrafter.so" \
-  -s EXPORTED_FUNCTIONS="['_drafter_c_parse']" \
-  -s DISABLE_EXCEPTION_CATCHING=0 \
-  -s EXPORTED_RUNTIME_METHODS="['writeStringToMemory', 'getValue', 'Pointer_stringify', 'lengthBytesUTF8']" \
-  -s ASSERTIONS=${ASSERT} \
-  -s ALLOW_MEMORY_GROWTH=1 \
-  -s NO_EXIT_RUNTIME=1 \
-  -s INVOKE_RUN=0 \
-  -s PRECISE_I64_MATH=0 \
-  -s DOUBLE_MODE=0 \
-  -s INLINING_LIMIT=50 \
-  -s NO_FILESYSTEM=1 \
-  -s ELIMINATE_DUPLICATE_FUNCTIONS=1 \
-  -o lib/drafter.nomem.js \
-  --pre-js generated/pre.js \
-  --post-js generated/post.js
+em++ $FLAGS --memory-init-file 0 \
+     "build/out/$BUILD_TYPE/libdrafterjs.a" \
+     "$DRAFTER_PATH/build/out/$BUILD_TYPE/libdrafter.a" \
+     "$DRAFTER_PATH/build/out/$BUILD_TYPE/libsos.a" \
+     "$DRAFTER_PATH/build/out/$BUILD_TYPE/libsnowcrash.a" \
+     "$DRAFTER_PATH/build/out/$BUILD_TYPE/libsundown.a" \
+     "$DRAFTER_PATH/build/out/$BUILD_TYPE/libmarkdownparser.a" \
+     -s EXPORTED_FUNCTIONS="['_c_parse']" \
+     -s DISABLE_EXCEPTION_CATCHING=0 \
+     -s EXPORTED_RUNTIME_METHODS="['writeStringToMemory', 'getValue', 'Pointer_stringify', 'lengthBytesUTF8']" \
+     -s ASSERTIONS=${ASSERT} \
+     -s ALLOW_MEMORY_GROWTH=1 \
+     -s NO_EXIT_RUNTIME=1 \
+     -s INVOKE_RUN=0 \
+     -s PRECISE_I64_MATH=0 \
+     -s DOUBLE_MODE=0 \
+     -s INLINING_LIMIT=50 \
+     -s NO_FILESYSTEM=1 \
+     -s ELIMINATE_DUPLICATE_FUNCTIONS=1 \
+     -o lib/drafter.nomem.js \
+     --pre-js generated/pre.js \
+     --post-js generated/post.js
 

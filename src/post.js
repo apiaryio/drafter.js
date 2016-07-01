@@ -53,7 +53,7 @@ Module['parse'] = function(blueprint, options, callback) {
     }
   }
 
-  var res = _drafter_c_parse(buffer, parseOptions, astType, chptr);
+  var res = _c_parse(buffer, parseOptions, astType, chptr);
 
   _free(buffer);
 

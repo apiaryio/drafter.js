@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
-cd ext/drafter && make clean
 rm -rf generated
-rm -rf ./lib/drafter.js ./lib/drafter.js.mem ./lib/drafter.nomem.js
+rm -rf ./build
+rm -rf ./lib
+rm -rf drafterjs.gyp
+rm -rf config.gypi
+cd ext/drafter && make distclean
+
