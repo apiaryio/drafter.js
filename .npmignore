@@ -1,9 +1,13 @@
 .gitmodules
 .npmrc
-src/pre.js
-src/post.js
+src/
 ext/
 scripts/
 circle.yml
 *github-release*
 drafter.js-*.tgz
+configure
+generated/
+*.gypi
+*.gyp
+build/
