@@ -1,5 +1,15 @@
 # drafter.js Changelog
 
+## 2.4.2
+
+### Bug Fixes
+
+- This release ensures that the .gyp and .gypi files are not detected during
+  building the NPM package. NPM incorrectly computes the `gypfile` without
+  respecting the `.npmignore` file.
+  [npm/read-package-json#52](https://github.com/npm/read-package-json/pull/52)
+
+
 ## 2.4.1
 
 ### Bug Fixes

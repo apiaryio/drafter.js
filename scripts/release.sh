@@ -17,6 +17,12 @@ $GITHUB_RELEASE upload -u apiaryio -r drafter.js --tag $TAG --name drafter.js.me
 # Use the CI host's NPM_TOKEN environment variable for auth
 echo '//registry.npmjs.org/:_authToken=${NPM_TOKEN}' >.npmrc
 
+# Unfortunately NPM doesn't respect .npmignore or use correct GPY files when
+# calculating gypfile.
+# Let's delete all the related files as a workaround.
+# https://github.com/npm/read-package-json/pull/52
+rm -fr **.gyp{,i}
+
 # Publish to npm
 npm --no-git-tag-version version $TAG
 npm publish
