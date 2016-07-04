@@ -1,6 +1,6 @@
 {
   "name": "drafter.js",
-  "version": "2.4.1",
+  "version": "2.4.2",
   "description": "Pure JS Drafter built with Emscripten",
   "main": "lib/drafter.nomem.js",
   "scripts": {
@@ -33,5 +33,6 @@
     "glob": "^5.0.15",
     "mkdirp": "^0.5.1",
     "umd": "^3.0.1"
-  }
+  },
+  "gypfile": false
 }
