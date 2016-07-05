@@ -1,5 +1,14 @@
 # drafter.js Changelog
 
+## 2.4.3
+
+### Bug Fixes
+
+- Fixes an `undefined` exception thrown when the API Bleuprint
+  contained Unicode characters due to a missing function 'UTF8ToString'.
+  [issue #54](https://github.com/apiaryio/drafter.js/issues/54)
+
+
 ## 2.4.2
 
 ### Bug Fixes

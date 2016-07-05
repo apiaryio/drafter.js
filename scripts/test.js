@@ -171,7 +171,12 @@ function testFile(filename, done) {
 /*
  * Loop through all the files, test them, then print a report.
  */
-async.eachLimit(glob.sync('ext/drafter/test/**/*.apib'), 1, testFile, function (err) {
+fixtures = [].concat(
+  glob.sync('ext/drafter/test/**/*.apib'),
+  glob.sync('scripts/fixtures/*.apib')
+);
+
+async.eachLimit(fixtures, 1, testFile, function (err) {
   if (err) {
     console.log(err);
     console.log();

@@ -85,7 +85,7 @@ em++ $FLAGS "build/out/$BUILD_TYPE/libdrafterjs.a" \
      "$DRAFTER_PATH/build/out/$BUILD_TYPE/libmarkdownparser.a" \
      -s EXPORTED_FUNCTIONS="['_c_parse']" \
      -s DISABLE_EXCEPTION_CATCHING=0 \
-     -s EXPORTED_RUNTIME_METHODS="['writeStringToMemory', 'getValue', 'Pointer_stringify', 'lengthBytesUTF8']" \
+     -s EXPORTED_RUNTIME_METHODS="['writeStringToMemory', 'getValue', 'Pointer_stringify', 'lengthBytesUTF8', 'UTF8ToString']" \
      -s ASSERTIONS=${ASSERT} \
      -s DOUBLE_MODE=0 \
      -s ALLOW_MEMORY_GROWTH=1 \
@@ -109,7 +109,7 @@ em++ $FLAGS --memory-init-file 0 \
      "$DRAFTER_PATH/build/out/$BUILD_TYPE/libmarkdownparser.a" \
      -s EXPORTED_FUNCTIONS="['_c_parse']" \
      -s DISABLE_EXCEPTION_CATCHING=0 \
-     -s EXPORTED_RUNTIME_METHODS="['writeStringToMemory', 'getValue', 'Pointer_stringify', 'lengthBytesUTF8']" \
+     -s EXPORTED_RUNTIME_METHODS="['writeStringToMemory', 'getValue', 'Pointer_stringify', 'lengthBytesUTF8', 'UTF8ToString']" \
      -s ASSERTIONS=${ASSERT} \
      -s ALLOW_MEMORY_GROWTH=1 \
      -s NO_EXIT_RUNTIME=1 \
