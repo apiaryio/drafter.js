@@ -16,6 +16,11 @@ binding.
 drafter.js can be installed from NPM, or it can be downloaded from the [releases
 page](https://github.com/apiaryio/drafter.js/releases).
 
+*NOTE:** *If you're using Node, we recommend that you use the [Drafter
+NPM](https://github.com/apiaryio/drafter-npm) package instead of drafter.js
+directly. Drafter NPM will attempt to install the pure C++ parser and fallback
+to using drafter.js.
+
 ```shell
 $ npm install drafter.js
 ```
@@ -67,32 +72,6 @@ Supported options:
 - `requireBlueprintName`: Set to generate an error if the blueprint is
   missing a title.
 - `type`: Either `refract` (default) or `ast`.
-
-#### Protagonist
-
-`drafter.js` can serve as drop in replacement for
-[protagonist](https://github.com/apiaryio/protagonist), it supports
-the same API. This allows you to prefer protagonist and fallback to drafter.js.
-Protagonist will provide you with higher performance while parsing blueprints,
-however since protagonist is a binding it may be tricky to install.
-
-```javascript
-try {
-  var protagonist = require('protagonist');
-} catch (e) {
-  console.log("protagonist not found, using drafter.js.");
-  var protagonist = require('drafter.js');
-}
-
-protagonist.parse(data, options, function(err, result) {
-  if (err) {
-    console.log(JOSN.stringify(err));
-  }
-
-  console.log(JSON.stringify(data));
-});
-```
-is possible. Protagonist `parseSync` function is available too.
 
 ### Build drafter.js
 
