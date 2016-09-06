@@ -1,5 +1,11 @@
 # drafter.js Changelog
 
+## Master
+
+This update now uses Drafter 3.1.1. Please see [Drafter
+3.1.1](https://github.com/apiaryio/drafter/releases/tag/v3.1.1) for
+the list of changes.
+
 ## 2.5.0-pre.0
 
 This update now uses Drafter 3.1.0-pre.0. Please see [Drafter
