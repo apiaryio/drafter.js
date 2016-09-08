@@ -24,5 +24,4 @@ echo '//registry.npmjs.org/:_authToken=${NPM_TOKEN}' >.npmrc
 rm -fr **.gyp{,i}
 
 # Publish to npm
-npm --no-git-tag-version version $TAG
 npm publish
