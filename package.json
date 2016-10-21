@@ -4,7 +4,7 @@
   "description": "Pure JS Drafter built with Emscripten",
   "main": "lib/drafter.nomem.js",
   "scripts": {
-    "test": "node scripts/test.js",
+    "test": "node scripts/test.js && node scripts/test-validate.js",
     "build": "./scripts/wrap.js && docker run --rm -v $(pwd):/src -t apiaryio/emcc:1.36 scripts/emcbuild.sh",
     "clean": "docker run --rm -v $(pwd):/src -t apiaryio/emcc:1.36 scripts/emcclean.sh",
     "release": "scripts/release.sh"
