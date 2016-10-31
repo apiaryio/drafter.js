@@ -1,0 +1,26 @@
+FORMAT: 1A
+HOST: https://example.org
+
+# Test-API
+
+description
+
+# Foo [/foo/bar]
+
+Get data
+
+## Retrieve the data [GET]
+
++ Request
+
++ Response (application/vnd.api+json)
+
+    + Attributes
+
+        + foo1: `barä` (string)
+        + foo2: `barö` (string)
+        + foo3: `barü` (string)
+        + foo4: `barß` (string)
+        + foo5: `bar` (string) - This is also bad ä
+        + fö: `bar` (string) - This too
+

@@ -56,12 +56,14 @@ HTML script tag.
 Once you've included drafter.js, you can parse an API Blueprint:
 
 ```javascript
-try {
-  var res = drafter.parse('# API Blueprint...', {exportSourcemap: true});
-  console.log(res);
-} catch (err) {
-  console.log(err);
-}
+
+var res = drafter.parse('# API Blueprint...', {exportSourcemap: true}, function (err, res) {
+    if (err) {
+        console.log(err)
+    }
+    console.log(res);
+});
+
 ```
 
 Supported options:
@@ -72,6 +74,38 @@ Supported options:
 - `requireBlueprintName`: Set to generate an error if the blueprint is
   missing a title.
 - `type`: Either `refract` (default) or `ast`.
+
+Or if you want just to validate it and are insterested only in parsing
+errors and warnings:
+
+```javascript
+var res = drafter.validate('# API Blueprint...', {requireBlueprintname: true}, function (err, res) {
+    if (err) {
+        console.log(err)
+    }
+
+    if (res) {
+        console.log("Document has semantic issues!");
+        console.log(res);
+    } else {
+        console.log("Document is valid with no warnings.");
+    }
+});
+```
+
+Supported options:
+
+- `json`: Set to `false` to disable parsing of the JSON data. You will
+  instead get a JSON string as the result.
+- `requireBlueprintName`: Set to generate an error if the blueprint is
+  missing a title.
+
+#### Synchronous API
+
+Both functions have their synchronous counterpart which instead of callback return the result and in case of error throw exception.
+
+- `parseSync(source, options)`
+- `validateSync(source, options)`
 
 ### Build drafter.js
 

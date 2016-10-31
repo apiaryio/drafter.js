@@ -1,6 +1,7 @@
 #include "cparse.h"
 
 #include "snowcrash.h"
+#include "drafter_private.h"
 #include "sosJSON.h"
 
 #include "SerializeAST.h"
@@ -55,4 +56,24 @@ SC_API int c_parse(const char* source,
     }
 
     return blueprint.report.error.code;
+}
+
+SC_API int c_validate(const char *source,
+                      sc_blueprint_parser_options options,
+                      char **result)
+{
+    drafter_result *res = NULL;
+    drafter_parse_options parse_opts;
+    parse_opts.requireBlueprintName = (bool)(options & SC_REQUIRE_BLUEPRINT_NAME_OPTION);
+
+    res = drafter_check_blueprint_with_options(source, parse_opts);
+
+    if (NULL != res) {
+        *result = drafter_serialize(res,
+                                    (drafter_options){false, DRAFTER_SERIALIZE_JSON});
+        drafter_free_result(res);
+        return 1;
+    }
+
+    return 0;
 }
