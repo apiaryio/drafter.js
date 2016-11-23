@@ -25,6 +25,7 @@
     "url": "https://github.com/apiaryio/drafter.js/issues"
   },
   "homepage": "https://github.com/apiaryio/drafter.js",
+  "types": "./drafter.d.ts",
   "devDependencies": {
     "async": "^1.4.2",
     "chai": "^3.3.0",
