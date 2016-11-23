@@ -16,7 +16,7 @@ binding.
 drafter.js can be installed from NPM, or it can be downloaded from the [releases
 page](https://github.com/apiaryio/drafter.js/releases).
 
-*NOTE:** *If you're using Node, we recommend that you use the [Drafter
+**NOTE:** If you're using Node, we recommend that you use the [Drafter
 NPM](https://github.com/apiaryio/drafter-npm) package instead of drafter.js
 directly. Drafter NPM will attempt to install the pure C++ parser and fallback
 to using drafter.js.
