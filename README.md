@@ -66,6 +66,7 @@ var res = drafter.parse('# API Blueprint...', {exportSourcemap: true}, function 
 
 ```
 
+
 Supported options:
 
 - `exportSourcemap`: Set to export sourcemap information.
@@ -100,6 +101,11 @@ Supported options:
 - `requireBlueprintName`: Set to generate an error if the blueprint is
   missing a title.
 
+### Note
+
+These are not a real async API calls - their presence is merely for API compatibility
+with [protagonist](https://github.com/apiaryio/protagonist)
+
 #### Synchronous API
 
 Both functions have their synchronous counterpart which instead of callback return the result and in case of error throw exception.
@@ -109,8 +115,8 @@ Both functions have their synchronous counterpart which instead of callback retu
 
 ### Build drafter.js
 
-*Unfortunately building drafter.js works only on a *nix environment at the
-moment.*
+Unfortunately building drafter.js works only on a *nix environment at the
+moment.
 
 1. Building is easy using [Docker](https://www.docker.com/).
 
