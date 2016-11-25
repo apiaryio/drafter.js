@@ -57,7 +57,7 @@ Once you've included drafter.js, you can parse an API Blueprint:
 
 ```javascript
 
-var res = drafter.parse('# API Blueprint...', {exportSourcemap: true}, function (err, res) {
+var res = drafter.parse('# API Blueprint...', {generateSourceMap: true}, function (err, res) {
     if (err) {
         console.log(err)
     }
@@ -69,7 +69,7 @@ var res = drafter.parse('# API Blueprint...', {exportSourcemap: true}, function 
 
 Supported options:
 
-- `exportSourcemap`: Set to export sourcemap information.
+- `generateSourceMap`: Set to export sourcemap information.
 - `json`: Set to `false` to disable parsing of the JSON data. You will
   instead get a JSON string as the result.
 - `requireBlueprintName`: Set to generate an error if the blueprint is
