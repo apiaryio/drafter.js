@@ -22,7 +22,7 @@ static char* ToString(const std::stringstream& stream)
     return str;
 }
 
-SC_API int c_parse(const char* source,
+int c_parse(const char* source,
                    sc_blueprint_parser_options options,
                    enum drafter_ast_type_option astType,
                    char** result)
@@ -58,7 +58,7 @@ SC_API int c_parse(const char* source,
     return blueprint.report.error.code;
 }
 
-SC_API int c_validate(const char *source,
+int c_validate(const char *source,
                       sc_blueprint_parser_options options,
                       char **result)
 {

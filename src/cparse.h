@@ -1,11 +1,9 @@
-#ifndef SC_C_DRAFTER_H
-#define SC_C_DRAFTER_H
+#ifndef CPARSE_H
+#define CPARSE_H 1
 
 #ifdef __cplusplus
 extern "C" {
 #endif
-
-#include "Platform.h" // use Platform.h from snowcrash
 
 typedef unsigned int sc_blueprint_parser_options;
 
@@ -22,14 +20,14 @@ enum drafter_ast_type_option {
     DRAFTER_REFRACT_AST_TYPE = 1      /// < Refract AST
 };
 
-SC_API int c_parse(const char* source,
-                   sc_blueprint_parser_options options,
-                   enum drafter_ast_type_option astType,
-                   char** result);
+int c_parse(const char* source,
+            sc_blueprint_parser_options options,
+            enum drafter_ast_type_option astType,
+            char** result);
 
-SC_API int c_validate(const char *source,
-                      sc_blueprint_parser_options options,
-                      char **result);
+int c_validate(const char *source,
+               sc_blueprint_parser_options options,
+               char **result);
 
 #ifdef __cplusplus
 }
