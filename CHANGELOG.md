@@ -1,5 +1,11 @@
 # drafter.js Changelog
 
+## master
+
+### Breaking
+
+- Drop support node < 4.0
+
 ## 2.6.2
 
 This update now uses Drafter 3.2.2. Please see [Drafter

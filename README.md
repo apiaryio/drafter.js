@@ -36,7 +36,7 @@ require it via:
 var drafter = require('drafter.js')
 ```
 
-*Node versions supported*: >=0.12
+*Node versions supported*: >=4
 
 It works on 0.10 too but without any guarantees and expect it to be
 significantly slower.
