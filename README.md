@@ -74,7 +74,6 @@ Supported options:
   instead get a JSON string as the result.
 - `requireBlueprintName`: Set to generate an error if the blueprint is
   missing a title.
-- `type`: Either `refract` (default) or `ast`.
 
 Or if you want just to validate it and are insterested only in parsing
 errors and warnings:

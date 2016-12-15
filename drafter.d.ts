@@ -5,7 +5,6 @@ interface DrafterValidateOptions {
 
 interface DrafterParseOptions extends DrafterValidateOptions {
   generateSourceMap?: boolean,
-  type?: string
 }
 
 interface DrafterStatic {

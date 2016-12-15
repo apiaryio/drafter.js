@@ -11,28 +11,26 @@ function ms(duration) {
 
 var filename = process.argv[2];
 
-var options = {
-  type: 'ast'
-};
-
 fs.readFile(filename, 'utf8', function (err, data) {
   var result;
   var caughtError;
   var start = process.hrtime();
+
   try {
-    result = drafter.parse(data, options);
+    result = drafter.parse(data, {});
   } catch (parseErr) {
     result = parseErr.result;
     caughtError = parseErr;
   }
+
   var duration = process.hrtime(start);
 
   if (caughtError == undefined) {
-    console.log('OK ' + filename + ' ('+ options.type +') ' +  parseInt(ms(duration)) + 'ms');
+    console.log('OK ' + filename + ' ' +  parseInt(ms(duration)) + 'ms');
     console.log(JSON.stringify(result, null, 2));
   }
   else {
-    console.log('FAIL ' + filename + ' ('+ options.type +') ' +  parseInt(ms(duration)) + 'ms');
+    console.log('FAIL ' + filename + ' ' +  parseInt(ms(duration)) + 'ms');
     console.log('Error: ' +  caughtError);
   }
 });
