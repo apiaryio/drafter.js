@@ -24,7 +24,6 @@ static char* ToString(const std::stringstream& stream)
 
 int c_parse(const char* source,
                    sc_blueprint_parser_options options,
-                   enum drafter_ast_type_option astType,
                    char** result)
 {
 
@@ -39,7 +38,7 @@ int c_parse(const char* source,
 
     if (result) {
         std::stringstream resultStream;
-        drafter::WrapperOptions wrapperOptions(drafter::ASTType(astType), options & SC_EXPORT_SOURCEMAP_OPTION);
+        drafter::WrapperOptions wrapperOptions(drafter::RefractASTType, options & SC_EXPORT_SOURCEMAP_OPTION);
 
         try {
             serializer.process(drafter::WrapResult(blueprint, wrapperOptions), resultStream);

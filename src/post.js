@@ -8,7 +8,6 @@
              instead get a JSON string as the result.
  * - `requireBlueprintName`: Set to generate an error if the blueprint is
                              missing a title.
- * - `type`: Either `refract` (default) or `ast`.
  */
 Module['parse'] = function(blueprint, options, callback) {
   if (false === this.ready) {
@@ -25,7 +24,6 @@ Module['parse'] = function(blueprint, options, callback) {
     var bufferLen = lengthBytesUTF8(blueprint) + 1;
     var buffer = _malloc(bufferLen);
     var parseOptions = 0;
-    var astType = 1;
 
     stringToUTF8(blueprint, buffer, bufferLen);
 
@@ -37,26 +35,9 @@ Module['parse'] = function(blueprint, options, callback) {
       if (options.requireBlueprintName) {
         parseOptions |= (1 << 1);
       }
-
-      switch (options.type) {
-      case 'ast':
-        astType = 0;
-        break;
-      case 'refract':
-        astType = 1;
-        break;
-      case undefined:
-        break;
-      default:
-        var err = new Error('Unknown type option ' + options.type);
-        if (callback) {
-          return callback(err, null);
-        }
-        throw err;
-      }
     }
 
-    var res = _c_parse(buffer, parseOptions, astType, chptr);
+    var res = _c_parse(buffer, parseOptions, chptr);
 
     _free(buffer);
 

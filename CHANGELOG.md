@@ -6,6 +6,8 @@
 
 - Drop support node < 4.0
 
+- Remove the option to select AST Type. The ouput will be only refract
+
 ## 2.6.2
 
 This update now uses Drafter 3.2.2. Please see [Drafter

@@ -39,15 +39,18 @@ function ms(duration) {
  * Tests a single file with a single serialization format against the output
  * of the `drafter` executable.
  */
-function testSerialization(filename, type, done) {
+function testSerialization(filename, done) {
   testRun.total++;
+
   async.series({
     // Get the C++ drafter executable output
     cpp: function (callback) {
-      var cmd = DRAFTER + ' -f json -t ' + type + ' ' + filename;
+      var cmd = DRAFTER + ' -f json ' + filename;
       var start = process.hrtime();
+
       exec(cmd, function (err, stdout, stderr) {
         var duration = process.hrtime(start);
+
         try {
           callback(null, {
             output: stdout ? JSON.parse(stdout) : null,
@@ -70,12 +73,10 @@ function testSerialization(filename, type, done) {
         });
       }
 
-      var options = {
-        type: type
-      };
       fs.readFile(filename, 'utf8', function (err, data) {
         var start = process.hrtime();
-        protagonist.parse(data, options, function (caughtErr) {
+
+        protagonist.parse(data, {}, function (caughtErr) {
           var duration = process.hrtime(start);
           // We really only care about timing info here, so we ignore the result
           callback(null, {
@@ -88,19 +89,18 @@ function testSerialization(filename, type, done) {
     },
     // Get the drafter.js output
     js: function (callback) {
-      var options = {
-        type: type
-      };
       fs.readFile(filename, 'utf8', function (err, data) {
         var result;
         var caughtError;
         var start = process.hrtime();
+
         try {
-          result = drafter.parse(data, options);
+          result = drafter.parse(data, {});
         } catch (parseErr) {
           result = parseErr.result;
           caughtError = parseErr;
         }
+
         var duration = process.hrtime(start);
 
         callback(null, {
@@ -130,19 +130,21 @@ function testSerialization(filename, type, done) {
       }
 
       var durationDiff = results.js.duration / results.cpp.duration;
-      console.log('OK ' + filename + ' (' + type + ')' + ' JS:' + parseInt(results.js.duration) + 'ms P:' + parseInt(results.protagonist.duration) + 'ms CPP:' + parseInt(results.cpp.duration) + 'ms (' + parseInt(durationDiff * 100) + '%)');
+      console.log('OK ' + filename + ' JS:' + parseInt(results.js.duration) + 'ms P:' + parseInt(results.protagonist.duration) + 'ms CPP:' + parseInt(results.cpp.duration) + 'ms (' + parseInt(durationDiff * 100) + '%)');
       testRun.pass++;
     } catch (err) {
-      console.log('FAIL ' + filename + ' (' + type + ')');
+      console.log('FAIL ' + filename);
 
       if (!results.js.ouptut) {
         console.log(chalk['red'](err));
       } else {
         // Get a smart diff and display only the parts that have changed.
         var diff = jsdiff.diffJson(results.js.output, results.cpp.output);
+
         if (!diff.length) {
           console.log(err);
         }
+
         diff.forEach(function (part) {
           if (part.added || part.removed) {
             var color = part.added ? 'green' : 'red';
@@ -162,13 +164,6 @@ function testSerialization(filename, type, done) {
 }
 
 /*
- * Test each file with each serialization format.
- */
-function testFile(filename, done) {
-  async.eachSeries(['ast', 'refract'], testSerialization.bind(this, filename), done);
-}
-
-/*
  * Loop through all the files, test them, then print a report.
  */
 fixtures = [].concat(
@@ -176,7 +171,7 @@ fixtures = [].concat(
   glob.sync('scripts/fixtures/*.apib')
 );
 
-async.eachLimit(fixtures, 1, testFile, function (err) {
+async.eachLimit(fixtures, 1, testSerialization, function (err) {
   if (err) {
     console.log(err);
     console.log();
