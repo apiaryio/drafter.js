@@ -5,8 +5,8 @@
   "main": "lib/drafter.nomem.js",
   "scripts": {
     "test": "node scripts/test.js && node scripts/test-validate.js",
-    "build": "./scripts/wrap.js && docker run --rm -v $(pwd):/src -t apiaryio/emcc:1.36 scripts/emcbuild.sh",
-    "clean": "docker run --rm -v $(pwd):/src -t apiaryio/emcc:1.36 scripts/emcclean.sh",
+    "build": "./scripts/wrap.js && docker run --rm -v $(pwd):/src -t apiaryio/emcc:1.37 scripts/emcbuild.sh",
+    "clean": "docker run --rm -v $(pwd):/src -t apiaryio/emcc:1.37 scripts/emcclean.sh",
     "release": "scripts/release.sh"
   },
   "browser": {

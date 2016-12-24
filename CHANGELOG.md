@@ -2,6 +2,8 @@
 
 ## master
 
+- Build done using emscripten 1.37.x
+
 ### Breaking
 
 - Drop support node < 4.0
