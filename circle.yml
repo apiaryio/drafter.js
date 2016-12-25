@@ -17,10 +17,10 @@ dependencies:
   cache_directories:
     - "~/emcc-1.36"
   pre:
-    - if [[ ! -f ~/emcc-1.36/emscripten.tar ]]; then mkdir -p ~/emcc-1.36 &&
-      docker pull "apiaryio/emcc:1.36" &&
-      docker save "apiaryio/emcc:1.36" > ~/emcc-1.36/emscripten.tar;
-      else docker load -i ~/emcc-1.36/emscripten.tar; fi
+    - if [[ ! -f ~/emcc-1.37/emscripten.tar ]]; then mkdir -p ~/emcc-1.37 &&
+      docker pull "apiaryio/emcc:1.37" &&
+      docker save "apiaryio/emcc:1.37" > ~/emcc-1.37/emscripten.tar;
+      else docker load -i ~/emcc-1.37/emscripten.tar; fi
   post:
     - cd ext/drafter && ./configure && make drafter
     - npm install protagonist

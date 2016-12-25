@@ -92,8 +92,9 @@ em++ $FLAGS "build/out/$BUILD_TYPE/libdrafterjs.a" \
      -s NO_EXIT_RUNTIME=1 \
      -s INVOKE_RUN=0 \
      -s PRECISE_I64_MATH=0 \
-     -s INLINING_LIMIT=1 \
+     -s INLINING_LIMIT=50 \
      -s NO_FILESYSTEM=1 \
+     -s NODEJS_CATCH_EXIT=0 \
      -s ELIMINATE_DUPLICATE_FUNCTIONS=1 \
      -s AGGRESSIVE_VARIABLE_ELIMINATION=1 \
      -o lib/drafter.js  \
@@ -118,7 +119,9 @@ em++ $FLAGS --memory-init-file 0 \
      -s DOUBLE_MODE=0 \
      -s INLINING_LIMIT=50 \
      -s NO_FILESYSTEM=1 \
+     -s NODEJS_CATCH_EXIT=0 \
      -s ELIMINATE_DUPLICATE_FUNCTIONS=1 \
+     -s AGGRESSIVE_VARIABLE_ELIMINATION=1 \
      -o lib/drafter.nomem.js \
      --pre-js generated/pre.js \
      --post-js generated/post.js
