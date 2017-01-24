@@ -1,5 +1,14 @@
 # drafter.js Changelog
 
+## 2.6.4
+
+### Bug Fixes
+
+- Drafter.js will no longer override `Module` allowing drafter.js users to
+  [override the emscripten execution
+  environment](https://kripken.github.io/emscripten-site/docs/api_reference/module.html#overriding-execution-environment).
+
+
 ## 2.6.3
 
 This update now uses Drafter 3.2.3. Please see [Drafter
