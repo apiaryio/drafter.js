@@ -1,6 +1,6 @@
 # drafter.js Changelog
 
-## Master
+## 2.6.4
 
 ### Bug Fixes
 
