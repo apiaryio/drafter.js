@@ -3,7 +3,7 @@
  * as an object.
  *
  * Options:
- * - `exportSourcemap`: Set to export sourcemap information.
+ * - `generateSourcemap`: Set to export sourcemap information.
  * - `json`: Set to `false` to disable parsing of the JSON data. You will
              instead get a JSON string as the result.
  * - `requireBlueprintName`: Set to generate an error if the blueprint is
@@ -23,21 +23,22 @@ Module['parse'] = function(blueprint, options, callback) {
     var chptr = _malloc(4);
     var bufferLen = lengthBytesUTF8(blueprint) + 1;
     var buffer = _malloc(bufferLen);
-    var parseOptions = 0;
+    var requireBlueprintName = false;
+    var sourcemap = false;
 
     stringToUTF8(blueprint, buffer, bufferLen);
 
     if (options) {
-      if (options.exportSourcemap || options.generateSourceMap) {
-        parseOptions |= (1 << 2);
+      if (options.generateSourceMap) {
+        sourcemap = options.generateSourceMap;
       }
 
       if (options.requireBlueprintName) {
-        parseOptions |= (1 << 1);
+        requireBlueprintName = options.requireBlueprintName;
       }
     }
 
-    var res = _c_parse(buffer, parseOptions, chptr);
+    var res = _c_parse(buffer, requireBlueprintName, sourcemap, chptr);
 
     _free(buffer);
 
@@ -97,16 +98,16 @@ Module['validate'] = function(blueprint, options, callback) {
     var chptr = _malloc(4);
     var bufferLen = lengthBytesUTF8(blueprint) + 1;
     var buffer = _malloc(bufferLen);
-    var parseOptions = 0;
+    var requireBlueprintName = false;
     var output = null;
 
     if (options && options.requireBlueprintName) {
-      parseOptions |= (1 << 1);
+      requireBlueprintName = options.requireBlueprintName;
     }
 
     stringToUTF8(blueprint, buffer, bufferLen);
 
-    var res = _c_validate(buffer, parseOptions, chptr);
+    var res = _c_validate(buffer, requireBlueprintName, chptr);
     _free(buffer);
 
     if (res) {

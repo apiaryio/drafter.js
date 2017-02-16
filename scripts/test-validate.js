@@ -114,6 +114,7 @@ function testFile(filename, done) {
   });
 }
 
+console.log("Validate Test ....\n");
 
 /*
  * Loop through all the files, test them, then print a report.
@@ -133,7 +134,7 @@ async.eachLimit(fixtures, 1, testFile, function (err) {
   console.log('Total:  ' + testRun.total);
   console.log('Passed: ' + testRun.pass);
   console.log('Failed: ' + testRun.fail);
-  console.log('Average JS speed: ' + (testRun.jsTime / testRun.prtgTime).toFixed(1) + ' times slower than Protagonist');
+  console.log('Average JS speed: ' + (testRun.jsTime / testRun.prtgTime).toFixed(1) + ' times slower than Protagonist\n');
 
   process.exit(testRun.fail > 0 ? -1 : 0);
 });
