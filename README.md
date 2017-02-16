@@ -4,12 +4,12 @@
 
 Snowcrash parser harness
 
-`drafter.js` is a pure JavaScript version of the `drafter` library. It exposes
-a single `parse` function which takes an API Blueprint string and options as
-input and returns the parse result. It is built from the C++ sources using
-[emscripten](http://kripken.github.io/emscripten-site/). It's API compatible
-with [Protagonist](https://github.com/apiaryio/protagonist), the Drafter Node
-binding.
+`drafter.js` is a pure JavaScript version of the `drafter` library. It
+is built from the C++ sources
+using [emscripten](http://kripken.github.io/emscripten-site/). It's
+API compatible
+with [Protagonist](https://github.com/apiaryio/protagonist), the
+Drafter Node binding.
 
 ## Installation
 
@@ -38,7 +38,7 @@ var drafter = require('drafter.js')
 
 *Node versions supported*: >=4
 
-It works on 0.10 too but without any guarantees and expect it to be
+It works on 0.10 or 0.12 too but without any guarantees and expect it to be
 significantly slower.
 
 ### Web Browser
@@ -123,8 +123,8 @@ moment.
 
     ```shell
     $ ./scripts/wrap.js
-    $ docker pull "apiaryio/emcc:1.36"
-    $ docker run -v $(pwd):/src -t apiaryio/emcc:1.36 emcc/emcbuild.sh
+    $ docker pull "apiaryio/emcc:1.37"
+    $ docker run -v $(pwd):/src -t apiaryio/emcc:1.37 emcc/emcbuild.sh
     ```
     or with `npm`
     ```shell

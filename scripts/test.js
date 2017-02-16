@@ -163,6 +163,8 @@ function testSerialization(filename, done) {
   });
 }
 
+console.log("Parse Test ....\n");
+
 /*
  * Loop through all the files, test them, then print a report.
  */
@@ -181,7 +183,7 @@ async.eachLimit(fixtures, 1, testSerialization, function (err) {
   console.log('Total:  ' + testRun.total);
   console.log('Passed: ' + testRun.pass);
   console.log('Failed: ' + testRun.fail);
-  console.log('Average JS speed: ' + (testRun.jsTime / testRun.cppTime).toFixed(1) + ' times slower than C++ and ' + (testRun.jsTime / testRun.prtgTime).toFixed(1) + ' times slower than Protagonist');
+  console.log('Average JS speed: ' + (testRun.jsTime / testRun.cppTime).toFixed(1) + ' times slower than C++ and ' + (testRun.jsTime / testRun.prtgTime).toFixed(1) + ' times slower than Protagonist\n');
 
   process.exit(testRun.fail > 0 ? -1 : 0);
 });
