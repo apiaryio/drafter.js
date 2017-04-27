@@ -15,7 +15,7 @@ checkout:
 
 dependencies:
   cache_directories:
-    - "~/emcc-1.36"
+    - "~/emcc-1.37"
   pre:
     - if [[ ! -f ~/emcc-1.37/emscripten.tar ]]; then mkdir -p ~/emcc-1.37 &&
       docker pull "apiaryio/emcc:1.37" &&
