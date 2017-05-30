@@ -1,5 +1,11 @@
 # drafter.js Changelog
 
+## 2.6.7
+
+This update now uses Drafter 3.2.7. Please see [Drafter
+3.2.7]https://github.com/apiaryio/drafter/releases/tag/v3.2.7) for
+the list of changes.
+
 ## 2.6.6
 
 ### Bug Fixes
