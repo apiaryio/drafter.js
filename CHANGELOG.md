@@ -10,6 +10,43 @@
 
 - Remove the option to select AST Type. The ouput will be only refract
 
+## 2.6.7
+
+This update now uses Drafter 3.2.7. Please see [Drafter
+3.2.7]https://github.com/apiaryio/drafter/releases/tag/v3.2.7) for
+the list of changes.
+
+## 2.6.6
+
+### Bug Fixes
+
+This update now uses Drafter 3.2.6. Please see [Drafter
+3.2.6](https://github.com/apiaryio/drafter/releases/tag/v3.2.6) for
+the list of changes.
+
+## 2.6.5
+
+### Bug Fixes
+
+This update now uses Drafter 3.2.5. Please see [Drafter
+3.2.5](https://github.com/apiaryio/drafter/releases/tag/v3.2.5) for
+the list of changes.
+
+## 2.6.4
+
+### Bug Fixes
+
+- Drafter.js will no longer override `Module` allowing drafter.js users to
+  [override the emscripten execution
+  environment](https://kripken.github.io/emscripten-site/docs/api_reference/module.html#overriding-execution-environment).
+
+
+## 2.6.3
+
+This update now uses Drafter 3.2.3. Please see [Drafter
+3.2.3](https://github.com/apiaryio/drafter/releases/tag/v3.2.3) for
+the list of changes.
+
 ## 2.6.2
 
 This update now uses Drafter 3.2.2. Please see [Drafter
