@@ -1,6 +1,6 @@
 {
     "includes": [
-        "ext/drafter/ext/snowcrash/common.gypi"
+        "ext/drafter/common.gypi"
     ],
 
     "targets": [
