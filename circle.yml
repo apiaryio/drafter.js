@@ -23,7 +23,7 @@ dependencies:
       else docker load -i ~/emcc-1.37/emscripten.tar; fi
   post:
     - cd ext/drafter && ./configure && make drafter
-    - npm install protagonist
+    - npm install ext/protagonist
 
 test:
   pre:

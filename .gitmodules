@@ -1,3 +1,6 @@
 [submodule "ext/drafter"]
 	path = ext/drafter
 	url = https://github.com/apiaryio/drafter.git
+[submodule "ext/protagonist"]
+	path = ext/protagonist
+	url = https://github.com/apiaryio/protagonist.git
