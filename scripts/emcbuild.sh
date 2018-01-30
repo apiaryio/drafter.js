@@ -59,8 +59,6 @@ else
     BUILDFLAGS="-Oz"
 fi
 
-BUILDFLAGS="$BUILDFLAGS -fno-rtti"
-
 DRAFTER_PATH="ext/drafter"
 
 (
