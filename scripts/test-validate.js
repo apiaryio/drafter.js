@@ -9,7 +9,13 @@ var glob = require('glob');
 var jsdiff = require('diff');
 var path = require('path');
 var drafter = require('../lib/drafter.nomem.js');
-var protagonist = require('protagonist');
+
+var protagonist = null;
+try {
+  protagonist = require('protagonist');
+} catch (err) {
+  console.log('Skipping protagonist tests. Use `npm install protagonist` to run them.')
+}
 
 var testRun = {
   total: 0,
