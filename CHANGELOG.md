@@ -3,7 +3,7 @@
 ## 3.0.0-pre.0
 
 This update now uses Drafter 4.0.0-pre.0. Please see [Drafter
-4.0.0-pre.0]https://github.com/apiaryio/drafter/releases/tag/v4.0.0-pre.0) for
+4.0.0-pre.0](https://github.com/apiaryio/drafter/releases/tag/v4.0.0-pre.0) for
 the list of changes.
 
 - Build done using emscripten 1.37.x
