@@ -1,0 +1,108 @@
+version: 2
+workflows:
+  version: 2
+  build-test:
+    jobs:
+      - build
+      - test-node4:
+          requires:
+            - build
+      - test-node6:
+          requires:
+            - build
+      - test-node8:
+          requires:
+            - build
+      - test-node10:
+          requires:
+            - build
+      - deploy:
+          requires:
+            - build
+            - test-node4
+            - test-node6
+            - test-node8
+            - test-node10
+          filters:
+            tags:
+              only: /^v.*/
+            branches:
+              ignore: /.*/
+
+jobs:
+  build:
+    docker:
+      - image: apiaryio/emcc:1.37
+    steps:
+      - checkout
+      - run: apt-get install -y git-core
+      - run: git submodule update --recursive --init
+      - run: npm install
+      - run: ./scripts/wrap.js
+      - run: ./scripts/emcbuild.sh
+      - persist_to_workspace:
+          root: lib
+          paths:
+            - drafter.js
+            - drafter.js.mem
+            - drafter.nomem.js
+      - store_artifacts:
+          path: lib
+
+  test-node: &test-node
+    docker:
+      - image: node
+    steps:
+      - checkout
+      - run: git submodule update --recursive --init
+      - attach_workspace:
+          at: lib
+      - run:
+          name: Installing Compiler
+          command: |
+            echo "deb http://ftp.us.debian.org/debian unstable main contrib non-free" > /etc/apt/sources.list.d/unstable.list
+            apt-get update
+            apt-get install -y -t unstable gcc-7 g++-7
+      - run: npm install
+      - run:
+          name: Building Drafter
+          command: |
+            cd ext/drafter
+            CXX=g++-7 ./configure
+            make drafter
+      - run:
+          # Note, on Node 4 (older NPM) this MUST happen after NPM install
+          # otherwise NPM install triggers a rebuild
+          name: Building Protagonist
+          command: CXX=g++-7 npm install ext/protagonist
+      - run: npm test
+
+  test-node4:
+    <<: *test-node
+    docker:
+      - image: node:4
+
+  test-node6:
+    <<: *test-node
+    docker:
+      - image: node:6
+
+  test-node8:
+    <<: *test-node
+    docker:
+      - image: node:8
+
+  test-node10:
+    <<: *test-node
+    docker:
+      - image: node:10
+
+  deploy:
+    docker:
+      - image: node:10
+    steps:
+      - checkout
+      - run: git submodule update --recursive --init
+      - attach_workspace:
+          at: .
+      - run: ./scripts/release.sh
