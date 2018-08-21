@@ -95,6 +95,7 @@ em++ $FLAGS "build/out/$BUILD_TYPE/libdrafterjs.a" \
      -s NODEJS_CATCH_EXIT=0 \
      -s ELIMINATE_DUPLICATE_FUNCTIONS=1 \
      -s AGGRESSIVE_VARIABLE_ELIMINATION=1 \
+     -s WASM=0 \
      -o lib/drafter.js  \
      --pre-js generated/pre.js \
      --post-js generated/post.js
@@ -120,6 +121,7 @@ em++ $FLAGS --memory-init-file 0 \
      -s NODEJS_CATCH_EXIT=0 \
      -s ELIMINATE_DUPLICATE_FUNCTIONS=1 \
      -s AGGRESSIVE_VARIABLE_ELIMINATION=1 \
+     -s WASM=0 \
      -o lib/drafter.nomem.js \
      --pre-js generated/pre.js \
      --post-js generated/post.js
