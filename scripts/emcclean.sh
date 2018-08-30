@@ -5,5 +5,4 @@ rm -rf ./build
 rm -rf ./lib
 rm -rf drafterjs.gyp
 rm -rf config.gypi
-cd ext/drafter && make distclean
-
+cd ext/protagonist/drafter && make distclean

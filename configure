@@ -156,7 +156,7 @@ if os.path.exists(options_fn):
     gyp_args.extend(['-I', options_fn])
 
 subprocess.call(
-    [sys.executable, 'ext/drafter/tools/gyp/gyp_main.py'] + gyp_args)
+    [sys.executable, 'ext/protagonist/drafter/tools/gyp/gyp_main.py'] + gyp_args)
 
 # All done
 print("All OK.")
