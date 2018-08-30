@@ -59,7 +59,7 @@ else
     BUILDFLAGS="-Oz"
 fi
 
-DRAFTER_PATH="ext/drafter"
+DRAFTER_PATH="ext/protagonist/drafter"
 
 (
   cd "$DRAFTER_PATH"
@@ -125,4 +125,3 @@ em++ $FLAGS --memory-init-file 0 \
      -o lib/drafter.nomem.js \
      --pre-js generated/pre.js \
      --post-js generated/post.js
-

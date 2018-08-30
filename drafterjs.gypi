@@ -1,6 +1,6 @@
 {
     "includes": [
-        "ext/drafter/common.gypi"
+        "ext/protagonist/drafter/common.gypi"
     ],
 
     "targets": [
@@ -13,7 +13,7 @@
                 "src/cparse.cc",
             ],
             "dependencies": [
-                'ext/drafter/drafter.gyp:libdrafter',
+                'ext/protagonist/drafter/drafter.gyp:libdrafter',
             ],
         },
     ],
