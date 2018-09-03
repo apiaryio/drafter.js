@@ -4,7 +4,7 @@
   "description": "Pure JS Drafter built with Emscripten",
   "main": "lib/drafter.nomem.js",
   "scripts": {
-    "test": "node scripts/test.js && node scripts/test-validate.js",
+    "test": "mocha test",
     "build": "./scripts/wrap.js && docker run --rm -v $(pwd):/src -t apiaryio/emcc:1.38.11 scripts/emcbuild.sh",
     "clean": "docker run --rm -v $(pwd):/src -t apiaryio/emcc:1.38.11 scripts/emcclean.sh",
     "release": "scripts/release.sh"
@@ -27,12 +27,13 @@
   "homepage": "https://github.com/apiaryio/drafter.js",
   "types": "./drafter.d.ts",
   "devDependencies": {
-    "async": "^1.4.2",
-    "chai": "^3.3.0",
+    "async": "^2.4.1",
+    "chai": "^4.1.2",
     "chalk": "^1.1.1",
     "diff": "^2.1.3",
-    "glob": "^5.0.15",
+    "glob": "^7.1.2",
     "mkdirp": "^0.5.1",
+    "mocha": "^5.2.0",
     "umd": "^3.0.1"
   }
 }
