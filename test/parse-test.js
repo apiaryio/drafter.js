@@ -3,11 +3,12 @@ var glob = require('glob');
 var path = require('path');
 var fs = require('fs');
 var exec = require('child_process').exec;
-var drafter = require('../lib/drafter.nomem.js');
-
-// TODO: Run protagonist tests from ext/protagonist installation
 
 var DRAFTER = path.join('ext', 'protagonist', 'drafter', 'bin', 'drafter');
+var protagonist = require('protagonist');
+var drafter = require('../lib/drafter.nomem.js');
+
+// TODO: Performance comparison
 
 // Loop through all the files, test them, then print a report
 var fixtures = [].concat(
@@ -23,6 +24,9 @@ describe('Parse fixture', function () {
       var cppDuration = 0;
       var cppError = null;
       var cppOutput = null;
+      var nodeDuration = 0;
+      var nodeError = null;
+      var nodeOutput = null;
       var jsDuration = 0;
       var jsError = null;
       var jsOutput = null;
@@ -47,6 +51,25 @@ describe('Parse fixture', function () {
         });
       });
 
+      it('NODE parser', function (done) {
+        fs.readFile(fixture, 'utf8', function (fileErr, data) {
+          if (fileErr) {
+            return done(fileErr);
+          }
+
+          var start = process.hrtime();
+
+          protagonist.parse(data, {}, function (err, result) {
+            var duration = process.hrtime(start);
+
+            nodeOutput = result;
+            nodeDuration = duration;
+            nodeError = err;
+            done();
+          });
+        });
+      });
+
       it('JS parser', function (done) {
         fs.readFile(fixture, 'utf8', function (fileErr, data) {
           if (fileErr) {
@@ -66,16 +89,31 @@ describe('Parse fixture', function () {
         });
       });
 
-      describe('when compared', function () {
+      describe('JS vs CPP', function () {
         it('should be good', function () {
           if (!jsError && !cppError) {
-            assert.deepEqual(cppOutput, jsOutput);
+            assert.deepEqual(jsOutput, cppOutput);
           } else if (jsError && cppError) {
             assert.isNotNull(jsError.result, 'JS result does not exist');
             assert.deepEqual(jsError.result, cppOutput);
           } else {
             assert.isNull(jsError, 'JS parsing failed');
             assert.isNull(cppError, 'CPP parsing failed');
+          }
+        });
+      });
+
+      describe('JS vs NODE', function () {
+        it('should be good', function () {
+          if (!jsError && !nodeError) {
+            assert.deepEqual(jsOutput, nodeOutput);
+          } else if (jsError && nodeError) {
+            assert.isNotNull(jsError.result, 'JS result does not exist');
+            assert.isNotNull(nodeError.result, 'NODE result does not exist');
+            assert.deepEqual(jsError.result, nodeError.result);
+          } else {
+            assert.isNull(jsError, 'JS parsing failed');
+            assert.isNull(nodeError, 'CPP parsing failed');
           }
         });
       });
