@@ -67,7 +67,7 @@ jobs:
       - run:
           name: Building Drafter
           command: |
-            cd ext/drafter
+            cd ext/protagonist/drafter
             CXX=g++-7 ./configure
             make drafter
       - run:
