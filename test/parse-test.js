@@ -8,15 +8,28 @@ var DRAFTER = path.join('ext', 'protagonist', 'drafter', 'bin', 'drafter');
 var protagonist = require('protagonist');
 var drafter = require('../lib/drafter.nomem.js');
 
-// TODO: Performance comparison
-
 // Loop through all the files, test them, then print a report
 var fixtures = [].concat(
   glob.sync('ext/protagonist/drafter/test/**/*.apib'),
   glob.sync('test/fixtures/*.apib')
 );
 
+function ms(duration) {
+  return duration[0] * 1000 + duration[1] / 1e6;
+}
+
 describe('Parse fixture', function () {
+  var cppTime = 0;
+  var nodeTime = 0;
+  var jsTime = 0;
+
+  after(function () {
+    console.log();
+    console.log('=========================');
+    console.log('Average JS speed: ' + (jsTime / cppTime).toFixed(1) + ' times slower than C++ (exec) and ' + (jsTime / nodeTime).toFixed(1) + ' times slower than Protagonist');
+    console.log('=========================');
+  });
+
   fixtures.forEach(function (fixture) {
     var testName = path.join(path.basename(path.dirname(fixture)), path.basename(fixture));
 
@@ -31,6 +44,15 @@ describe('Parse fixture', function () {
       var jsError = null;
       var jsOutput = null;
 
+      after(function () {
+        cppTime += cppDuration;
+        nodeTime += nodeDuration;
+        jsTime += jsDuration;
+
+        console.log('      C++: ' + cppDuration + 'ms, NODE: ' + nodeDuration + 'ms, JS: ' + jsDuration + 'ms');
+        console.log('      JS is ' + (jsDuration / cppDuration).toFixed(1) + ' times slower than C++ and ' + (jsDuration / nodeDuration).toFixed(1) + ' times slower than Protagonist');
+      });
+
       it('C++ parser', function (done) {
         var start = process.hrtime();
 
@@ -43,7 +65,7 @@ describe('Parse fixture', function () {
             }
 
             cppError = err;
-            cppDuration = duration;
+            cppDuration = ms(duration);
             done();
           } catch (jsonErr) {
             done(jsonErr);
@@ -63,7 +85,7 @@ describe('Parse fixture', function () {
             var duration = process.hrtime(start);
 
             nodeOutput = result;
-            nodeDuration = duration;
+            nodeDuration = ms(duration);
             nodeError = err;
             done();
           });
@@ -82,7 +104,7 @@ describe('Parse fixture', function () {
             var duration = process.hrtime(start);
 
             jsOutput = result;
-            jsDuration = duration;
+            jsDuration = ms(duration);
             jsError = err;
             done();
           });
