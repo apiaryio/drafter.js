@@ -17,7 +17,7 @@ try {
   console.log('Skipping protagonist tests. Use `npm install protagonist` to run them.')
 }
 
-var DRAFTER = path.join('ext', 'drafter', 'bin', 'drafter');
+var DRAFTER = path.join('ext', 'protagonist', 'drafter', 'bin', 'drafter');
 
 var testRun = {
   total: 0,
@@ -169,7 +169,7 @@ console.log("Parse Test ....\n");
  * Loop through all the files, test them, then print a report.
  */
 fixtures = [].concat(
-  glob.sync('ext/drafter/test/**/*.apib'),
+  glob.sync('ext/protagonist/drafter/test/**/*.apib'),
   glob.sync('scripts/fixtures/*.apib')
 );
 
