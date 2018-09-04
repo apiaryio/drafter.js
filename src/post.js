@@ -56,19 +56,20 @@ Module['parse'] = function(blueprint, options, callback) {
     throw ex;
   }
 
+  result = (options && options.json === false) ? output : JSON.parse(output);
+
   if (res) {
-    var err = new Error('Error parsing blueprint!');
-    err.result = (options && options.json === false) ? output : JSON.parse(output);
     if (callback) {
-      return callback(err, err.result);
+      return callback(result, result);
     }
-    throw err;
+    throw result;
   }
 
   if (callback) {
-    return callback(null, (options && options.json === false) ? output : JSON.parse(output));
+    return callback(null, result);
   }
-  return (options && options.json === false) ? output : JSON.parse(output);
+
+  return result;
 };
 
 Module['parseSync'] = function(blueprint, options) {

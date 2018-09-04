@@ -94,8 +94,7 @@ describe('Parse fixture', function () {
           if (!jsError && !cppError) {
             assert.deepEqual(jsOutput, cppOutput);
           } else if (jsError && cppError) {
-            assert.isNotNull(jsError.result, 'JS result does not exist');
-            assert.deepEqual(jsError.result, cppOutput);
+            assert.deepEqual(jsError, cppOutput);
           } else {
             assert.isNull(jsError, 'JS parsing failed');
             assert.isNull(cppError, 'CPP parsing failed');
@@ -105,16 +104,8 @@ describe('Parse fixture', function () {
 
       describe('JS vs NODE', function () {
         it('should be good', function () {
-          if (!jsError && !nodeError) {
-            assert.deepEqual(jsOutput, nodeOutput);
-          } else if (jsError && nodeError) {
-            assert.isNotNull(jsError.result, 'JS result does not exist');
-            assert.isNotNull(nodeError.result, 'NODE result does not exist');
-            assert.deepEqual(jsError.result, nodeError.result);
-          } else {
-            assert.isNull(jsError, 'JS parsing failed');
-            assert.isNull(nodeError, 'CPP parsing failed');
-          }
+          assert.deepEqual(jsOutput, nodeOutput);
+          assert.deepEqual(jsError, nodeError);
         });
       });
     });
