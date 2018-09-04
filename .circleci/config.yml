@@ -34,8 +34,8 @@ jobs:
     docker:
       - image: apiaryio/emcc:1.38.11
     steps:
-      - checkout
       - run: apt-get install -y git-core
+      - checkout
       - run: git submodule update --recursive --init
       - run: npm install
       - run: ./scripts/wrap.js

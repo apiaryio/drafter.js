@@ -77,7 +77,6 @@ mkdir -p lib
 
 em++ $FLAGS "build/out/$BUILD_TYPE/libdrafterjs.a" \
      "$DRAFTER_PATH/build/out/$BUILD_TYPE/libdrafter.a" \
-     "$DRAFTER_PATH/build/out/$BUILD_TYPE/libsos.a" \
      "$DRAFTER_PATH/build/out/$BUILD_TYPE/libsnowcrash.a" \
      "$DRAFTER_PATH/build/out/$BUILD_TYPE/libsundown.a" \
      "$DRAFTER_PATH/build/out/$BUILD_TYPE/libmarkdownparser.a" \
@@ -103,7 +102,6 @@ em++ $FLAGS "build/out/$BUILD_TYPE/libdrafterjs.a" \
 em++ $FLAGS --memory-init-file 0 \
      "build/out/$BUILD_TYPE/libdrafterjs.a" \
      "$DRAFTER_PATH/build/out/$BUILD_TYPE/libdrafter.a" \
-     "$DRAFTER_PATH/build/out/$BUILD_TYPE/libsos.a" \
      "$DRAFTER_PATH/build/out/$BUILD_TYPE/libsnowcrash.a" \
      "$DRAFTER_PATH/build/out/$BUILD_TYPE/libsundown.a" \
      "$DRAFTER_PATH/build/out/$BUILD_TYPE/libmarkdownparser.a" \
