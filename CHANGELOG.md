@@ -1,5 +1,18 @@
 # drafter.js Changelog
 
+## 3.0.0-pre.1
+
+This update now uses Drafter 4.0.0-pre.1. Please see [Drafter
+4.0.0-pre.1](https://github.com/apiaryio/drafter/releases/tag/v4.0.0-pre.1) for
+the list of changes.
+
+- Build done using emscripten 1.38.x
+
+### Breaking
+
+- `parse` returns parse result in both `err` and `result` of the callback function
+- `parseSync` doesn't throw error anymore if we get a parse result with error annotations
+
 ## 3.0.0-pre.0
 
 This update now uses Drafter 4.0.0-pre.0. Please see [Drafter
