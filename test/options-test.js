@@ -103,7 +103,7 @@ describe('Requiring Blueprint name with validate', function () {
         return done(err);
       }
 
-      drafter.validate(data, function (err, result) {
+      drafter.validate(data, { requireBlueprintName: true }, function (err, result) {
         if (err) {
           return done(err);
         }
@@ -128,7 +128,7 @@ describe('Requiring Blueprint name with validate sync', function () {
         return done(err);
       }
 
-      refract_err = drafter.validateSync(data);
+      refract_err = drafter.validateSync(data, { requireBlueprintName: true });
       done();
     });
   });
