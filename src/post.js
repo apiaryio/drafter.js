@@ -58,15 +58,12 @@ Module['parse'] = function(blueprint, options, callback) {
 
   result = (options && options.json === false) ? output : JSON.parse(output);
 
-  if (res) {
-    if (callback) {
-      return callback(result, result);
-    }
-    throw result;
-  }
-
   if (callback) {
-    return callback(null, result);
+    if (res) {
+      return callback(result, result);
+    } else {
+      return callback(null, result);
+    }
   }
 
   return result;

@@ -25,9 +25,9 @@ describe('Parse fixture', function () {
 
   after(function () {
     console.log();
-    console.log('=========================');
+    console.log('=================');
     console.log('Average JS speed: ' + (jsTime / cppTime).toFixed(1) + ' times slower than C++ (exec) and ' + (jsTime / nodeTime).toFixed(1) + ' times slower than Protagonist');
-    console.log('=========================');
+    console.log('=================');
   });
 
   fixtures.forEach(function (fixture) {
