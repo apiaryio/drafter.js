@@ -1,21 +1,25 @@
 version: 2
+
+aliases:
+  - &tag-filter
+    filters:
+      tags:
+        only: /^v.*/
+
+  - &test-workflow
+    <<: *tag-filter
+    requires:
+      - build
+
 workflows:
   version: 2
   build-test:
     jobs:
-      - build
-      - test-node4:
-          requires:
-            - build
-      - test-node6:
-          requires:
-            - build
-      - test-node8:
-          requires:
-            - build
-      - test-node10:
-          requires:
-            - build
+      - build: *tag-filter
+      - test-node4: *test-workflow
+      - test-node6: *test-workflow
+      - test-node8: *test-workflow
+      - test-node10: *test-workflow
       - deploy:
           requires:
             - build
