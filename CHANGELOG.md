@@ -1,5 +1,11 @@
 # drafter.js Changelog
 
+## Master
+
+### Enhancements
+
+- Drafter now exposes a WebAssembly binary.
+
 ## 3.0.0-pre.1
 
 This update now uses Drafter 4.0.0-pre.1. Please see [Drafter

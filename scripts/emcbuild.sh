@@ -123,3 +123,24 @@ em++ $FLAGS --memory-init-file 0 \
      -o lib/drafter.nomem.js \
      --pre-js generated/pre.js \
      --post-js generated/post.js
+
+em++ $FLAGS "build/out/$BUILD_TYPE/libdrafterjs.a" \
+     "$DRAFTER_PATH/build/out/$BUILD_TYPE/libdrafter.a" \
+     "$DRAFTER_PATH/build/out/$BUILD_TYPE/libsnowcrash.a" \
+     "$DRAFTER_PATH/build/out/$BUILD_TYPE/libsundown.a" \
+     "$DRAFTER_PATH/build/out/$BUILD_TYPE/libmarkdownparser.a" \
+     -s EXPORTED_FUNCTIONS="['_c_parse', '_c_validate']" \
+     -s DISABLE_EXCEPTION_CATCHING=0 \
+     -s EXPORTED_RUNTIME_METHODS="['stringToUTF8', 'getValue', 'Pointer_stringify', 'lengthBytesUTF8', 'UTF8ToString']" \
+     -s ASSERTIONS=${ASSERT} \
+     -s DOUBLE_MODE=0 \
+     -s ALLOW_MEMORY_GROWTH=1 \
+     -s NO_EXIT_RUNTIME=1 \
+     -s INVOKE_RUN=0 \
+     -s PRECISE_I64_MATH=0 \
+     -s INLINING_LIMIT=50 \
+     -s NO_FILESYSTEM=1 \
+     -s NODEJS_CATCH_EXIT=0 \
+     -s ELIMINATE_DUPLICATE_FUNCTIONS=1 \
+     -s AGGRESSIVE_VARIABLE_ELIMINATION=1 \
+     -o lib/drafter-non-umd.js

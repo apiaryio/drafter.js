@@ -50,6 +50,8 @@ jobs:
             - drafter.js
             - drafter.js.mem
             - drafter.nomem.js
+            - drafter-non-umd.wasm
+            - drafter-non-umd.js
       - store_artifacts:
           path: lib
 

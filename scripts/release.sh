@@ -13,6 +13,8 @@ $GITHUB_RELEASE release -u apiaryio -r drafter.js --tag $TAG
 
 $GITHUB_RELEASE upload -u apiaryio -r drafter.js --tag $TAG --name drafter.js --file lib/drafter.js
 $GITHUB_RELEASE upload -u apiaryio -r drafter.js --tag $TAG --name drafter.js.mem --file lib/drafter.js.mem
+$GITHUB_RELEASE upload -u apiaryio -r drafter.js --tag $TAG --name drafter-non-umd.wasm --file lib/drafter-non-umd.wasm
+$GITHUB_RELEASE upload -u apiaryio -r drafter.js --tag $TAG --name drafter-non-umd.js --file lib/drafter-non-umd.js
 
 # Use the CI host's NPM_TOKEN environment variable for auth
 echo '//registry.npmjs.org/:_authToken=${NPM_TOKEN}' >.npmrc
