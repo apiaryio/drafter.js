@@ -16,9 +16,9 @@ describe('Requiring Blueprint name with sourcemaps', function () {
       }
 
       drafter.parse(data, { requireBlueprintName: true, generateSourceMap: true }, function (err, result) {
-        // if (err) {
-        //   return done(err);
-        // }
+        if (err) {
+          return done(err);
+        }
 
         refract_err = result;
         done();
@@ -41,9 +41,9 @@ describe('Requiring Blueprint name without sourcemaps', function () {
       }
 
       drafter.parse(data, { requireBlueprintName: true, generateSourceMap: false }, function (err, result) {
-        // if (err) {
-        //   return done(err);
-        // }
+        if (err) {
+          return done(err);
+        }
 
         refract_err = result;
         done();
