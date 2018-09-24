@@ -10,6 +10,11 @@
                              missing a title.
  */
 Module['parse'] = function(blueprint, options, callback) {
+  if (options && typeof options === 'function') {
+    callback = options;
+    options = {};
+  }
+
   if (false === this.ready) {
     var err = new Error('Module not ready!');
     if (callback) {
@@ -83,6 +88,11 @@ Module['parseSync'] = function(blueprint, options) {
                              missing a title.
  */
 Module['validate'] = function(blueprint, options, callback) {
+  if (options && typeof options === 'function') {
+    callback = options;
+    options = {};
+  }
+
   if (false === this.ready) {
     var err = new Error('Module not ready!');
     if (callback) {

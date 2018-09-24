@@ -100,7 +100,7 @@ describe('Parse fixture', function () {
 
           var start = process.hrtime();
 
-          drafter.parse(data, {}, function (err, result) {
+          drafter.parse(data, function (err, result) {
             var duration = process.hrtime(start);
 
             jsOutput = result;
