@@ -33,6 +33,21 @@ Module['parse'] = function(blueprint, options, callback) {
     throw new TypeError('wrong number of arguments, `parse(string, options)` expected');
   }
 
+  var sync = false;
+
+  if (options.sync) {
+    sync = true;
+    delete options.sync;
+  }
+
+  var allowedOptions = ['generateSourceMap', 'exportSourcemap', 'requireBlueprintName'];
+
+  Object.keys(options).forEach(function (key) {
+    if (allowedOptions.indexOf(key) === -1) {
+      throw new TypeError('unrecognized option \'' + key + '\', expected: \'requireBlueprintName\', \'generateSourceMap\'');
+    }
+  });
+
   if (false === this.ready) {
     var err = new Error('Module not ready!');
     if (callback) {
@@ -51,7 +66,7 @@ Module['parse'] = function(blueprint, options, callback) {
 
     stringToUTF8(blueprint, buffer, bufferLen);
 
-    if (options.generateSourceMap) {
+    if (options.generateSourceMap || options.exportSourcemap) {
       sourcemap = options.generateSourceMap;
     }
 
@@ -77,10 +92,25 @@ Module['parse'] = function(blueprint, options, callback) {
     throw ex;
   }
 
-  result = (options.json === false) ? output : JSON.parse(output);
+  var error = null;
+  var result = null;
+
+  if (res < 0) {
+    error = new Error('Parser: Unknown Error');
+  } else {
+    result = (options.json === false) ? output : JSON.parse(output);
+  }
+
+  if (sync) {
+    if (error) {
+      throw error;
+    }
+
+    return result;
+  }
 
   if (callback) {
-    return callback(null, result);
+    return callback(error, result);
   }
 
   return result;
@@ -100,6 +130,8 @@ Module['parseSync'] = function(blueprint, options) {
   if (typeof options !== 'object') {
     throw new TypeError('wrong 2nd argument - object expected, `parseSync(string, options)`');
   }
+
+  options.sync = true;
 
   return Module.parse(blueprint, options);
 };
@@ -136,6 +168,21 @@ Module['validate'] = function(blueprint, options, callback) {
   if (callback && typeof callback !== 'function') {
     throw new TypeError('wrong number of arguments, `validate(string, options)` expected');
   }
+
+  var sync = false;
+
+  if (options.sync) {
+    sync = true;
+    delete options.sync;
+  }
+
+  var allowedOptions = ['requireBlueprintName'];
+
+  Object.keys(options).forEach(function (key) {
+    if (allowedOptions.indexOf(key) === -1) {
+      throw new TypeError('unrecognized option \'' + key + '\', expected: \'requireBlueprintName\'');
+    }
+  });
 
   if (false === this.ready) {
     var err = new Error('Module not ready!');
@@ -177,10 +224,28 @@ Module['validate'] = function(blueprint, options, callback) {
     throw ex;
   }
 
-  if (callback) {
-    return callback(null, output);
+  var error = null;
+  var result = null;
+
+  if (res < 0) {
+    error = new Error('Parser: Unknown Error');
+  } else {
+    result = output;
   }
-  return output;
+
+  if (sync) {
+    if (error) {
+      throw error;
+    }
+
+    return result;
+  }
+
+  if (callback) {
+    return callback(error, result);
+  }
+
+  return result;
 };
 
 Module['validateSync'] = function(blueprint, options) {
@@ -197,6 +262,8 @@ Module['validateSync'] = function(blueprint, options) {
   if (typeof options !== 'object') {
     throw new TypeError('wrong 2nd argument - object expected, `validateSync(string, options)`');
   }
+
+  options.sync = true;
 
   return Module.validate(blueprint, options);
 };
