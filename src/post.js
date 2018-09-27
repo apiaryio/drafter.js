@@ -10,9 +10,27 @@
                              missing a title.
  */
 Module['parse'] = function(blueprint, options, callback) {
+  if (arguments.length < 1 || arguments.length > 3) {
+    throw new TypeError('wrong number of arguments, `parse(string, options, callback)` expected');
+  }
+
+  if (typeof blueprint !== 'string') {
+    throw new TypeError('wrong 1st argument - string expected, `parse(string, options, [callback])`')
+  }
+
   if (options && typeof options === 'function') {
     callback = options;
     options = {};
+  }
+
+  options = options || {};
+
+  if (typeof options !== 'object') {
+    throw new TypeError('wrong 2nd argument - object expected, `parse(string, options, [callback])`');
+  }
+
+  if (callback && typeof callback !== 'function') {
+    throw new TypeError('wrong number of arguments, `parse(string, options)` expected');
   }
 
   if (false === this.ready) {
@@ -33,14 +51,12 @@ Module['parse'] = function(blueprint, options, callback) {
 
     stringToUTF8(blueprint, buffer, bufferLen);
 
-    if (options) {
-      if (options.generateSourceMap) {
-        sourcemap = options.generateSourceMap;
-      }
+    if (options.generateSourceMap) {
+      sourcemap = options.generateSourceMap;
+    }
 
-      if (options.requireBlueprintName) {
-        requireBlueprintName = options.requireBlueprintName;
-      }
+    if (options.requireBlueprintName) {
+      requireBlueprintName = options.requireBlueprintName;
     }
 
     var res = _c_parse(buffer, requireBlueprintName, sourcemap, chptr);
@@ -61,7 +77,7 @@ Module['parse'] = function(blueprint, options, callback) {
     throw ex;
   }
 
-  result = (options && options.json === false) ? output : JSON.parse(output);
+  result = (options.json === false) ? output : JSON.parse(output);
 
   if (callback) {
     return callback(null, result);
@@ -71,6 +87,20 @@ Module['parse'] = function(blueprint, options, callback) {
 };
 
 Module['parseSync'] = function(blueprint, options) {
+  if (arguments.length < 1 || arguments.length > 2) {
+    throw new TypeError('wrong number of arguments, `parseSync(string, options)` expected');
+  }
+
+  if (typeof blueprint !== 'string') {
+    throw new TypeError('wrong 1st argument - string expected, `parseSync(string, options)`')
+  }
+
+  options = options || {};
+
+  if (typeof options !== 'object') {
+    throw new TypeError('wrong 2nd argument - object expected, `parseSync(string, options)`');
+  }
+
   return Module.parse(blueprint, options);
 };
 
@@ -84,9 +114,27 @@ Module['parseSync'] = function(blueprint, options) {
                              missing a title.
  */
 Module['validate'] = function(blueprint, options, callback) {
+  if (arguments.length < 1 || arguments.length > 3) {
+    throw new TypeError('wrong number of arguments, `validate(string, options, callback)` expected');
+  }
+
+  if (typeof blueprint !== 'string') {
+    throw new TypeError('wrong 1st argument - string expected, `validate(string, options, [callback])`')
+  }
+
   if (options && typeof options === 'function') {
     callback = options;
     options = {};
+  }
+
+  options = options || {};
+
+  if (typeof options !== 'object') {
+    throw new TypeError('wrong 2nd argument - object expected, `validate(string, options, [callback])`');
+  }
+
+  if (callback && typeof callback !== 'function') {
+    throw new TypeError('wrong number of arguments, `validate(string, options)` expected');
   }
 
   if (false === this.ready) {
@@ -105,7 +153,7 @@ Module['validate'] = function(blueprint, options, callback) {
     var requireBlueprintName = false;
     var output = null;
 
-    if (options && options.requireBlueprintName) {
+    if (options.requireBlueprintName) {
       requireBlueprintName = options.requireBlueprintName;
     }
 
@@ -116,7 +164,7 @@ Module['validate'] = function(blueprint, options, callback) {
 
     if (res) {
       var ptrstr = getValue(chptr, '*');
-      output = (options && options.json === false) ? Pointer_stringify(ptrstr) : JSON.parse(Pointer_stringify(ptrstr));
+      output = (options.json === false) ? Pointer_stringify(ptrstr) : JSON.parse(Pointer_stringify(ptrstr));
       _free(ptrstr);
     }
     _free(chptr);
@@ -136,5 +184,19 @@ Module['validate'] = function(blueprint, options, callback) {
 };
 
 Module['validateSync'] = function(blueprint, options) {
+  if (arguments.length < 1 || arguments.length > 2) {
+    throw new TypeError('wrong number of arguments, `validateSync(string, options)` expected');
+  }
+
+  if (typeof blueprint !== 'string') {
+    throw new TypeError('wrong 1st argument - string expected, `validateSync(string, options)`')
+  }
+
+  options = options || {};
+
+  if (typeof options !== 'object') {
+    throw new TypeError('wrong 2nd argument - object expected, `validateSync(string, options)`');
+  }
+
   return Module.validate(blueprint, options);
 };
