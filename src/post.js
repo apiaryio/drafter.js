@@ -50,10 +50,18 @@ Module['parse'] = function(blueprint, options, callback) {
 
   if (false === this.ready) {
     var err = new Error('Module not ready!');
-    if (callback) {
-      return callback(err, null);
+
+    if (sync) {
+      throw err;
     }
-    return err;
+
+    if (callback) {
+      return callback(err);
+    }
+
+    return new Promise(function (resolve, reject) {
+      reject(err);
+    });
   }
 
   try {
@@ -67,11 +75,11 @@ Module['parse'] = function(blueprint, options, callback) {
     stringToUTF8(blueprint, buffer, bufferLen);
 
     if (options.generateSourceMap || options.exportSourcemap) {
-      sourcemap = options.generateSourceMap;
+      sourcemap = true;
     }
 
     if (options.requireBlueprintName) {
-      requireBlueprintName = options.requireBlueprintName;
+      requireBlueprintName = true;
     }
 
     var res = _c_parse(buffer, requireBlueprintName, sourcemap, chptr);
@@ -85,11 +93,17 @@ Module['parse'] = function(blueprint, options, callback) {
     _free(chptr);
 
   } catch (ex) {
+    if (sync) {
+      throw ex;
+    }
 
     if (callback) {
-      return callback(ex, null);
+      return callback(ex);
     }
-    throw ex;
+
+    return new Promise(function (resolve, reject) {
+      reject(ex);
+    });
   }
 
   var error = null;
@@ -113,7 +127,13 @@ Module['parse'] = function(blueprint, options, callback) {
     return callback(error, result);
   }
 
-  return result;
+  return new Promise(function (resolve, reject) {
+    if (error) {
+      return reject(error);
+    }
+
+    return resolve(result);
+  });
 };
 
 Module['parseSync'] = function(blueprint, options) {
@@ -186,10 +206,18 @@ Module['validate'] = function(blueprint, options, callback) {
 
   if (false === this.ready) {
     var err = new Error('Module not ready!');
-    if (callback) {
-      return callback(err, null);
+
+    if (sync) {
+      throw err;
     }
-    return err;
+
+    if (callback) {
+      return callback(err);
+    }
+
+    return new Promise(function (resolve, reject) {
+      reject(err);
+    });
   }
 
   try {
@@ -201,7 +229,7 @@ Module['validate'] = function(blueprint, options, callback) {
     var output = null;
 
     if (options.requireBlueprintName) {
-      requireBlueprintName = options.requireBlueprintName;
+      requireBlueprintName = true;
     }
 
     stringToUTF8(blueprint, buffer, bufferLen);
@@ -217,11 +245,17 @@ Module['validate'] = function(blueprint, options, callback) {
     _free(chptr);
 
   } catch (ex) {
+    if (sync) {
+      throw ex;
+    }
 
     if (callback) {
-      return callback(ex, null);
+      return callback(ex);
     }
-    throw ex;
+
+    return new Promise(function (resolve, reject) {
+      reject(ex);
+    });
   }
 
   var error = null;
@@ -245,7 +279,13 @@ Module['validate'] = function(blueprint, options, callback) {
     return callback(error, result);
   }
 
-  return result;
+  return new Promise(function (resolve, reject) {
+    if (error) {
+      return reject(error);
+    }
+
+    return resolve(result);
+  });
 };
 
 Module['validateSync'] = function(blueprint, options) {
