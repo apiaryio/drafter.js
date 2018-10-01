@@ -59,9 +59,7 @@ Module['parse'] = function(blueprint, options, callback) {
       return callback(err);
     }
 
-    return new Promise(function (resolve, reject) {
-      reject(err);
-    });
+    return Promise.reject(err);
   }
 
   try {
@@ -101,9 +99,7 @@ Module['parse'] = function(blueprint, options, callback) {
       return callback(ex);
     }
 
-    return new Promise(function (resolve, reject) {
-      reject(ex);
-    });
+    return Promise.reject(ex);
   }
 
   var error = null;
@@ -127,13 +123,11 @@ Module['parse'] = function(blueprint, options, callback) {
     return callback(error, result);
   }
 
-  return new Promise(function (resolve, reject) {
-    if (error) {
-      return reject(error);
-    }
+  if (error) {
+    return Promise.reject(error);
+  }
 
-    return resolve(result);
-  });
+  return Promise.resolve(result);
 };
 
 Module['parseSync'] = function(blueprint, options) {
@@ -215,9 +209,7 @@ Module['validate'] = function(blueprint, options, callback) {
       return callback(err);
     }
 
-    return new Promise(function (resolve, reject) {
-      reject(err);
-    });
+    return Promise.reject(err);
   }
 
   try {
@@ -253,9 +245,7 @@ Module['validate'] = function(blueprint, options, callback) {
       return callback(ex);
     }
 
-    return new Promise(function (resolve, reject) {
-      reject(ex);
-    });
+    return Promise.reject(ex);
   }
 
   var error = null;
@@ -279,13 +269,11 @@ Module['validate'] = function(blueprint, options, callback) {
     return callback(error, result);
   }
 
-  return new Promise(function (resolve, reject) {
-    if (error) {
-      return reject(error);
-    }
+  if (error) {
+    return Promise.reject(error);
+  }
 
-    return resolve(result);
-  });
+  return Promise.resolve(result);
 };
 
 Module['validateSync'] = function(blueprint, options) {
