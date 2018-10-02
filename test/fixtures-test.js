@@ -100,7 +100,7 @@ describe('Parse fixture', function () {
 
           var start = process.hrtime();
 
-          drafter.parse(data, {}, function (err, result) {
+          drafter.parse(data, function (err, result) {
             var duration = process.hrtime(start);
 
             jsOutput = result;
@@ -113,10 +113,8 @@ describe('Parse fixture', function () {
 
       describe('JS vs CPP', function () {
         it('should be good', function () {
-          if (!jsError && !cppError) {
+          if (!jsError) {
             assert.deepEqual(jsOutput, cppOutput);
-          } else if (jsError && cppError) {
-            assert.deepEqual(jsError, cppOutput);
           } else {
             assert.isNull(jsError, 'JS parsing failed');
             assert.isNull(cppError, 'CPP parsing failed');

@@ -1,5 +1,13 @@
 # drafter.js Changelog
 
+## Master
+
+### Breaking
+
+- `parse` won't return `err` if we get a parse result with error annotations
+- `parse`'s `options` is now optional following node.js convention
+- `validate`'s `options` is now optional following node.js convention
+
 ## 3.0.0-pre.1
 
 This update now uses Drafter 4.0.0-pre.1. Please see [Drafter
@@ -24,7 +32,6 @@ the list of changes.
 ### Breaking
 
 - Drop support node < 4.0
-
 - Remove the option to select AST Type. The ouput will be only refract
 
 ## 2.6.7
