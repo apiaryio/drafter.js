@@ -108,5 +108,5 @@ jobs:
       - checkout
       - run: git submodule update --recursive --init
       - attach_workspace:
-          at: .
+          at: lib
       - run: ./scripts/release.sh
