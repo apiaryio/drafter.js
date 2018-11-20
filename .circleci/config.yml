@@ -38,7 +38,7 @@ jobs:
     docker:
       - image: apiaryio/emcc:1.38.11
     steps:
-      - run: apt-get install -y git-core
+      - run: apt-get update && apt-get install -y git-core
       - checkout
       - run: git submodule update --recursive --init
       - run: npm install
