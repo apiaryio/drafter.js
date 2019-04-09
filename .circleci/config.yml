@@ -61,24 +61,18 @@ jobs:
       - run: git submodule update --recursive --init
       - attach_workspace:
           at: lib
-      - run:
-          name: Installing Compiler
-          command: |
-            echo "deb http://ftp.us.debian.org/debian unstable main contrib non-free" > /etc/apt/sources.list.d/unstable.list
-            apt-get update
-            apt-get install -y -t unstable gcc-7 g++-7
       - run: npm install
       - run:
           name: Building Drafter
           command: |
             cd ext/protagonist/drafter
-            CXX=g++-7 ./configure
+            ./configure
             make drafter
       - run:
           # Note, on Node 4 (older NPM) this MUST happen after NPM install
           # otherwise NPM install triggers a rebuild
           name: Building Protagonist
-          command: CXX=g++-7 npm install ext/protagonist
+          command: npm install ext/protagonist
       - run: npm test
 
   test-node4:
