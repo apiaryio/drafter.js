@@ -3,6 +3,12 @@
   "version": "3.0.0-pre.4",
   "description": "Pure JS Drafter built with Emscripten",
   "main": "lib/drafter.nomem.js",
+  "files": [
+    "drafter.d.ts",
+    "lib/drafter.js",
+    "lib/drafter.js.mem",
+    "lib/drafter.nomem.js"
+  ],
   "scripts": {
     "test:exclude-await": "mocha --exclude test/await-test.js",
     "test:await": "mocha",
