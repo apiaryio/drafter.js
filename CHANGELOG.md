@@ -1,5 +1,11 @@
 # drafter.js Changelog
 
+## 3.0.0-pre.6 (2019-05-20)
+
+This update now uses Drafter 4.0.0-pre.6. Please see [Drafter
+4.0.0-pre.6](https://github.com/apiaryio/drafter/releases/tag/v4.0.0-pre.6) for
+the list of changes.
+
 ## 3.0.0-pre.5 (2019-05-07)
 
 This update now uses Drafter 4.0.0-pre.5. Please see [Drafter
