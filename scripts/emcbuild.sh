@@ -90,7 +90,7 @@ em++ $FLAGS "build/out/$BUILD_TYPE/libdrafterjs.a" \
      -s INVOKE_RUN=0 \
      -s PRECISE_I64_MATH=0 \
      -s INLINING_LIMIT=50 \
-     -s NO_FILESYSTEM=1 \
+     -s FILESYSTEM=0 \
      -s NODEJS_CATCH_EXIT=0 \
      -s ELIMINATE_DUPLICATE_FUNCTIONS=1 \
      -s AGGRESSIVE_VARIABLE_ELIMINATION=1 \
@@ -115,7 +115,7 @@ em++ $FLAGS --memory-init-file 0 \
      -s PRECISE_I64_MATH=0 \
      -s DOUBLE_MODE=0 \
      -s INLINING_LIMIT=50 \
-     -s NO_FILESYSTEM=1 \
+     -s FILESYSTEM=0 \
      -s NODEJS_CATCH_EXIT=0 \
      -s ELIMINATE_DUPLICATE_FUNCTIONS=1 \
      -s AGGRESSIVE_VARIABLE_ELIMINATION=1 \
