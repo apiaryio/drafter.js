@@ -4,3 +4,4 @@ generated
 config.gypi
 build
 drafterjs.gyp
+THIRD_PARTY_LICENSES.txt
