@@ -1,5 +1,16 @@
 # drafter.js Changelog
 
+## 3.0.1 (2019-09-17)
+
+This update now uses Drafter 4.0.1. Please see [Drafter
+4.0.1](https://github.com/apiaryio/drafter/releases/tag/v4.0.1) for the list of
+changes.
+
+### Enhancements
+
+- The Drafter NPM package now contains a `THIRD_PARTY_LICENSES.txt` file
+  which contains the licenses of the vendored C++ dependencies of the library.
+
 ## 3.0.0 (2019-07-02)
 
 This update now uses Drafter 4.0.0-pre.8. Please see [Drafter
