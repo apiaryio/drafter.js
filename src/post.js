@@ -64,31 +64,30 @@ Module['parse'] = function(blueprint, options, callback) {
 
   try {
 
-    var chptr = _malloc(4);
     var bufferLen = lengthBytesUTF8(blueprint) + 1;
     var buffer = _malloc(bufferLen);
-    var requireBlueprintName = false;
-    var sourcemap = false;
 
     stringToUTF8(blueprint, buffer, bufferLen);
 
+    var serializeOpts = _c_serialize_json_options();
     if (options.generateSourceMap || options.exportSourcemap) {
-      sourcemap = true;
+      _drafter_set_sourcemaps_included(serializeOpts);
     }
 
+    var parseOpts = _drafter_init_parse_options();
     if (options.requireBlueprintName) {
-      requireBlueprintName = true;
+      _drafter_set_name_required(parseOpts);
     }
 
-    var res = _c_parse(buffer, requireBlueprintName, sourcemap, chptr);
-
+    var chptr = _c_buffer_ptr();
+    var res = _c_parse_to(buffer, chptr, parseOpts, serializeOpts);
     _free(buffer);
+    _drafter_free_parse_options(parseOpts);
+    _drafter_free_serialize_options(serializeOpts);
 
-    var ptrstr = getValue(chptr, '*');
-    var output = Pointer_stringify(ptrstr);
+    var output = Pointer_stringify(_c_buffer_string(chptr));
 
-    _free(ptrstr);
-    _free(chptr);
+    _c_free_buffer_ptr(chptr);
 
   } catch (ex) {
     if (sync) {
@@ -214,27 +213,27 @@ Module['validate'] = function(blueprint, options, callback) {
 
   try {
 
-    var chptr = _malloc(4);
     var bufferLen = lengthBytesUTF8(blueprint) + 1;
     var buffer = _malloc(bufferLen);
-    var requireBlueprintName = false;
     var output = null;
 
+    var parseOpts = _drafter_init_parse_options();
     if (options.requireBlueprintName) {
-      requireBlueprintName = true;
+      _drafter_set_name_required(parseOpts);
     }
 
     stringToUTF8(blueprint, buffer, bufferLen);
 
-    var res = _c_validate(buffer, requireBlueprintName, chptr);
+    var chptr = _c_buffer_ptr();
+    var res = _c_validate_to(buffer, chptr, parseOpts);
     _free(buffer);
+    _drafter_free_parse_options(parseOpts);
 
     if (res) {
-      var ptrstr = getValue(chptr, '*');
+      var ptrstr = _c_buffer_string(chptr);
       output = (options.json === false) ? Pointer_stringify(ptrstr) : JSON.parse(Pointer_stringify(ptrstr));
-      _free(ptrstr);
     }
-    _free(chptr);
+    _c_free_buffer_ptr(chptr);
 
   } catch (ex) {
     if (sync) {

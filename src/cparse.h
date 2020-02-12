@@ -5,18 +5,24 @@
 extern "C" {
 #endif
 
-int c_parse(const char* source,
-            bool requireBlueprintName,
-            bool sourcemap,
-            char** result);
+struct drafter_parse_options;
+struct drafter_serialize_options;
 
-int c_validate(const char *source,
-               bool requireBlueprintName,
-               char **result);
+drafter_serialize_options* c_serialize_json_options();
+
+char** c_buffer_ptr();
+
+const char* c_buffer_string(const char**);
+
+void c_free_buffer_ptr(char**);
+
+int c_parse_to(const char*, char**, const drafter_parse_options*,
+               const drafter_serialize_options*);
+
+int c_validate_to(const char*, char**, const drafter_parse_options*);
 
 #ifdef __cplusplus
 }
 #endif
 
 #endif
-

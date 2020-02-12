@@ -1,34 +1,53 @@
 #include "cparse.h"
+
+#include <cstring>
+#include <cstdlib>
+
 #include "drafter.h"
-#include <string.h>
 
-int c_parse(const char* source,
-            bool requireBlueprintName,
-            bool sourcemap,
-            char** result)
+drafter_serialize_options* c_serialize_json_options()
 {
-    drafter_parse_options options = {requireBlueprintName};
-
-    return drafter_parse_blueprint_to(source,
-                                      result,
-                                      options,
-                                      {sourcemap, DRAFTER_SERIALIZE_JSON});
+    drafter_serialize_options* result = drafter_init_serialize_options();
+    drafter_set_format(result, DRAFTER_SERIALIZE_JSON);
+    return result;
 }
 
-int c_validate(const char *source,
-               bool requireBlueprintName,
-               char **result)
+char** c_buffer_ptr()
 {
-    drafter_result *res = NULL;
-    drafter_parse_options options = {requireBlueprintName};
+    char** result = new char*(nullptr);
+    return result;
+}
 
-    int ret = drafter_check_blueprint(source, &res, options);
+const char* c_buffer_string(const char** buf) { return *buf; }
 
-    if (NULL != res) {
-        *result = drafter_serialize(res, {true, DRAFTER_SERIALIZE_JSON});
-        drafter_free_result(res);
-        ret = 1;
-    }
+void c_free_buffer_ptr(char** ptr)
+{
+    if (ptr) free(*ptr);
+    delete ptr;
+}
 
-    return ret;
+int c_parse_to(const char* source, char** result,
+               const drafter_parse_options* parseOpts,
+               const drafter_serialize_options* serializeOpts)
+{
+    return drafter_parse_blueprint_to(source, result, parseOpts, serializeOpts);
+}
+
+int c_validate_to(const char* source, char** result,
+                  const drafter_parse_options* parseOpts)
+{
+    drafter_result* checkResult = nullptr;
+    int checkError = drafter_check_blueprint(source, &checkResult, parseOpts);
+
+    if (!checkResult) return checkError;
+
+    drafter_serialize_options* serializeOpts = c_serialize_json_options();
+
+    drafter_set_sourcemaps_included(serializeOpts);
+    *result = drafter_serialize(checkResult, serializeOpts);
+
+    drafter_free_result(checkResult);
+    drafter_free_serialize_options(serializeOpts);
+
+    return 1;
 }
