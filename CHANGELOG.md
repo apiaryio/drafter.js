@@ -1,5 +1,11 @@
 # drafter.js Changelog
 
+## Master
+
+This update now uses Drafter 5.0.0-rc.1. Please see [Drafter
+5.0.0-rc.1](https://github.com/apiaryio/drafter/releases/tag/v5.0.0-rc.1) for
+the list of changes.
+
 ## 3.0.2 (2019-10-29)
 
 This update now uses Drafter 4.0.2. Please see [Drafter
