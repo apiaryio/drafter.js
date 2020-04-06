@@ -40,11 +40,11 @@ Module['parse'] = function(blueprint, options, callback) {
     delete options.sync;
   }
 
-  var allowedOptions = ['generateSourceMap', 'exportSourcemap', 'requireBlueprintName'];
+  var allowedOptions = ['generateSourceMap', 'exportSourcemap', 'requireBlueprintName', 'generateMessageBody', 'generateMessageBodySchema'];
 
   Object.keys(options).forEach(function (key) {
     if (allowedOptions.indexOf(key) === -1) {
-      throw new TypeError('unrecognized option \'' + key + '\', expected: \'requireBlueprintName\', \'generateSourceMap\'');
+      throw new TypeError('unrecognized option \'' + key + '\', expected: \'requireBlueprintName\', \'generateSourceMap\', \'generateMessageBody\', \'generateMessageBodySchema\'');
     }
   });
 
@@ -77,6 +77,12 @@ Module['parse'] = function(blueprint, options, callback) {
     var parseOpts = _drafter_init_parse_options();
     if (options.requireBlueprintName) {
       _drafter_set_name_required(parseOpts);
+    }
+    if (!options.generateMessageBody) {
+      _drafter_set_skip_gen_bodies(parseOpts);
+    }
+    if (!options.generateMessageBodySchema) {
+      _drafter_set_skip_gen_body_schema(parseOpts);
     }
 
     var chptr = _c_buffer_ptr();
