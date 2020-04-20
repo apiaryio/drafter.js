@@ -78,11 +78,17 @@ Module['parse'] = function(blueprint, options, callback) {
     if (options.requireBlueprintName) {
       _drafter_set_name_required(parseOpts);
     }
-    if (!options.generateMessageBody) {
-      _drafter_set_skip_gen_bodies(parseOpts);
+
+    if (options.generateMessageBody !== undefined) {
+      if (!options.generateMessageBody) {
+        _drafter_set_skip_gen_bodies(parseOpts);
+      }
     }
-    if (!options.generateMessageBodySchema) {
-      _drafter_set_skip_gen_body_schemas(parseOpts);
+
+    if (options.generateMessageBodySchema !== undefined) {
+      if (!options.generateMessageBodySchema) {
+        _drafter_set_skip_gen_body_schemas(parseOpts);
+      }
     }
 
     var chptr = _c_buffer_ptr();
