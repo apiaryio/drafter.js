@@ -1,5 +1,11 @@
 # drafter.js Changelog
 
+## 3.2.0 (2020-04-20)
+
+* Drafter contains two new options for disabling messageBody and
+  messageBodySchema generation from MSON. `generateMessageBody` and
+  `generatedMessageBodySchema` respectively.
+
 ## 3.1.0 (2019-03-17)
 
 This update now uses Drafter 5.0.0-rc.1. Please see [Drafter
