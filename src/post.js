@@ -82,7 +82,7 @@ Module['parse'] = function(blueprint, options, callback) {
       _drafter_set_skip_gen_bodies(parseOpts);
     }
     if (!options.generateMessageBodySchema) {
-      _drafter_set_skip_gen_body_schema(parseOpts);
+      _drafter_set_skip_gen_body_schemas(parseOpts);
     }
 
     var chptr = _c_buffer_ptr();
