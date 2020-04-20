@@ -44,7 +44,7 @@ Module['parse'] = function(blueprint, options, callback) {
 
   Object.keys(options).forEach(function (key) {
     if (allowedOptions.indexOf(key) === -1) {
-      throw new TypeError('unrecognized option \'' + key + '\', expected: \'requireBlueprintName\', \'generateSourceMap\', \'generateMessageBody\', \'generateMessageBodySchema\'');
+      throw new TypeError('unrecognized option \'' + key + '\', expected: \'requireBlueprintName\', \'generateMessageBody\', \'generateMessageBodySchema\', \'generateSourceMap\'');
     }
   });
 
