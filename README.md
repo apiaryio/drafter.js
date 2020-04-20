@@ -74,8 +74,10 @@ Supported options:
   instead get a JSON string as the result.
 - `requireBlueprintName`: Set to generate an error if the blueprint is
   missing a title.
+- `generateMessageBody` - Enable generation of messageBody from MSON (default: true)
+- `generateMessageBodySchema` - Enable generation of messageBodySchema from MSON (default: true)
 
-Or if you want just to validate it and are insterested only in parsing
+Or if you want just to validate it and are interested only in parsing
 errors and warnings:
 
 ```javascript
