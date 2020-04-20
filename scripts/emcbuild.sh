@@ -75,12 +75,14 @@ DRAFTER_PATH="ext/protagonist/drafter"
 
 mkdir -p lib
 
+DRAFTER_EXPORTED_FUNCTIONS="['_drafter_init_parse_options', '_drafter_free_parse_options', '_drafter_set_name_required', '_drafter_set_skip_gen_bodies', '_drafter_set_skip_gen_body_schemas', '_drafter_init_serialize_options', '_drafter_free_serialize_options', '_drafter_set_sourcemaps_included', '_drafter_set_format', '_drafter_free_result', '_c_serialize_json_options', '_c_buffer_ptr', '_c_buffer_string', '_c_free_buffer_ptr', '_c_parse_to', '_c_validate_to']"
+
 em++ $FLAGS "build/out/$BUILD_TYPE/libdrafterjs.a" \
      "$DRAFTER_PATH/build/out/$BUILD_TYPE/libdrafter.a" \
      "$DRAFTER_PATH/build/out/$BUILD_TYPE/libsnowcrash.a" \
      "$DRAFTER_PATH/build/out/$BUILD_TYPE/libsundown.a" \
      "$DRAFTER_PATH/build/out/$BUILD_TYPE/libmarkdownparser.a" \
-     -s EXPORTED_FUNCTIONS="['_drafter_init_parse_options', '_drafter_free_parse_options', '_drafter_set_name_required', '_drafter_init_serialize_options', '_drafter_free_serialize_options', '_drafter_set_sourcemaps_included', '_drafter_set_format', '_drafter_free_result', '_c_serialize_json_options', '_c_buffer_ptr', '_c_buffer_string', '_c_free_buffer_ptr', '_c_parse_to', '_c_validate_to']" \
+     -s EXPORTED_FUNCTIONS="$DRAFTER_EXPORTED_FUNCTIONS" \
      -s DISABLE_EXCEPTION_CATCHING=0 \
      -s EXPORTED_RUNTIME_METHODS="['stringToUTF8', 'getValue', 'Pointer_stringify', 'lengthBytesUTF8', 'UTF8ToString']" \
      -s ASSERTIONS=${ASSERT} \
@@ -105,7 +107,7 @@ em++ $FLAGS --memory-init-file 0 \
      "$DRAFTER_PATH/build/out/$BUILD_TYPE/libsnowcrash.a" \
      "$DRAFTER_PATH/build/out/$BUILD_TYPE/libsundown.a" \
      "$DRAFTER_PATH/build/out/$BUILD_TYPE/libmarkdownparser.a" \
-     -s EXPORTED_FUNCTIONS="['_drafter_init_parse_options', '_drafter_free_parse_options', '_drafter_set_name_required', '_drafter_init_serialize_options', '_drafter_free_serialize_options', '_drafter_set_sourcemaps_included', '_drafter_set_format', '_drafter_free_result', '_c_serialize_json_options', '_c_buffer_ptr', '_c_buffer_string', '_c_free_buffer_ptr', '_c_parse_to', '_c_validate_to']" \
+     -s EXPORTED_FUNCTIONS="$DRAFTER_EXPORTED_FUNCTIONS" \
      -s DISABLE_EXCEPTION_CATCHING=0 \
      -s EXPORTED_RUNTIME_METHODS="['stringToUTF8', 'getValue', 'Pointer_stringify', 'lengthBytesUTF8', 'UTF8ToString']" \
      -s ASSERTIONS=${ASSERT} \
