@@ -7,7 +7,24 @@ jobs:
   # build
   build:
 
-    runs-on:
+    container: 
+      image: apiaryio/emcc:1.38.11
+      
+    steps:
+    - run: apt-get update && apt-get install -y git-core
+    - uses: actions/checkout@v2
+    - run: git submodule update --recursive --init
+    - run: npm install
+    - run: ./scripts/wrap.js
+    - run: ./scripts/emcbuild.sh
+    - name: keeping some data stored
+      uses: actions/upload-artifact@v2
+      with:
+        name: drafter
+        path: 
+          - drafter.js
+          - drafter.js.mem
+          - drafter.nomem.js
 
   # general test run
   test:
@@ -27,6 +44,11 @@ jobs:
         node-version: ${{ matrix.node-version }}
 
     - run: git submodule update --recursive --init
+    - name: get stored artifacts
+      uses: actions/download-artifact@v2
+      with:
+        name: drafter
+    
     - run: npm install
     - run: 
         command: |
