@@ -7,6 +7,8 @@ jobs:
   # build
   build:
 
+    runs-on: ubuntu-latest
+    
     container: 
       image: apiaryio/emcc:1.38.11
       
@@ -21,10 +23,10 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: drafter
-        path: 
-          - drafter.js
-          - drafter.js.mem
-          - drafter.nomem.js
+        path: |
+          drafter.js
+          drafter.js.mem
+          drafter.nomem.js
 
   # general test run
   test:
