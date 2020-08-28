@@ -50,10 +50,13 @@ jobs:
         name: drafter
     
     - run: npm install
+    - uses: actions/setup-python@v2
+      with:
+        python-version: '2.x'
     - run: 
-        command: |
+        command:|
         cd ext/protagonist/drafter
-        ./configure
+        node ./configure
         make drafter
     - run: npm install ext/protagonist
     - run: npm test
