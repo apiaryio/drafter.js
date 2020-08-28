@@ -3,6 +3,12 @@ name: run-test
 on: push
 
 jobs:
+
+  # build
+  build:
+
+    runs-on:
+
   # general test run
   test:
 
@@ -22,5 +28,10 @@ jobs:
 
     - run: git submodule update --recursive --init
     - run: npm install
+    - run: 
+        command: |
+        cd ext/protagonist/drafter
+        ./configure
+        make drafter
     - run: npm install ext/protagonist
     - run: npm test
