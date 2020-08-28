@@ -11,10 +11,18 @@ jobs:
     
     container: 
       image: apiaryio/emcc:1.38.11
-      
+    
+    strategy:
+      matrix:
+        node-version: [12.x]
+
     steps:
     - run: apt-get update && apt-get install -y git-core
     - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
     - run: git submodule update --recursive --init
     - run: npm install
     - run: ./scripts/wrap.js
@@ -39,7 +47,7 @@ jobs:
         node-version: [8.x, 10.x, 12.x, 14.x]
 
     needs: build
-    
+
     steps:
     - uses: actions/checkout@v2
     - name: Use Node.js ${{ matrix.node-version }}
