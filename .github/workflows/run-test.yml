@@ -19,6 +19,7 @@ jobs:
       with:
         args: git submodule update --recursive --init
     - run: npm install
+    - run: cp /root/.emscripten ~/
     - run: ./scripts/wrap.js
     - run: ./scripts/emcbuild.sh
     - name: keeping some data stored
