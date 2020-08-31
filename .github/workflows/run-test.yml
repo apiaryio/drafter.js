@@ -56,6 +56,8 @@ jobs:
       with:
         name: drafter
     
+
+    - run: cp -n -R /Users/runner/work/drafter.js/drafter.js/* /lib
     - run: npm install
     - uses: actions/setup-python@v2
       with:
