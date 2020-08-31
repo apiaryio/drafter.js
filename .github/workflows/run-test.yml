@@ -27,9 +27,9 @@ jobs:
       with:
         name: drafter
         path: |
-          drafter.js
-          drafter.js.mem
-          drafter.nomem.js
+          lib/drafter.js
+          lib/drafter.js.mem
+          lib/drafter.nomem.js
 
   # general test run
   test:
