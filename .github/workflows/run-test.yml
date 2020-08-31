@@ -9,16 +9,11 @@ jobs:
 
     runs-on: ubuntu-latest
     
-    container: 
-      image: apiaryio/emcc:1.38.11
-    
-    strategy:
-      matrix:
-        node-version: [12.x]
+    container: apiaryio/emcc:1.38.11
 
     steps:
     - run: apt-get update && apt-get install -y git-core
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v1
     - name: Use Git Actions
       uses: srt32/git-actions@v0.0.3
       with:
@@ -48,7 +43,7 @@ jobs:
     needs: build
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v1
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
       with:
