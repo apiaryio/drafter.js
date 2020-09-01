@@ -38,8 +38,8 @@ jobs:
 
     strategy:
       matrix:
-        os: [ubuntu-latest, macos-latest]
-        node-version: [8.x, 10.x, 12.x, 14.x]
+        os: [macos-latest]
+        node-version: [12.x]
 
     needs: build
 
@@ -57,7 +57,14 @@ jobs:
         name: drafter
     
 
-    - run: cp -n -R /Users/runner/work/drafter.js/drafter.js/* /lib
+    - run: |
+        if [[ $(pwd) =~ ^/Users ]]; then
+          LOCAL_PATH=/Users/runner/work/drafter.js
+        else
+          LOCAL_PATH=/home/runner/work/drafter.js
+        fi
+        cp -n -R "$(echo $LOCAL_PATH)/drafter.js/" "$(echo $LOCAL_PATH)/lib"
+        ls -al "$(echo $LOCAL_PATH)/lib"
     - run: npm install
     - uses: actions/setup-python@v2
       with:
