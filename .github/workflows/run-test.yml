@@ -26,10 +26,7 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: drafter
-        path: |
-          lib/drafter.js
-          lib/drafter.js.mem
-          lib/drafter.nomem.js
+        path: lib
 
   # general test run
   test:
@@ -39,7 +36,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, macos-latest]
-        node-version: [8.x, 10.x, 12.x, 14.x]
+        node-version: [8.x, 10.x, 12.x]
 
     needs: build
 
@@ -55,6 +52,7 @@ jobs:
       uses: actions/download-artifact@v2
       with:
         name: drafter
+        path: lib
     
     - run: npm install
     - uses: actions/setup-python@v2
