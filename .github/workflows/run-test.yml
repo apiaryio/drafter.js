@@ -26,10 +26,7 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: drafter
-        path: |
-          lib/drafter.js
-          lib/drafter.js.mem
-          lib/drafter.nomem.js
+        path: lib
 
   # general test run
   test:
@@ -55,16 +52,8 @@ jobs:
       uses: actions/download-artifact@v2
       with:
         name: drafter
-    
+        path: lib
 
-    - run: |
-        if [[ $(pwd) =~ ^/Users ]]; then
-          LOCAL_PATH=/Users/runner/work/drafter.js
-        else
-          LOCAL_PATH=/home/runner/work/drafter.js
-        fi
-        cp -n -R "$(echo $LOCAL_PATH)/drafter.js/" "$(echo $LOCAL_PATH)/lib"
-        ls -al "$(echo $LOCAL_PATH)/lib"
     - run: npm install
     - uses: actions/setup-python@v2
       with:
