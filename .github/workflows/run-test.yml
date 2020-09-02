@@ -1,0 +1,66 @@
+name: run-test
+
+on: push
+
+jobs:
+
+  # build
+  build:
+
+    runs-on: ubuntu-latest
+    
+    container: apiaryio/emcc:1.38.11
+
+    steps:
+    - run: apt-get update && apt-get install -y git-core
+    - uses: actions/checkout@v1
+    - name: Use Git Actions
+      uses: srt32/git-actions@v0.0.3
+      with:
+        args: git submodule update --recursive --init
+    - run: npm install
+    - run: cp /root/.emscripten ~/
+    - run: ./scripts/wrap.js
+    - run: ./scripts/emcbuild.sh
+    - name: keeping some data stored
+      uses: actions/upload-artifact@v2
+      with:
+        name: drafter
+        path: lib
+
+  # general test run
+  test:
+
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+        node-version: [8.x, 10.x, 12.x]
+
+    needs: build
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+
+    - run: git submodule update --recursive --init
+    - name: get stored artifacts
+      uses: actions/download-artifact@v2
+      with:
+        name: drafter
+        path: lib
+    
+    - run: npm install
+    - uses: actions/setup-python@v2
+      with:
+        python-version: '2.x'
+    - run: |
+        cd ext/protagonist/drafter
+        ./configure
+        make drafter
+    - run: npm install ext/protagonist
+    - run: npm test
