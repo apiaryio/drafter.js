@@ -1,5 +1,11 @@
 # drafter.js Changelog
 
+## 3.2.1 (2023-05-18)
+
+This update now uses Drafter 5.1.0. Please see [Drafter
+5.1.0](https://github.com/apiaryio/drafter/releases/tag/v5.1.0) for
+the list of changes.
+
 ## 3.2.0 (2020-04-20)
 
 * Drafter contains two new options for disabling messageBody and
